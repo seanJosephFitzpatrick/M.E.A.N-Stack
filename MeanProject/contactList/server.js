@@ -2,7 +2,7 @@ var express = require('express');
 
 var app = express(); //we will be using the express.js
 var mongojs = require('mongojs');//require the mongodb module 
-var db = mongojs('contactlist',['contactlist']); //which mongodb database we will be using 
+var db = mongojs('mongodb://51.141.15.147:27017',['contactlist']); //which mongodb database we will be using 
 
 //now we have to require body parser 
 var bodyParser = require('body-parser');
