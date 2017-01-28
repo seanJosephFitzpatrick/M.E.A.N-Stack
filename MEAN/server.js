@@ -12,30 +12,30 @@ app.use(express.static(__dirname +"/public"));
 //so that our app can use bodyparser
 app.use(bodyParser.json());
 
-app.get('/accoutUsers' , function(req, res){
+app.get('/accountUsers' , function(req, res){
     console.log("I received a GET request");
     
     //getting the data from mongodb
-    db.accoutUsers.find(function(err , docs){
+    db.accountUsers.find(function(err , docs){
         console.log(docs);
         res.json(docs);
     }); 
 });
 
 
-app.post('/accoutUsers' , function(req , res){
+app.post('/accountUsers' , function(req , res){
     // To parse the data and server doent know how to parse , we  need to install another module called " body parser" .so lets intall it from command promt by typing npm install body parser 
     console.log(req.body);
-    db.accoutUsers.insert(req.body ,function(err , doc){
+    db.accountUsers.insert(req.body ,function(err , doc){
         res.json(doc);
     })
 });
 
-app.delete('/accoutUsers/:id',function(req , res){
+app.delete('/accountUsers/:id',function(req , res){
     var id = req.params.id;
     console.log(id);
     //pass the id to the mongodb to delete the exact record we want to delete and get the data back 
-    db.accoutUsers.remove({_id:mongojs.ObjectId(id)},function(err , doc){
+    db.accountUsers.remove({_id:mongojs.ObjectId(id)},function(err , doc){
         res.json(doc);
     })
     
@@ -43,10 +43,10 @@ app.delete('/accoutUsers/:id',function(req , res){
 
 
 //after update the contact we need to get it back as well
-app.get('/accoutUsers/:id' ,function(req ,res){
+app.get('/accountUsers/:id' ,function(req ,res){
     var id = req.params.id;
     console.log(id);
-    db.accoutUsers.findOne({_id:mongojs.ObjectId(id)},function(err,doc){
+    db.accountUsers.findOne({_id:mongojs.ObjectId(id)},function(err,doc){
        res.json(doc); 
     });
     
@@ -54,11 +54,11 @@ app.get('/accoutUsers/:id' ,function(req ,res){
 
 
 //use http put request to change the current contact
-app.put('/accoutUsers/:id',function(req ,res){
+app.put('/accountUsers/:id',function(req ,res){
    var id = req.params.id;
     console.log(req.body.name);
-    db.accoutUsers.findAndModify({query: {_id: mongojs.ObjectId(id)},
-             update: {$set: {name: req.body.name , email: req.body.email, number: req.body.number}},
+    db.accountUsers.findAndModify({query: {_id: mongojs.ObjectId(id)},
+             update: {$set: {firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, number: req.body.number}},
              new: true},function(err ,doc){
                     res.json(doc);
         });    
