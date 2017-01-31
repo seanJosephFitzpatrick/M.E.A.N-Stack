@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+    
+    
+    <!-- read API key. (kept local for security) --> 
+   
+    <script src="C:/Users/Jason/Desktop/mapAPI/api.txt">
+    </script>
+      
+    <script>
+         
+        console.log(text);
+            var api = String('"https://maps.googleapis.com/maps/api/js?key='+ text + '&callback=initMap"');
+        localStorage.setItem("api", api);
+        console.log(api);
+    
+    </script>
+      
+    <!----------------------->  
+     
+      
+  </head>
+  <body>
+    <div id="map"></div> 
+    <script>
+
+      function initMap() {
+          
+        //co ordinates for galway from: http://www.maps.ie/coordinates.html
+          
+        var galway = {lat: 53.2714495477047, lng: -9.056854245546901}; 
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: galway
+        });
+        var marker = new google.maps.Marker({
+          position: galway,
+          map: map
+        });
+      }
+        
+        
+    </script>
+ 
+    
+       <!--key removed for security. Needs added to mongo db when made. -->
+      
+      <script> console.log(text);</script>  
+      
+   <script async defer 
+           
+           
+           
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDllo5Gh2kmkNq5D9HD5Qgrg5SyHJHmHPE&callback=initMap">>
+       
+       
+     
+        
+         console.log(text);
+      
+    </script>
+      
+  </body>
+</html>
