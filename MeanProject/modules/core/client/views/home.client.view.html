@@ -1,21 +1,21 @@
 <section ng-controller="HomeController">
 	
-	<div class="col-sm-6">
+	<div class="col-sm-6" ng-repeat="event in events">
 		<div class="row">
 			<div class="col-xs-2">
 				<h1>
-					<button type="button" class="btn btn-primary">
-						<i class+"glyphicon glyphicon-eye-open">
+					<button type="button" class="btn" ng-class="event.color">
+						<i class="glyphicon" ng-class="event.img"></i>
 					</button>
 				</h1>
 			</div>
 			<div class="col-xs-10">
-				<h1>Search Events</h1>
+				<h1>{{event.title}}</h1>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-10 col-xs-offset-2">
-				<span class="text-muted">Total Events</span>
+				<span class="text-muted">{{event.description}}</span>
 			</div>
 		</div>
 	</div>
