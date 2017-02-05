@@ -7,7 +7,7 @@ eqfeed_callback
               "type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[ 53.2714495477047, -9.056854245546901]}
             },
             {
-              "type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[55.1557, 3.4067]}
+              "type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[55.155699, -3.406661999999983]}
             }
         ]
     }
