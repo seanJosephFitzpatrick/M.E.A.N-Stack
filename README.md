@@ -54,9 +54,12 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+[Sean Fitzpatrick](https://github.com/seanJosephFitzpatrick)           
+[Jason Thorne](https://github.com/jasonthorne)                   
+[Sarabjeet Kumar](https://github.com/sarbjeetkumar)                       
+[Liam Joyce](https://github.com/Tangler203)                             
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
 
 ## License
 
