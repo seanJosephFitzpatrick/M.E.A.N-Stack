@@ -6,7 +6,7 @@ One Paragraph of project description goes here
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Download and extract the zip folder here []()
 
 ### Prerequisites
 
@@ -63,6 +63,7 @@ This project is licensed under the [MIT](https://github.com/seanJosephFitzpatric
 
 ## Acknowledgments
 
+[MEAN.JS](https://meanjs.org/) - Mean application boilerplate 
 * Hat tip to anyone who's code was used
 * Inspiration
 * etc
