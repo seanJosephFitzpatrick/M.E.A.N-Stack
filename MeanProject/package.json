@@ -1,14 +1,14 @@
 {
   "name": "mean",
   "description": "Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js",
-  "version": "0.4.2",
+  "version": "0.0.1",
   "meanjs-version": "0.4.2",
   "private": false,
-  "author": "",
+  "author": "Sean Fitzpatrick",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/meanjs/mean.git"
+    "url": "https://github.com/seanJosephFitzpatrick/M.E.A.N-Stack"
   },
   "engines": {
     "node": ">=0.10.28",
