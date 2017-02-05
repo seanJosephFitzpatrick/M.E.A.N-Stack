@@ -1,0 +1,14 @@
+markerData
+(
+    {
+        "type":"FeatureCollection","features":
+        [
+            {
+              "type":"Feature","properties":{"name": "Moytura house B&B"},"geometry":{"type":"Point","coordinates":[ 53.2777087, -9.008250900000007]}
+            },
+            {
+              "type":"Feature","properties":{"name": "Flannery's Hotel"},"geometry":{"type":"Point","coordinates":[53.278109, -9.014904999999999]}
+            }
+        ]
+    }
+)
