@@ -21,18 +21,19 @@
           // prompted by your browser. If you see the error "The Geolocation service
           // failed.", it means you probably did not give permission for the browser to
           // locate you.
-
+          var map;
+         
           function initMap() 
           {
                 
                 var galway = {lat: 53.2714495477047, lng: -9.056854245546901}; 
-                var map = new google.maps.Map(document.getElementById('map'), {
+                map = new google.maps.Map(document.getElementById('map'), {
                   zoom: 15,
                   center: galway
                 });
                 var infoWindow = new google.maps.InfoWindow({map: map});
 
-                // Try HTML5 geolocation.
+                //Find user's location using geolocation. Center map around location
                 if (navigator.geolocation) 
                 {
                       navigator.geolocation.getCurrentPosition(function(position) 
@@ -53,9 +54,17 @@
                 } 
                 else
                 {
-                  // Browser doesn't support Geolocation
+                  //browser doesn't support Geolocation
                   handleLocationError(false, infoWindow, map.getCenter());
                 }
+              
+              
+              // create a <script> tag and set the USGS URL as the source.
+              var script = document.createElement('script');
+              script.src = 'C:/Users/Jason/Desktop/FinalYearProject-JAY_BRANCH/GoogleMapsTesting/MapForMonday/MarkerData.json';
+              
+               document.getElementsByTagName('head')[0].appendChild(script);
+              
 
           }
 
@@ -65,7 +74,22 @@
                 infoWindow.setContent(browserHasGeolocation ?
                  'Error: The Geolocation service failed.' :
                  'Error: Your browser doesn\'t support geolocation.');
-           }
+          }
+         
+         
+       // Loop through the results array and place a marker for each
+      // set of coordinates.
+      window.markerData = function(results) {
+        for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[0],coords[1]);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+        }
+      }
+         
 
     </script>  
       
