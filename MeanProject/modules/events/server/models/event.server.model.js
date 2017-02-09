@@ -26,9 +26,40 @@ var EventSchema = new Schema({
     trim: true,
     required: 'Title cannot be blank'
   },
-  content: {
+  image: {
     type: String,
     default: '',
+    trim: true
+  },
+  time: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  place: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  address: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  performers: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  short_bio: {
+    type: String,
+    default: '',
+    trim: true,
+    required: 'Title cannot be blank'
+  },
+  description: {
+    type: String,
+    default: 'There is no description',
     trim: true
   },
   user: {
