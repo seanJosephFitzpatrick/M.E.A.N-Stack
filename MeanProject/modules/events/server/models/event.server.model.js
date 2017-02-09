@@ -3,12 +3,18 @@
 /**
  * Module dependencies.
  */
+//Get a handle on mongoose package with the require keyword
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+/**
+*Use mongoose schema and assign to variable schema instead of typing mongoose.schema
+*
+*/
+Schema = mongoose.Schema;
 
 /**
  * Event Schema
  */
+//Each schema maps to a MongoDB collection and defines the shape of the documents within that collection.
 var EventSchema = new Schema({
   created: {
     type: Date,
