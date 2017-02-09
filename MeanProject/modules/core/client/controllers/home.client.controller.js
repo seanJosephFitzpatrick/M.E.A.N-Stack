@@ -43,6 +43,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 			description: 'description'
 		}
 	];
+
 	
 	
   }

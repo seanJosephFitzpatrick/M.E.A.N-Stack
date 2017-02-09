@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+<!--index.html-->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -27,7 +28,12 @@
   <meta name="twitter:description" content="{{description}}">
   <meta name="twitter:url" content="{{url}}">
   <meta name="twitter:image" content="{{logo}}">
-
+  
+  <!-- Google map-->
+  	
+  <!-- eventful-->
+  <script type="text/javascript" src="http://api.eventful.com/js/api"></script>
+  
   <!-- Fav Icon -->
   <link href="{{favicon}}" rel="shortcut icon" type="image/x-icon">
 
@@ -36,6 +42,9 @@
 </head>
 
 <body class="ng-cloak">
+
+	
+	
 	<!--Include header into app, fix navbar to top, style inverse - default is lighter color -->
   <header ng-include="'/modules/core/client/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
   <section class="content">
@@ -59,6 +68,11 @@
   <!--Livereload script rendered -->
   <script type="text/javascript" src="{{host}}:35729/livereload.js"></script>
   {% endif %}
+  
+   
+ 
+
+    
 </body>
 
 </html>
