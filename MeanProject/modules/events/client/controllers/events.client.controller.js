@@ -1,9 +1,33 @@
 'use strict';
 
+var eventsApp = angular.module('events');
+
 // Events controller
-angular.module('events').controller('EventsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Events',
-  function ($scope, $stateParams, $location, Authentication, Events) {
+eventsApp.controller('EventsController', ['$scope', '$stateParams', 'Authentication', 'Events',
+  function ($scope, $stateParams, Authentication, Events) {
     $scope.authentication = Authentication;
+      
+      
+  }
+]);
+
+//Events Create controller
+eventsApp.controller('EventsCreateController', ['$scope', 'Events',
+  function ($scope, Events) {
+    $scope.authentication = Authentication;
+      
+      
+  }
+]);
+
+//Events Edit controller
+eventsApp.controller('EventsEditController', ['$scope', 'Events',
+  function ($scope, Events) {
+    $scope.authentication = Authentication;
+      
+      
+  }
+]);
 
     // Create new Event
     $scope.create = function () {
@@ -74,5 +98,4 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
         eventId: $stateParams.eventId
       });
     };
-  }
-]);
+
