@@ -7,7 +7,7 @@
       <fieldset>  
         <div class="row">
             <div class="col-sm-6 text-center">
-                <i class="glyphicon glyphicon-picture event-picture"></i>
+                <i class="glyphicon glyphicon-picture event-picture" style="color: blue"></i>
             </div>
              <div class="col-sm-6">
                 <div class="form-group">
@@ -80,9 +80,9 @@
             </div>
           </div>
           
-        <div data-ng-show="error" class="text-danger">
-          <strong data-ng-bind="error"></strong>
-        </div>
+        <alert type="danger" ng-show="error" class="text-center text-danger">
+          <span ng-bind="error"></span>
+        </alert>
       </fieldset>
     </form>
   </div>
