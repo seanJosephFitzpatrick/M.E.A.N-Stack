@@ -3,17 +3,30 @@
     <h1>Events</h1>
   </div>
   <div class="list-group">
-    <a data-ng-repeat="event in EventsCtrl.events" data-ui-sref="events.view({eventId: event._id})" class="list-group-item">
+      
+      <div class="col-sm-4" data-ng-repeat="event in EventsCtrl.events">
+         <a data-ui-sref="events.view({eventId: event._id})" class="list-group-item">
+             <i class="glyphico glyphicon-picture"></i> 
+             <h4>{{event.title}}</h4>
+         </a>
+      </div>
+      
+      
+      
+      
+      
+      
+   
       <small class="list-group-item-text">
-          {{event.description}}
+          
         Posted on
         <span data-ng-bind="event.created | date:'mediumDate'"></span>
         by
         <span data-ng-bind="event.user.displayName"></span>
       </small>
       <h4 class="list-group-item-heading" data-ng-bind="event.title"></h4>
-      <p class="list-group-item-text" data-ng-bind="event.content"></p>
-    </a>
+      <p class="list-group-item-text" data-ng-bind="event.description"></p>
+    
   </div>
   <div class="alert alert-warning text-center" data-ng-if="events.$resolved && !events.length">
     No events yet, why don't you <a data-ui-sref="events.create">create one</a>?
