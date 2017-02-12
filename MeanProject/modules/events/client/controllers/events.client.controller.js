@@ -5,8 +5,12 @@ var eventsApp = angular.module('events');
 // Events controller
 eventsApp.controller('EventsController', ['$scope', '$stateParams', 'Authentication', 'Events',
   function ($scope, $stateParams, Authentication, Events) {
-    $scope.authentication = Authentication;
       
+    this.authentication = Authentication;
+      
+    // Find a list of Events
+    this.events = Events.query();
+    
       
   }
 ]);
@@ -14,7 +18,7 @@ eventsApp.controller('EventsController', ['$scope', '$stateParams', 'Authenticat
 //Events Create controller
 eventsApp.controller('EventsCreateController', ['$scope', 'Events',
   function ($scope, Events) {
-    $scope.authentication = Authentication;
+    
       
       
   }
@@ -23,11 +27,13 @@ eventsApp.controller('EventsCreateController', ['$scope', 'Events',
 //Events Edit controller
 eventsApp.controller('EventsEditController', ['$scope', 'Events',
   function ($scope, Events) {
-    $scope.authentication = Authentication;
+    
       
       
   }
 ]);
+
+/*
 
     // Create new Event
     $scope.create = function () {
@@ -87,15 +93,12 @@ eventsApp.controller('EventsEditController', ['$scope', 'Events',
       });
     };
 
-    // Find a list of Events
-    $scope.find = function () {
-      $scope.events = Events.query();
-    };
-
     // Find existing Event
     $scope.findOne = function () {
       $scope.event = Events.get({
         eventId: $stateParams.eventId
       });
     };
+    
+*/
 

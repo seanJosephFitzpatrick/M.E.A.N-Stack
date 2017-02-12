@@ -1,9 +1,9 @@
-<section data-ng-controller="EventsController" data-ng-init="find()">
+<section data-ng-controller="EventsController as EventsCtrl">
   <div class="page-header">
     <h1>Events</h1>
   </div>
   <div class="list-group">
-    <a data-ng-repeat="event in events" data-ui-sref="events.view({eventId: event._id})" class="list-group-item">
+    <a data-ng-repeat="event in EventsCtrl.events" data-ui-sref="events.view({eventId: event._id})" class="list-group-item">
       <small class="list-group-item-text">
           {{event.description}}
         Posted on
