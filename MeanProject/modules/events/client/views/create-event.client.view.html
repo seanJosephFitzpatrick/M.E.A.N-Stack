@@ -3,10 +3,8 @@
     <h1>New Event</h1>
   </div>
   <div class="col-md-12">
-    <form name="eventForm" class="form-horizontal" data-ng-submit="create()" novalidate>
-      <fieldset>
-          
-          
+    <form name="eventForm" data-ng-submit="create()" novalidate>
+      <fieldset>  
         <div class="row">
             <div class="col-sm-6 text-center">
                 <i class="glyphicon glyphicon-user"></i>
@@ -32,73 +30,56 @@
                     <input name="place" type="text" data-ng-model="place" id="place" class="form-control">
                   </div>
                 </div>
-                 
+            </div>
+          </div>
+          
+           <div class="row">
+            <div class="col-sm-push-6"> 
                 <div class="form-group">
                   <label class="control-label" for="address">Address</label>
                   <div class="controls">
                     <input name="address" type="text" data-ng-model="title" id="address" class="form-control">
                   </div>
                 </div>
-
-            </div>
-          </div>
-           <div class="row">
-            <div class="col-sm-6">
-                
                 <div class="form-group">
                   <label class="control-label" for="performers">Performers</label>
                   <div class="controls">
                     <input name="performers" type="text" data-ng-model="performers" id="performers" class="form-control">
                   </div>
                 </div>
-                 
                 <div class="form-group">
                   <label class="control-label" for="short_bio">Short bio</label>
                   <div class="controls">
                     <input name="short_bio" type="text" data-ng-model="short_bio" id="short_bio" class="form-control">
                   </div>
-                </div>
-                
+                </div>    
+            </div>
+               
+             <div class="col-sm-pull-6">
                 <div class="form-group">
                   <label class="control-label" for="description">Description</label>
                   <div class="controls">
                     <textarea name="description" data-ng-model="description" id="content" class="form-control" cols="30" rows="10"></textarea>
                   </div>
                 </div>
-                   
-            </div>
-             <div class="col-sm-6">
-                
             </div>
           </div>
+          
            <div class="row">
             <div class="col-sm-6">
                 
+            <div class="form-group">
+              <button type="submit" class="btn btn-lg btn-default">
+                  Create Event
+                </button>
+            </div>
+
             </div>
              <div class="col-sm-6">
                 
             </div>
           </div>
           
-          
-          
-        <div class="form-group">
-          <label class="control-label" for="title">Title</label>
-          <div class="controls">
-            <input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title">
-          </div>
-        </div>
-          
-        <div class="form-group">
-          <label class="control-label" for="content">Content</label>
-          <div class="controls">
-            <textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
-          </div>
-        </div>
-          
-        <div class="form-group">
-          <input type="submit" class="btn btn-default">
-        </div>
         <div data-ng-show="error" class="text-danger">
           <strong data-ng-bind="error"></strong>
         </div>
