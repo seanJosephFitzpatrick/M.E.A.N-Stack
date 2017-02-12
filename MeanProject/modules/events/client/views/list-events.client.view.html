@@ -4,29 +4,24 @@
   </div>
   <div class="list-group">
       
-      <div class="col-sm-4" data-ng-repeat="event in EventsCtrl.events">
+      <div class="col-xs-6 col-sm-4" data-ng-repeat="event in EventsCtrl.events">
          <a data-ui-sref="events.view({eventId: event._id})" class="list-group-item">
-             <i class="glyphico glyphicon-picture"></i> 
-             <h4>{{event.title}}</h4>
+             <h4 class="event-list text-center">
+                <i class="glyphicon glyphicon-picture"></i> 
+             </h4>
+             <div class="row">
+                <div class="col-xs-10 col-xs-offset-1">
+                     <h4>{{event.title}}</h4>
+                     <small class="list-group-item-text text-muted">
+                         <span data-ng-bind="event.created | date:'mediumDate'"></span>
+                     </small>
+                </div>
+             </div>
          </a>
-      </div>
-      
-      
-      
-      
-      
-      
-   
-      <small class="list-group-item-text">
-          
-        Posted on
-        <span data-ng-bind="event.created | date:'mediumDate'"></span>
-        by
+      </div>       
+   <!--
         <span data-ng-bind="event.user.displayName"></span>
-      </small>
-      <h4 class="list-group-item-heading" data-ng-bind="event.title"></h4>
-      <p class="list-group-item-text" data-ng-bind="event.description"></p>
-    
+   --> 
   </div>
   <div class="alert alert-warning text-center" data-ng-if="events.$resolved && !events.length">
     No events yet, why don't you <a data-ui-sref="events.create">create one</a>?
