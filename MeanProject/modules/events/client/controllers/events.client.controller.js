@@ -10,7 +10,12 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
       // Create new Event object
       var event = new Events({
         title: this.title,
-        content: this.content
+        time: this.time,
+        place: this.place,
+        address: this.address,
+        performers: this.performers,
+        short_bio: this.short_bio,
+        description: this.description
       });
 
       // Redirect after save
@@ -19,7 +24,12 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
 
         // Clear form fields
         $scope.title = '';
-        $scope.content = '';
+        $scope.time = '';
+          $scope.place = '';
+          $scope.address = '';
+          $scope.performers = '';
+          $scope.short_bio = '';
+          $scope.description = '';
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });

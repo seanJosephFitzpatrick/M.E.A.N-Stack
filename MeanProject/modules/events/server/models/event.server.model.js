@@ -26,11 +26,6 @@ var EventSchema = new Schema({
     trim: true,
     required: 'Title cannot be blank'
   },
-  content: {
-    type: String,
-    default: '',
-    trim: true
-  },/*
   time: {
     type: String,
     default: '',
@@ -61,7 +56,7 @@ var EventSchema = new Schema({
     type: String,
     default: 'There is no description',
     trim: true
-  },*/
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'
