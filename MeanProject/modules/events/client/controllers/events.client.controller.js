@@ -3,15 +3,36 @@
 var eventsApp = angular.module('events');
 
 // Events controller
-eventsApp.controller('EventsController', ['$scope', '$stateParams', 'Authentication', 'Events',
-  function ($scope, $stateParams, Authentication, Events) {
+eventsApp.controller('EventsController', ['$scope', '$stateParams', 'Authentication', 'Events', '$modal', '$log',
+  function ($scope, $stateParams, Authentication, Events, $modal, $log) {
       
     this.authentication = Authentication;
       
     // Find a list of Events
     this.events = Events.query();
-    
       
+    //open model window to update event
+    this.modalUpdate = function (size, selectedEvent) {
+  
+    var modalInstance = $modal.open({
+      templateUrl: 'modules/events/client/views/edit-event.client.view.html',
+      controller: function ($modalInstance, event) {
+          $scope.event = event;
+      },
+      size: size,
+      resolve: {
+        event: function () {
+          return selectedEvent;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+        }, function () {
+          $log.info('Modal dismissed at: ' + new Date());
+        });   
+    };   
   }
 ]);
 
