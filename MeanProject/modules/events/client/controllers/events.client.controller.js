@@ -16,7 +16,7 @@ eventsApp.controller('EventsController', ['$scope', '$stateParams', 'Authenticat
   
     var modalInstance = $modal.open({
       templateUrl: 'modules/events/client/views/edit-event.client.view.html',
-      controller: function ($modalInstance, event) {
+      controller: function ($scope, $modalInstance, event) {
           $scope.event = event;
       },
       size: size,
@@ -46,7 +46,7 @@ eventsApp.controller('EventsCreateController', ['$scope', 'Events',
 ]);
 
 //Events Edit controller
-eventsApp.controller('EventsEditController', ['$scope', 'Events',
+eventsApp.controller('EventsUpdateController', ['$scope', 'Events',
   function ($scope, Events) {
     
       
