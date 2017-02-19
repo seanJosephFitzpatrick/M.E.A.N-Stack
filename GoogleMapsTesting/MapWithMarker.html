@@ -8,82 +8,76 @@
        }
     </style>
     
-    
-   
+
    <script>
-       var map;
-      </script>
+        
+     var map;
+     var marker = null;
+     var tesTcount = 0;
+
+      function initMap() {
+
+        //co ordinates for galway from: http://www.maps.ie/coordinates.html
+
+        var galway = {lat: 53.2714495477047, lng: -9.056854245546901}; 
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: galway
+        });
+
+          autoUpdate();
+      }
+
+        var infoWindow; // = new google.maps.InfoWindow({map: map});
+       //var marker = null;
+
+      function autoUpdate() {
+      navigator.geolocation.getCurrentPosition(function(position) {  
+        var newPoint = new google.maps.LatLng(position.coords.latitude, 
+                                              position.coords.longitude);
+
+        if (marker) {
+          // Marker already created - Move it
+          marker.setPosition(newPoint);
+         
+        }
+        else {
+          // Marker does not exist - Create it
+          var marker = new google.maps.Marker({
+            position: newPoint,
+            map: map
+          });
+            
+        }
+
+        // Center the map on the new position
+        map.setCenter(newPoint);
+          
+          
+          count++;
+        console.log("\n" + newPoint.toString() + " Count: " + count); //test location
+        
+  
+        //console.log("\n" + newPoint.toString()); //test location 
+          //alert("\n" + newPoint.toString());
+
+      }); 
+
+      // Call the autoUpdate() function every 3 seconds
+      setTimeout(autoUpdate, 3000);
+    }
+
    
-    <!----------------------->  
-     
-      
+
+   </script>
+
   </head>
   <body>
       
       
       
     <div id="map"></div> 
-    <script>
-
-      function initMap() {
-          
-        //co ordinates for galway from: http://www.maps.ie/coordinates.html
-          
-        var galway = {lat: 53.2714495477047, lng: -9.056854245546901}; 
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 7,
-          center: galway
-        });
-        var marker = new google.maps.Marker({
-          position: galway,
-          map: map
-        });
-      }
-        
-       ///////////////
-        
-        var marker = null;
-
-function autoUpdate() {
-  navigator.geolocation.getCurrentPosition(function(position) {  
-    var newPoint = new google.maps.LatLng(position.coords.latitude, 
-                                          position.coords.longitude);
-
-    if (marker) {
-      // Marker already created - Move it
-      marker.setPosition(newPoint);
-    }
-    else {
-      // Marker does not exist - Create it
-      marker = new google.maps.Marker({
-        position: newPoint,
-        map: map
-      });
-    }
-
-    // Center the map on the new position
-    map.setCenter(newPoint);
-    console.log("\n" + newPoint.toString());
-     
-  }); 
-
-  // Call the autoUpdate() function every 3 seconds
-  setTimeout(autoUpdate, 3000);
-}
-
-autoUpdate();
-
-    </script>
-        
-        /////////////////
     
-        
-    
-    
-       <!--key removed for security. Needs added to mongo db when made. -->
-      
-      
-      
    <script async defer 
      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDllo5Gh2kmkNq5D9HD5Qgrg5SyHJHmHPE&callback=initMap">>
     </script>
