@@ -83,7 +83,8 @@
        //remove event listener allowing user to add markers to map  
       function disallowNewMarkers()
       {
-         //???????????????????
+         
+          google.maps.event.clearListeners(map, 'click');
         
       }
         
