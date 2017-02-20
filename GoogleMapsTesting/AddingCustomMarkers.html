@@ -31,14 +31,15 @@
   </head>
   <body>
     <div id="floating-panel">
-      <input onclick="allowNewMarkers();" type=button value="Allow new Markers">
-      <input onclick="disallowNewMarkers();" type=button value="Stop allowing new Markers">
+      <input onclick="addNewMarker();" type=button value="Add new marker">
+      <input onclick="saveNewMarker();" type=button value="Save new marker">
+      <input onclick="deleteNewMarker();" type=button value="Delete new marker">
     </div>
     <div id="map"></div>
     <script>
 
       var map;
-      var markers = [];
+      var markerArray = [];
 
       function initMap() {
       var galway = {lat: 53.2714495477047, lng: -9.056854245546901};
@@ -51,43 +52,58 @@
 
       }
 
-      // Adds a marker to the map and push to the array.
-      function addMarker(location) {
+        
+      // Creates a new marker for the map and adds it to an array.
+      function createMarker(location) {
         var marker = new google.maps.Marker({
           position: location,
           map: map
         });
-        markers.push(marker);
-      }
-
-
-      // Shows any markers currently in the array.
-      function showMarkers() 
-      {
-        setMapOnAll(map);
-        
+          
+          markerArray.push(marker);  
+       
       }
 
     
-     //Create event listener allowing user to add markers to map
-      function allowNewMarkers()
-      {
+     //Create event listener allowing user to add marker to map
+      function addNewMarker(){
          
-         // This event listener will call addMarker() when the map is clicked.
+         // This event listener will call createMarker() when the map is clicked.
           map.addListener('click', function(event) {
-          addMarker(event.latLng);
-        });
-        
-      }
-        
-       //remove event listener allowing user to add markers to map  
-      function disallowNewMarkers()
-      {
-         
+          createMarker(event.latLng);
           google.maps.event.clearListeners(map, 'click');
-        
+        });
+          
       }
         
+    
+     // Deletes newly added marker 
+      function deleteNewMarker() {
+          
+       setMapOnMarker(null);  
+        markerArray = [];
+      }
+        
+    
+     function setMapOnMarker(map) {
+        for (var i = 0; i < markerArray.length; i++) {
+          markerArray[i].setMap(map);
+        }
+      }
+    
+        
+    function saveNewMarker(){
+          
+          //trigger input box (modal?) for user to add data for marker.
+          
+          //Add marker and it's data to database
+          
+          
+          console.log("marker save button clicked"); //Test 
+      } 
+        
+        
+       
         
     </script>
       
