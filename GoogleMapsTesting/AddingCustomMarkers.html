@@ -40,6 +40,7 @@
 
       var map;
       var markerArray = [];
+      var addingNewMarker = 0;
 
       function initMap() {
       var galway = {lat: 53.2714495477047, lng: -9.056854245546901};
@@ -67,12 +68,21 @@
     
      //Create event listener allowing user to add marker to map
       function addNewMarker(){
-         
-         // This event listener will call createMarker() when the map is clicked.
-          map.addListener('click', function(event) {
-          createMarker(event.latLng);
-          google.maps.event.clearListeners(map, 'click');
-        });
+          
+          addingNewMarker++;
+          
+          if (addingNewMarker == 1)
+          {
+               // This event listener will call createMarker() when the map is clicked.
+                map.addListener('click', function(event) {
+                createMarker(event.latLng);
+                google.maps.event.clearListeners(map, 'click');
+                }); 
+          }
+          else
+          {
+              alert("please save or delete created marker before making another.")
+          }
           
       }
         
@@ -82,6 +92,7 @@
           
        setMapOnMarker(null);  
         markerArray = [];
+        addingNewMarker = 0;
       }
         
     
@@ -98,7 +109,7 @@
           
           //Add marker and it's data to database
           
-          
+          addingNewMarker = 0;
           console.log("marker save button clicked"); //Test 
       } 
         
