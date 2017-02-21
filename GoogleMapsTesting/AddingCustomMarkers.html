@@ -27,13 +27,22 @@
         line-height: 30px;
         padding-left: 10px;
       }
+    
+      #saveNewMarker{
+      visibility:hidden;
+      }
+        
+      #deleteNewMarker{
+      visibility: hidden;   
+      } 
+       
     </style>
   </head>
   <body>
     <div id="floating-panel">
       <input onclick="addNewMarker();" type=button value="Add new marker">
-      <input onclick="saveNewMarker();" type=button value="Save new marker">
-      <input onclick="deleteNewMarker();" type=button value="Delete new marker">
+      <input onclick="saveNewMarker();" type=button value="Save new marker" id="saveNewMarker">
+      <input onclick="deleteNewMarker();" type=button value="Delete new marker" id="deleteNewMarker">
     </div>
     <div id="map"></div>
     <script>
@@ -43,7 +52,7 @@
       var addingNewMarker = 0;
 
       function initMap() {
-      var galway = {lat: 53.2714495477047, lng: -9.056854245546901};
+        var galway = {lat: 53.2714495477047, lng: -9.056854245546901};
           
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
@@ -70,14 +79,18 @@
       function addNewMarker(){
           
           addingNewMarker++;
+          buttonVisibility(1);
           
           if (addingNewMarker == 1)
           {
                // This event listener will call createMarker() when the map is clicked.
                 map.addListener('click', function(event) {
                 createMarker(event.latLng);
+               
                 google.maps.event.clearListeners(map, 'click');
                 }); 
+              
+            
           }
           else
           {
@@ -90,6 +103,7 @@
      // Deletes newly added marker 
       function deleteNewMarker() {
           
+       buttonVisibility(0);  
        setMapOnMarker(null);  
         markerArray = [];
         addingNewMarker = 0;
@@ -108,14 +122,27 @@
           //trigger input box (modal?) for user to add data for marker.
           
           //Add marker and it's data to database
-          
+          buttonVisibility(0);  
           addingNewMarker = 0;
           console.log("marker save button clicked"); //Test 
       } 
         
+    
+    function buttonVisibility(visibility){
         
-       
+        switch (visibility){
+            case 0: //make buttons invisible
+                document.getElementById("saveNewMarker").style.visibility="hidden";
+                document.getElementById("deleteNewMarker").style.visibility="hidden";
+                break;
+            case 1: //make buttons visible 
+                document.getElementById("saveNewMarker").style.visibility="visible";
+                document.getElementById("deleteNewMarker").style.visibility="visible";
+            break;
+        }
+    }
         
+
     </script>
       
       
