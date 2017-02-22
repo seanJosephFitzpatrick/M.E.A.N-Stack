@@ -29,10 +29,12 @@
         padding-left: 10px;
       }
     
+        /*
       #saveNewMarker, #deleteNewMarker{
       visibility:hidden;
-      }
+      }*/
         
+       
        
     </style>
   </head>
@@ -49,6 +51,7 @@
       var map;
       var markerArray = [];
       var addingNewMarker = 0;
+      var hasMadeMarker = false;
 
       function initMap() {
         var galway = {lat: 53.2714495477047, lng: -9.056854245546901};
@@ -61,7 +64,7 @@
 
       }
         
-        
+       /* 
      function test(){
          
         var floatingPanel = document.getElementById("floating-panel");
@@ -70,7 +73,7 @@
          testButton.appendChild(buttonText);
          floatingPanel.appendChild(testButton);
          testButton.onclick = function(){console.log("test button clicked"); };
-     }
+     }*/
         
     
     //dynamically create buttons for saving or cancelling user made marker   
@@ -79,15 +82,6 @@
        var floatingPanel = document.getElementById("floating-panel");
        var buttonText
         
-       /*
-        newButton = document.createElement("button");
-        buttonText = document.createTextNode("Save");  
-        newButton.appendChild(buttonText);
-        floatingPanel.appendChild(newButton);
-        newButton.onclick = function(){console.log("test button clicked"); };
-        */
-     
-      
        for (var i=0; i< 2; i++)
        {
         
@@ -101,12 +95,21 @@
                     {
                         console.log("save button clicked"); 
                         
-                        setMapOnMarker(null);  
-                        markerArray = [];
-                        addingNewMarker = 0;
-                        
-                        floatingPanel.removeChild(saveButton);
-                        floatingPanel.removeChild(cancelButton);
+                        if (hasMadeMarker)
+                        {
+                              //ASK USER TO NOW ENTER DETAILS FOR LOCATION, THEN ADD MARKER AND DATA TO DATABASE.
+    
+                            floatingPanel.removeChild(saveButton);
+                            floatingPanel.removeChild(cancelButton); 
+                            addingNewMarker = 0;
+                            hasMadeMarker = false;
+                        }
+                        else
+                        {
+                             alert("Please first tap map to add new location.");   
+                        }
+                       
+                          
                     };
                     break;
                 case 1: //create cancel button
@@ -121,10 +124,13 @@
                         //buttonVisibility(false);  
                         setMapOnMarker(null);  
                         markerArray = [];
-                        addingNewMarker = 0;
-                        
+                        ///addingNewMarker = 0;
+
                         floatingPanel.removeChild(saveButton);
-                        floatingPanel.removeChild(cancelButton);
+                        floatingPanel.removeChild(cancelButton); 
+                        addingNewMarker = 0;
+                    
+                       
                     };  
                     break;
                 }  
@@ -133,11 +139,6 @@
         
     }
         
-        
-    function removeButtons(){
-        
-    }
-
         
       // Creates a new marker for the map and adds it to an array.
       function createMarker(location) {
@@ -155,9 +156,7 @@
       function addNewMarker(){
           
           addingNewMarker++;
-          //buttonVisibility(true);
          
-          
           if (addingNewMarker == 1)
           {
                createButtons();
@@ -165,7 +164,8 @@
               // This event listener will call createMarker() when the map is clicked.
               //Adapted from: http://stackoverflow.com/questions/1544151/google-maps-api-v3-how-to-remove-an-event-listener
               var createMarkerlistenerHandle = google.maps.event.addListener(map, 'click', function(event) {
-                    createMarker(event.latLng); 
+                    createMarker(event.latLng);
+                    hasMadeMarker = true;
                     google.maps.event.removeListener(createMarkerlistenerHandle); //removes this specific event listener.
                }); 
           }
@@ -177,6 +177,7 @@
       }
         
     
+        /*
      // Deletes newly added marker 
       function deleteNewMarker() {
           
@@ -184,7 +185,7 @@
        setMapOnMarker(null);  
         markerArray = [];
         addingNewMarker = 0;
-      }
+      }*/
         
     
      function setMapOnMarker(map) {
@@ -193,7 +194,7 @@
         }
       }
     
-        
+    /*
     function saveNewMarker(){
           
           //trigger input box (modal?) for user to add data for marker.
@@ -202,7 +203,7 @@
           /////////////////buttonVisibility(false);  
           addingNewMarker = 0;
           console.log("marker save button clicked"); //Test 
-      } 
+      }*/ 
         
     
         /*
