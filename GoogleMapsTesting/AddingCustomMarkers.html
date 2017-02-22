@@ -38,10 +38,10 @@
   </head>
   <body>
     <div id="floating-panel">
-       <!--< <input onclick="test();" type=button value="Add new marker">-->
-      <input onclick="addNewMarker();" type=button value="Add new marker">
+      <input onclick="createButton()"; type=button value="Add new location">
+       <!-- <input onclick="addNewMarker();" type=button value="Add new marker">
       <input onclick="saveNewMarker();" type=button value="Save new marker" id="saveNewMarker">
-      <input onclick="deleteNewMarker();" type=button value="Delete new marker" id="deleteNewMarker">
+      <input onclick="deleteNewMarker();" type=button value="Delete new marker" id="deleteNewMarker">-->
     </div>
     <div id="map"></div>
     <script>
@@ -65,12 +65,39 @@
      function test(){
          
         var floatingPanel = document.getElementById("floating-panel");
-         var testButton = document.createElement("button");
+        var testButton = document.createElement("button");
         var buttonText = document.createTextNode("TEST!");  
          testButton.appendChild(buttonText);
          floatingPanel.appendChild(testButton);
-         
+         testButton.onclick = function(){console.log("test button clicked"); };
      }
+        
+    
+    //dynamically create buttons for saving or cancelling user made marker   
+    function createButton(buttonType){
+        
+      var floatingPanel = document.getElementById("floating-panel");
+      var button;
+      var buttonText;
+      
+        
+       switch (buttonType){
+            case "save": //create save button
+               button = document.createElement("saveButton");
+               buttonText = document.createTextNode("Save"); 
+               button.onclick = function(){console.log("save button clicked");};
+                break;
+            case "cancel": //create cancel button
+               button = document.createElement("cancelButton");
+               buttonText = document.createTextNode("Cancel"); 
+               button.onclick = function(){console.log("cancel button clicked");};
+                break; 
+        }
+        
+        button.appendChild (buttonText);
+        floatingPanel.appendChild(button);
+        
+    }
 
         
       // Creates a new marker for the map and adds it to an array.
@@ -151,7 +178,7 @@
           //trigger input box (modal?) for user to add data for marker.
           
           //Add marker and it's data to database
-          buttonVisibility(false);  
+          /////////////////buttonVisibility(false);  
           addingNewMarker = 0;
           console.log("marker save button clicked"); //Test 
       } 
