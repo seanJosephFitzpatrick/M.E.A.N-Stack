@@ -38,7 +38,7 @@
   </head>
   <body>
     <div id="floating-panel">
-      <input onclick="createButton()"; type=button value="Add new location">
+      <input onclick="addNewMarker()"; type=button value="Add new location">
        <!-- <input onclick="addNewMarker();" type=button value="Add new marker">
       <input onclick="saveNewMarker();" type=button value="Save new marker" id="saveNewMarker">
       <input onclick="deleteNewMarker();" type=button value="Delete new marker" id="deleteNewMarker">-->
@@ -74,28 +74,67 @@
         
     
     //dynamically create buttons for saving or cancelling user made marker   
-    function createButton(buttonType){
+    function createButtons(){
         
-      var floatingPanel = document.getElementById("floating-panel");
-      var button;
-      var buttonText;
+       var floatingPanel = document.getElementById("floating-panel");
+       var buttonText
+        
+       /*
+        newButton = document.createElement("button");
+        buttonText = document.createTextNode("Save");  
+        newButton.appendChild(buttonText);
+        floatingPanel.appendChild(newButton);
+        newButton.onclick = function(){console.log("test button clicked"); };
+        */
+     
       
+       for (var i=0; i< 2; i++)
+       {
         
-       switch (buttonType){
-            case "save": //create save button
-               button = document.createElement("saveButton");
-               buttonText = document.createTextNode("Save"); 
-               button.onclick = function(){console.log("save button clicked");};
-                break;
-            case "cancel": //create cancel button
-               button = document.createElement("cancelButton");
-               buttonText = document.createTextNode("Cancel"); 
-               button.onclick = function(){console.log("cancel button clicked");};
-                break; 
-        }
+           switch(i){
+                case 0: //create save button
+                    var saveButton = document.createElement("button");
+                    buttonText = document.createTextNode("Save"); 
+                    saveButton.appendChild(buttonText);
+                    floatingPanel.appendChild(saveButton);
+                    saveButton.onclick = function()
+                    {
+                        console.log("save button clicked"); 
+                        
+                        setMapOnMarker(null);  
+                        markerArray = [];
+                        addingNewMarker = 0;
+                        
+                        floatingPanel.removeChild(saveButton);
+                        floatingPanel.removeChild(cancelButton);
+                    };
+                    break;
+                case 1: //create cancel button
+                    var cancelButton = document.createElement("button");
+                    buttonText = document.createTextNode("Cancel"); 
+                    cancelButton.appendChild(buttonText);
+                    floatingPanel.appendChild(cancelButton);
+                    cancelButton.onclick = function()
+                    {
+                        console.log("cancel button clicked"); 
+                        
+                        //buttonVisibility(false);  
+                        setMapOnMarker(null);  
+                        markerArray = [];
+                        addingNewMarker = 0;
+                        
+                        floatingPanel.removeChild(saveButton);
+                        floatingPanel.removeChild(cancelButton);
+                    };  
+                    break;
+                }  
+       }
+         
         
-        button.appendChild (buttonText);
-        floatingPanel.appendChild(button);
+    }
+        
+        
+    function removeButtons(){
         
     }
 
@@ -116,37 +155,19 @@
       function addNewMarker(){
           
           addingNewMarker++;
-          buttonVisibility(true);
+          //buttonVisibility(true);
+         
           
           if (addingNewMarker == 1)
           {
-              
-               // This event listener will call createMarker() when the map is clicked.
-              
-              /*
-               map.addListener('click', function(event) {
-             
-                createMarker(event.latLng);
-        
-                google.maps.event.clearListeners(map, 'click');
-                    
-               
-                }); 
-                */
-             
+               createButtons();
               
               // This event listener will call createMarker() when the map is clicked.
               //Adapted from: http://stackoverflow.com/questions/1544151/google-maps-api-v3-how-to-remove-an-event-listener
               var createMarkerlistenerHandle = google.maps.event.addListener(map, 'click', function(event) {
-
-                  createMarker(event.latLng); 
-                  
-                  google.maps.event.removeListener(createMarkerlistenerHandle); //removes this specific event listener.
-                  
-                
+                    createMarker(event.latLng); 
+                    google.maps.event.removeListener(createMarkerlistenerHandle); //removes this specific event listener.
                }); 
-              
-             
           }
           else
           {
@@ -159,7 +180,7 @@
      // Deletes newly added marker 
       function deleteNewMarker() {
           
-       buttonVisibility(false);  
+       //buttonVisibility(false);  
        setMapOnMarker(null);  
         markerArray = [];
         addingNewMarker = 0;
@@ -184,6 +205,7 @@
       } 
         
     
+        /*
     function buttonVisibility(visibility){
         
         switch (visibility){
@@ -196,7 +218,7 @@
                 document.getElementById("deleteNewMarker").style.visibility="visible";
                 break; 
         }
-    }
+    }*/
         
 
     </script>
