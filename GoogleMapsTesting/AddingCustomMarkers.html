@@ -18,6 +18,7 @@
         position: absolute;
         top: 10px;
         left: 25%;
+          //right: 25%;
         z-index: 5;
         background-color: #fff;
         padding: 5px;
@@ -28,18 +29,16 @@
         padding-left: 10px;
       }
     
-      #saveNewMarker{
+      #saveNewMarker, #deleteNewMarker{
       visibility:hidden;
       }
         
-      #deleteNewMarker{
-      visibility: hidden;   
-      } 
        
     </style>
   </head>
   <body>
     <div id="floating-panel">
+       <!--< <input onclick="test();" type=button value="Add new marker">-->
       <input onclick="addNewMarker();" type=button value="Add new marker">
       <input onclick="saveNewMarker();" type=button value="Save new marker" id="saveNewMarker">
       <input onclick="deleteNewMarker();" type=button value="Delete new marker" id="deleteNewMarker">
@@ -61,6 +60,17 @@
         });
 
       }
+        
+        
+     function test(){
+         
+        var floatingPanel = document.getElementById("floating-panel");
+         var testButton = document.createElement("button");
+        var buttonText = document.createTextNode("TEST!");  
+         testButton.appendChild(buttonText);
+         floatingPanel.appendChild(testButton);
+         
+     }
 
         
       // Creates a new marker for the map and adds it to an array.
@@ -150,11 +160,11 @@
     function buttonVisibility(visibility){
         
         switch (visibility){
-            case false: //make buttons invisible
+            case false: //hide buttons
                 document.getElementById("saveNewMarker").style.visibility="hidden";
                 document.getElementById("deleteNewMarker").style.visibility="hidden";
                 break;
-            case true: //make buttons visible 
+            case true: //show buttons
                 document.getElementById("saveNewMarker").style.visibility="visible";
                 document.getElementById("deleteNewMarker").style.visibility="visible";
                 break; 
