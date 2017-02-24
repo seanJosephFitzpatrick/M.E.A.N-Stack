@@ -1,3 +1,4 @@
+/*
 'use strict';
 
 var eventsApp = angular.module('events');
@@ -11,13 +12,26 @@ eventsApp.controller('EventsController', ['$scope', '$stateParams', 'Authenticat
     // Find a list of Events
     this.events = Events.query();
       
+      
     //open model window to update event
     this.modalUpdate = function (size, selectedEvent) {
-  
+        
+        
     var modalInstance = $modal.open({
       templateUrl: 'modules/events/client/views/edit-event.client.view.html',
       controller: function ($scope, $modalInstance, event) {
-          $scope.event = event;
+        $scope.event = event;
+          
+        //Close modal
+        $scope.ok = function () {
+        $modalInstance.close($scope.event);
+        };
+
+        //Cancel modal
+        $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+        };
+
       },
       size: size,
       resolve: {
@@ -31,9 +45,11 @@ eventsApp.controller('EventsController', ['$scope', '$stateParams', 'Authenticat
       $scope.selected = selectedItem;
         }, function () {
           $log.info('Modal dismissed at: ' + new Date());
-        });   
-    };   
-  }
+        }); 
+        
+        
+    };     
+  }  
 ]);
 
 //Events Create controller
@@ -48,13 +64,26 @@ eventsApp.controller('EventsCreateController', ['$scope', 'Events',
 //Events Edit controller
 eventsApp.controller('EventsUpdateController', ['$scope', 'Events',
   function ($scope, Events) {
-    
       
-      
+    // Update existing Event
+    this.update = function (updateEvent) {
+      var event = updateEvent;
+
+      event.$update(function () {
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };   
   }
 ]);
+*/
 
-/*
+'use strict';
+
+// Events controller
+angular.module('events').controller('EventsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Events',
+  function ($scope, $stateParams, $location, Authentication, Events) {
+    $scope.authentication = Authentication;
 
     // Create new Event
     $scope.create = function () {
@@ -114,12 +143,16 @@ eventsApp.controller('EventsUpdateController', ['$scope', 'Events',
       });
     };
 
+    // Find a list of Events
+    $scope.find = function () {
+      $scope.events = Events.query();
+    };
+
     // Find existing Event
     $scope.findOne = function () {
       $scope.event = Events.get({
         eventId: $stateParams.eventId
       });
     };
-    
-*/
-
+  }
+]);

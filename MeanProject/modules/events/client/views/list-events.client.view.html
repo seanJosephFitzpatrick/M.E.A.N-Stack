@@ -1,3 +1,4 @@
+<!--
 <section data-ng-controller="EventsController as EventsCtrl">
   <div class="page-header">
     <h1>Events</h1>
@@ -9,7 +10,7 @@
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Go!</button>
               </span>
-            </div><!-- /input-group -->
+            </div>
         </div>
 
         <div class="col-xs-12 col-sm-4 text-center">
@@ -24,7 +25,9 @@
     
   <div class="list-group">
       <div class="col-xs-6 col-sm-4" data-ng-repeat="event in EventsCtrl.events | filter:searchText">
-         <a href="#" ng-click="EventsCtrl.modalUpdate('lg', event)" class="list-group-item">
+         <a data-ui-sref="events.view({eventId: event._id})"  class="list-group-item">
+		 
+		 
              <h4 class="event-list text-center">
                 <i class="glyphicon glyphicon-picture"></i> 
              </h4>
@@ -38,11 +41,57 @@
              </div>
          </a>
       </div>       
-   <!--
-        <span data-ng-bind="event.user.displayName"></span>
-   --> 
   </div>
   <div class="alert alert-warning text-center" data-ng-if="events.$resolved && !events.length">
     No events yet, why don't you <a data-ui-sref="events.create">create one</a>?
   </div>
 </section>
+-->
+
+
+<section data-ng-controller="EventsController" data-ng-init="find()">
+  <div class="page-header">
+    <h1>Events</h1>
+  </div>
+  <!--
+  <div class="list-group">
+    <a data-ng-repeat="event in events" data-ui-sref="events.view({eventId: event._id})" class="list-group-item">
+      <small class="list-group-item-text">
+          {{event.description}}
+        Posted on
+        <span data-ng-bind="event.created | date:'mediumDate'"></span>
+        by
+        <span data-ng-bind="event.user.displayName"></span>
+      </small>
+      <h4 class="list-group-item-heading" data-ng-bind="event.title"></h4>
+      <p class="list-group-item-text" data-ng-bind="event.content"></p>
+    </a>
+  </div>
+  -->
+  
+    <div class="list-group">
+      <div class="col-xs-12 col-sm-4" data-ng-repeat="event in events | filter:searchText">
+         <a data-ui-sref="events.view({eventId: event._id})"  class="list-group-item">
+		 
+		 
+             <h4 class="event-list text-center">
+                <i class="glyphicon glyphicon-picture"></i> 
+             </h4>
+             <div class="row">
+                <div class="col-xs-10 col-xs-offset-1">
+                     <h4>{{event.title}}</h4>
+                     <small class="list-group-item-text text-muted">
+                         <span data-ng-bind="event.created | date:'mediumDate'"></span>
+                     </small>
+                </div>
+             </div>
+         </a>
+		 <br />
+      </div>       
+  </div>
+  
+  <div class="alert alert-warning text-center" data-ng-if="events.$resolved && !events.length">
+    No events yet, why don't you <a data-ui-sref="events.create">create one</a>?
+  </div>
+</section>
+

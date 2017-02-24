@@ -1,4 +1,5 @@
-<section data-ng-controller="EventsUpdateController as updateCtrl">
+<!--
+<section data-ng-controller="EventsUpdateController as UpdateCtrl">
 
 	<div class="modal-header">
 		<h3 class="modal-title" id="modal-title">Update Event</h3>
@@ -82,16 +83,41 @@
           <span ng-bind="error"></span>
         </alert>
       </fieldset>
-			</form>
+	</form>
 		</div>
-	
 	<div class="modal-footer">
-		<button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
-		<button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+		<button class="btn btn-primary" type="button" ng-click="update(event); ok()">Update</button>
+		<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 	</div>
+</section>
+-->
 
+<section data-ng-controller="EventsController" data-ng-init="findOne()">
+  <div class="page-header">
+    <h1>Edit Event</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="eventForm" class="form-horizontal" data-ng-submit="update()" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <label class="control-label" for="title">Title</label>
+          <div class="controls">
+            <input name="title" type="text" data-ng-model="event.title" id="title" class="form-control" placeholder="Title" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="content">Content</label>
+          <div class="controls">
+            <textarea name="content" data-ng-model="event.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+          </div>
+        </div>
         <div class="form-group">
           <input type="submit" value="Update" class="btn btn-default">
         </div>
-     
+        <div data-ng-show="error" class="text-danger">
+          <strong data-ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
 </section>
