@@ -17,7 +17,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		{
 			img: 'glyphicon-eye-open',
 			color: 'btn-primary',
-            url: '',
+            url: 'foods',
             source: 'modules/core/client/img/pic/food.jpg',
 			title: 'Search Food',
 			description: 'description'
@@ -25,9 +25,9 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		{
 			img: 'glyphicon-calendar',
 			color: 'btn-info',
-            url: '',
+            url: 'clubs',
             source: 'modules/core/client/img/pic/nightlife.jpg',
-			title: 'Search Nightlife',
+			title: 'Search Clubs',
 			description: 'description'
 		},
 		{

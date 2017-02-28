@@ -1,0 +1,113 @@
+<section data-ng-controller="ClubsController">
+  <div class="page-header">
+    <h1>New Club</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="clubForm" data-ng-submit="create()" novalidate>
+      <fieldset>  
+        <div class="row">
+            <div class="col-sm-6 text-center">
+				<img ng-src="modules/clubs/client/img/default.png" 
+				class="img-thumbnail user-profile-picture">
+            </div>
+             <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="control-label" for="title">Title</label>
+                  <div class="controls">
+                    <input name="title" type="text" data-ng-model="title" id="title" class="form-control">
+                  </div>
+                </div>
+				
+				<div class="form-group push-6" show-errors>
+					<label for="title">Image</label>
+					<button type="button" class="btn btn-secondary" ng-show="uploadedFile == null" type="file"
+					ngf-select="uploadFiles($file, $invalidFiles)"
+					ng-model="uploadedFile" name="file" ngf-model-invalid="errorFiles"
+					accept="image/*" ngf-max-size="1MB">
+					Select Image</button>
+				  <div class="text-center">
+					<img ng-show="clubForm.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
+				  </div>
+				  <div class="text-center">
+					<div class="progress" ng-show="uploadedFile.progress >= 0">
+							  <div style="width:{{uploadedFile.progress}}%"
+								  ng-bind="uploadedFile.progress + '%'"></div>
+					</div>
+				  </div>
+				  <div class="text-center">
+					<button type="button" class="btn btn-secondary" ng-click="uploadedFile = null" ng-show="uploadedFile">Remove</button>
+				  </div>
+				  <div class="alert alert-danger" ng-show="clubForm.file.$error.maxSize">File too large
+							   {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
+				</div>
+                 
+                <div class="form-group">
+                  <label class="control-label" for="time">Time</label>
+                  <div class="controls">
+                    <input name="time" type="text" data-ng-model="time" id="time" class="form-control">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label" for="place">Place</label>
+                  <div class="controls">
+                    <input name="place" type="text" data-ng-model="place" id="place" class="form-control">
+                  </div>
+                </div>
+            </div>
+          </div>
+          
+           <div class="row">
+            <div class="col-sm-push-6"> 
+                <div class="form-group">
+                  <label class="control-label" for="address">Address</label>
+                  <div class="controls">
+                    <input name="address" type="text" data-ng-model="address" id="address" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="performers">Performers</label>
+                  <div class="controls">
+                    <input name="performers" type="text" data-ng-model="performers" id="performers" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="short_bio">Short bio</label>
+                  <div class="controls">
+                    <input name="short_bio" type="text" data-ng-model="short_bio" id="short_bio" class="form-control">
+                  </div>
+                </div>    
+            </div>
+               
+             <div class="col-sm-pull-6">
+                <div class="form-group">
+                  <label class="control-label" for="description">Description</label>
+                  <div class="controls">
+                    <textarea name="description" data-ng-model="description" id="content" class="form-control" cols="30" rows="10"></textarea>
+                  </div>
+                </div>
+            </div>
+          </div>
+          
+           <div class="row">
+            <div class="col-sm-6">
+                
+            <div class="form-group">
+              <button type="submit" class="btn btn-lg btn-default">
+                  Create Club
+                </button>
+            </div>
+
+            </div>
+             <div class="col-sm-6">
+                
+            </div>
+          </div>
+          
+        <alert type="danger" ng-show="error" class="text-center text-danger">
+          <span ng-bind="error"></span>
+        </alert>
+      </fieldset>
+    </form>
+  </div>
+</section>

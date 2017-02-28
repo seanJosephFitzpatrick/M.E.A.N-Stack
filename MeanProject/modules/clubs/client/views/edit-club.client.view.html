@@ -1,0 +1,75 @@
+<section data-ng-controller="ClubsController" data-ng-init="findOne()">
+  <div class="page-header">
+    <h1>Edit Club</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="clubForm" class="form-horizontal" data-ng-submit="update()" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <label class="control-label" for="title">Title</label>
+          <div class="controls">
+            <input name="title" type="text" data-ng-model="club.title" id="title" class="form-control" placeholder="Title" required>
+          </div>
+        </div>
+		<div class="form-group" show-errors>
+		  <label for="title">Image </label>
+		  <button ng-show="club.clubImageURL==null || club.clubImageURL==''" type="button" class="btn btn-secondary" type="file"
+			ngf-select="uploadFiles($file, $invalidFiles)"
+			ng-model="club.clubImageURL" name="file" ngf-model-invalid="errorFiles"
+			accept="image/*" ngf-max-size="1MB">
+			Select Image</button>
+		  <div class="text-center" ng-show="club.clubImageURL" >
+			<img ng-src="{{club.clubImageURL}}" ngf-thumbnail="club.clubImageURL" class="thumb"/>
+		  </div>
+		  <div class="text-center" ng-show="club.clubImageURL">
+			<button type="button" class="btn btn-secondary" ng-click="club.clubImageURL = null" >Remove</button>
+		  </div>
+		  <div class="alert alert-danger" ng-show="clubForm.file.$error.maxSize">File too large
+					   {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
+		</div>
+		  <div class="form-group">
+          <label class="control-label" for="time">Time</label>
+          <div class="controls">
+            <input name="time" type="text" data-ng-model="club.time" id="time" class="form-control" placeholder="Time" required>
+          </div>
+        </div>
+		<div class="form-group">
+          <label class="control-label" for="place">Place</label>
+          <div class="controls">
+            <input name="place" type="text" data-ng-model="club.place" id="place" class="form-control" placeholder="Place" required>
+          </div>
+        </div>
+		<div class="form-group">
+          <label class="control-label" for="address">Address</label>
+          <div class="controls">
+            <input name="address" type="text" data-ng-model="club.address" id="address" class="form-control" placeholder="address" required>
+          </div>
+        </div>
+		<div class="form-group">
+          <label class="control-label" for="performers">Performers</label>
+          <div class="controls">
+            <input name="performers" type="text" data-ng-model="club.performers" id="performers" class="form-control" placeholder="performers" required>
+          </div>
+        </div>
+		<div class="form-group">
+          <label class="control-label" for="short_bio">Short Bio</label>
+          <div class="controls">
+            <input name="short_bio" type="text" data-ng-model="club.short_bio" id="short_bio" class="form-control" placeholder="short_bio" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="description">Description</label>
+          <div class="controls">
+            <textarea name="description" data-ng-model="club.description" id="description" class="form-control" cols="30" rows="10" placeholder="description"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Update" class="btn btn-default">
+        </div>
+        <div data-ng-show="error" class="text-danger">
+          <strong data-ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
