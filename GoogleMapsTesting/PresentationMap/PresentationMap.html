@@ -45,6 +45,9 @@
       var hasSelectedMarkerLocation = false;
       var hasMadeMarker = false;
       var tempMarkerSaveArray = [];
+      var marker = null;
+      var infoWindow;
+      var count = 0;
 
       function initMap() 
       {
@@ -57,7 +60,7 @@
             });
           
           populateMap();
-          locateUser();
+          allowGeolocation();
       }
         
     
@@ -86,34 +89,78 @@
     }
       
         
-    function locateUser()
+    function allowGeolocation()
     {
-         var infoWindow = new google.maps.InfoWindow({map: map});
+         ///////////////////var infoWindow = new google.maps.InfoWindow({map: map});
         
-        //Find user's location using geolocation. Center map around location
+        //find user's location using geolocation
         if (navigator.geolocation) 
         {
-              navigator.geolocation.getCurrentPosition(function(position) 
-              {
-                var pos = {
+             
+           
+            
+                 findUserLocation(); 
+                /*  
+                var pos = 
+                {
                   lat: position.coords.latitude,
                   lng: position.coords.longitude
                 };
 
                 infoWindow.setPosition(pos);
                 infoWindow.setContent('Your location');
-                map.setCenter(pos);
+                //////map.setCenter(pos);
               }, 
               function() 
               {
                 handleLocationError(true, infoWindow, map.getCenter());
               });
+              
+            }*/
         } 
         else
         {
           //browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
+    }
+        
+        
+        
+    function findUserLocation()
+    {
+        
+      navigator.geolocation.getCurrentPosition(function(position) {  
+        var newPoint = new google.maps.LatLng(position.coords.latitude, 
+                                              position.coords.longitude);    
+      //navigator.geolocation.getCurrentPosition(function(position) 
+      //{
+         if (marker)
+         {
+            // Marker already created - move it
+            marker.setPosition(newPoint);
+         }
+        else
+        {
+            // Marker does not exist - create it
+            var marker = new google.maps.Marker({
+            position: newPoint,
+            map: map
+            });
+        }
+          
+          
+        //TEST PRINT +++++++++++++++++++
+       
+        count++;
+        console.log("\n" + newPoint.toString() + " Count: " + count); //test location
+        //+++++++++++++++++++
+          
+      });
+        
+        // Call findUserLocation() function every 3 seconds
+      setTimeout(findUserLocation, 3000);
+        
     }
         
         
@@ -220,13 +267,14 @@
               
                // This event listener will call createMarker() when the map is clicked.
               //Adapted from: http://stackoverflow.com/questions/1544151/google-maps-api-v3-how-to-remove-an-event-listener
-              var createMarkerlistenerHandle = google.maps.event.addListener(map, 'click', function(event) {
+              var createMarkerlistenerHandle = google.maps.event.addListener(map, 'click', function(event) 
+              {
                     hasSelectedMarkerLocation = true;
                     createMarker(event.latLng);
                     hasMadeMarker = true;
                    
                     google.maps.event.removeListener(createMarkerlistenerHandle); //removes this specific event listener.
-               }); 
+              }); 
           }
           else
           {
