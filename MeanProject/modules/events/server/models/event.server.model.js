@@ -26,6 +26,11 @@ var EventSchema = new Schema({
     trim: true,
     required: 'Title cannot be blank'
   },
+  eventImageURL:{
+  type: String,
+  default: '',
+  trim: true
+},
   time: {
     type: String,
     default: '',
