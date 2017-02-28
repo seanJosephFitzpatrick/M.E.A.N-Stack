@@ -2,6 +2,20 @@
   <div class="page-header">
     <h1>Events</h1>
   </div>
+  
+	<div class="row">
+		<div class="col-xs-12 col-sm-8">
+			<div class="input-group input-group-lg">
+				<input type="text" class="form-control" placeholder="Search for..." ng-model="searchText">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button">Go!</button>
+				</span>
+			</div><!-- /input-group -->
+		</div>
+	</div>
+	
+	<br />
+	<br />
 
     <div class="list-group">
       <div class="col-xs-12 col-sm-4" data-ng-repeat="event in events | filter:searchText">
@@ -23,7 +37,10 @@
                      <h4>{{event.title}}</h4>
 					 
                      <small class="list-group-item-text text-muted">
+					 <span>{{event.place}}</span>
+					 <!--
                          <span data-ng-bind="event.created | date:'mediumDate'"></span>
+						 -->
                      </small>
                 </div>
              </div>
