@@ -46,16 +46,44 @@
       var hasMadeMarker = false;
       var tempMarkerSaveArray = [];
 
-      function initMap() {
-        var galway = {lat: 53.2714495477047, lng: -9.056854245546901};
+      function initMap() 
+      {
+            var galway = {lat: 53.2714495477047, lng: -9.056854245546901};
+            map = new google.maps.Map(document.getElementById('map'),
+            {
+              zoom: 16,
+              center: galway,
+              mapTypeId: 'terrain'
+            });
           
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: galway,
-          mapTypeId: 'terrain'
-        });
-
+          populateMap();
       }
+        
+        
+    
+    function populateMap()
+    {
+        //Create a <script> tag and set the sample data as the source
+        var script = document.createElement('script');
+        script.src = 'C:/Users/Jason/Desktop/FinalYearProject-JAY_BRANCH/GoogleMapsTesting/PresentationMap/sampleMapData.json';
+        document.getElementsByTagName('head')[0].appendChild(script);
+          
+          
+      // Loop through the results array and place a marker for each set of coordinates.
+      window.sampleData = function(results) 
+      {
+        for (var i = 0; i < results.features.length; i++) 
+        {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[0],coords[1]);
+          var marker = new google.maps.Marker
+          ({
+            position: latLng,
+            map: map
+          });
+        }
+      }
+    }
         
     
     //dynamically create buttons for saving or cancelling user made marker   
@@ -67,7 +95,8 @@
        for (var i=0; i< 2; i++)
        {
         
-           switch(i){
+           switch(i)
+           {
                 case 0: //create save button
                     var saveButton = document.createElement("button");
                     buttonText = document.createTextNode("Save"); 
@@ -76,13 +105,9 @@
                     saveButton.onclick = function()
                     {
                         console.log("save button clicked"); 
-                        
                         if (hasMadeMarker)
                         {
                               //ASK USER TO NOW ENTER DETAILS FOR LOCATION, THEN ADD MARKER AND DATA TO DATABASE.
-                            
-                            
-    
                             floatingPanel.removeChild(saveButton);
                             floatingPanel.removeChild(cancelButton); 
                             hasMadeMarkerButtons = false;
@@ -93,8 +118,6 @@
                         {
                              alert("Please first tap map to add new location.");   
                         }
-                       
-                          
                     };
                     break;
                 case 1: //create cancel button
@@ -113,7 +136,7 @@
                         addingNewMarker = 0; ////////////////////////??????????????
                     };  
                     break;
-                }  
+            }  
        }
          
         
@@ -121,8 +144,10 @@
         
         
       // Creates a new marker for the map and adds it to an array.
-      function createMarker(location) {
-        var marker = new google.maps.Marker({
+      function createMarker(location) 
+       {
+        var marker = new google.maps.Marker(
+        {
           position: location,
           map: map
         });
@@ -133,7 +158,8 @@
 
     
      //Create event listener allowing user to add marker to map
-      function addNewMarker(){
+      function addNewMarker()
+      {
           
         
           //addingNewMarker++;
@@ -153,11 +179,8 @@
           if(!hasMadeMarker)
           {
               
-              
-              
                // This event listener will call createMarker() when the map is clicked.
               //Adapted from: http://stackoverflow.com/questions/1544151/google-maps-api-v3-how-to-remove-an-event-listener
-              
               var createMarkerlistenerHandle = google.maps.event.addListener(map, 'click', function(event) {
                     hasSelectedMarkerLocation = true;
                     createMarker(event.latLng);
@@ -165,8 +188,6 @@
                    
                     google.maps.event.removeListener(createMarkerlistenerHandle); //removes this specific event listener.
                }); 
-          
-            
           }
           else
           {
@@ -174,7 +195,6 @@
           }
           
              
-        
          // }
           //else if (addingNewMarker == 2)
          // {
@@ -186,9 +206,7 @@
          // {
                // alert("Please first tap map to add new location."); 
          /// }
-         
-          
-          
+        
           
       }
         
@@ -204,8 +222,6 @@
       }*/
         
         
-        
-    
      function setMapOnMarker(map) {
         for (var i = 0; i < markerArray.length; i++) {
           markerArray[i].setMap(map);
@@ -213,11 +229,8 @@
       }
     
         
-    
-
     </script>
-      
-      
+    
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDllo5Gh2kmkNq5D9HD5Qgrg5SyHJHmHPE&callback=initMap">
     </script>
