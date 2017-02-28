@@ -1,50 +1,18 @@
 <section ng-controller="HomeController">
+	<br />
+	<br />
 	<!--repeat event in events array from HomeController-->
-	<div class="col-sm-6" ng-repeat="event in events">
-		<div class="row">
-			<div class="col-xs-4">
-				<!--pull img right-->
-				<h1 class="pull-right">
-					<button type="button" class="btn" ng-class="event.color">
-						<!--load img from HomeController-->
-						<i class="glyphicon" ng-class="event.img"></i>
-					</button>
-				</h1>
-			</div>
-			<div class="col-xs-8">
-				<!--load title from HomeController-->
-				<h1>{{event.title}}</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-8 col-xs-offset-4">
-				<!--load description from HomeController-->
-				<span class="text-muted">{{event.description}}</span>
-			</div>
-		</div>
-	</div>
-	
-	    <div class="list-group">
+	<div class="list-group">
       <div class="col-xs-12 col-sm-4" data-ng-repeat="event in events | filter:searchText" display:inline>
+		<!--URL from HomeController-->
 		 <a ng-href="{{event.url}}" class="list-group-item">
-		 
-		 
              <h4 class="event-list text-center" >
-			 <!--
-                <i class="glyphicon glyphicon-picture"></i> 
-				-->
-				<!--
-				<img ng-src="modules/events/client/img/default.png" alt="sean fitzpatrick" 
-				class="img-thumbnail user-profile-picture" src="modules/users/client/img/profile/default.png">
-				
-				<img ng-src="{{event.eventImageURL}}" height="100" />
-				
-				<i class="glyphicon" ng-class="event.img"></i>
-				-->
+				<!--Load image from HomeController-->
 				<img ng-src="{{event.source}}" height="100" width="200"/>
              </h4>
              <div class="row">
                 <div class="col-xs-10 col-xs-offset-1">
+					<!--Load title from HomeController-->
                      <h4>{{event.title}}</h4>
 					 
                      <small class="list-group-item-text text-muted">
@@ -59,12 +27,20 @@
 	  
 	<script type="text/javascript" src="api.js"></script>
 	<noscript>Sorry, your browser does not support JavaScript!</noscript>
+	
+	<input type = "button" id="target" value="search Eventful" onclick="loaddata();"/>
+    
+	<br />
+	<br />
 
-	<input type="button" onclick="show_alert()" value="Query #1 " /> <br>
-	<input type="button" onclick="show_alert2()" value="Query #2 " /> <br>
+    <p>Where Data from API call is presented.</p>
 	
+	<br />
+	<br />
 	
-	
+	<div>
+		<span id = "ListItems"></span>
+	</div>	
 </section>
 
 <!--
