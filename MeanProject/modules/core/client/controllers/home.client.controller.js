@@ -17,9 +17,9 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		{
 			img: 'glyphicon-eye-open',
 			color: 'btn-primary',
-            url: 'foods',
+            url: 'restaurants',
             source: 'modules/core/client/img/pic/food.jpg',
-			title: 'Search Food',
+			title: 'Search Restaurants',
 			description: 'description'
 		},
 		{
