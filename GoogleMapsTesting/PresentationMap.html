@@ -27,23 +27,13 @@
         font-family: 'Roboto','sans-serif';
         line-height: 30px;
         padding-left: 10px;
-      }
-    
-        /*
-      #saveNewMarker, #deleteNewMarker{
-      visibility:hidden;
-      }*/
+      }   
         
-       
-       
     </style>
   </head>
   <body>
     <div id="floating-panel">
       <input onclick="addNewMarker();" type=button value="Add new location">
-       <!-- <input onclick="addNewMarker();" type=button value="Add new marker">
-      <input onclick="saveNewMarker();" type=button value="Save new marker" id="saveNewMarker">
-      <input onclick="deleteNewMarker();" type=button value="Delete new marker" id="deleteNewMarker">-->
     </div>
     <div id="map"></div>
     <script>
@@ -66,17 +56,6 @@
         });
 
       }
-        
-       /* 
-     function test(){
-         
-        var floatingPanel = document.getElementById("floating-panel");
-        var testButton = document.createElement("button");
-        var buttonText = document.createTextNode("TEST!");  
-         testButton.appendChild(buttonText);
-         floatingPanel.appendChild(testButton);
-         testButton.onclick = function(){console.log("test button clicked"); };
-     }*/
         
     
     //dynamically create buttons for saving or cancelling user made marker   
@@ -102,7 +81,6 @@
                         {
                               //ASK USER TO NOW ENTER DETAILS FOR LOCATION, THEN ADD MARKER AND DATA TO DATABASE.
                             
-                            //Temporary save
                             
     
                             floatingPanel.removeChild(saveButton);
@@ -126,19 +104,13 @@
                     floatingPanel.appendChild(cancelButton);
                     cancelButton.onclick = function()
                     {
-                        console.log("cancel button clicked"); 
-                        
-                        //buttonVisibility(false);  
+                        console.log("cancel button clicked");  
                         setMapOnMarker(null);  
-                        markerArray = [];
-                        ///addingNewMarker = 0;
-
+                        markerArray = []; //////////////////?????????????
                         floatingPanel.removeChild(saveButton);
                         floatingPanel.removeChild(cancelButton);
                         hasMadeMarkerButtons = false;
-                        addingNewMarker = 0;
-                    
-                       
+                        addingNewMarker = 0; ////////////////////////??????????????
                     };  
                     break;
                 }  
@@ -155,7 +127,7 @@
           map: map
         });
           
-          markerArray.push(marker);  
+         markerArray.push(marker); 
        
       }
 
@@ -194,17 +166,7 @@
                     google.maps.event.removeListener(createMarkerlistenerHandle); //removes this specific event listener.
                }); 
           
-              
-              
-              /*
-              if(!hasSelectedMarkerLocation)
-              {
-                   alert("Please tap map to add new location.");   
-              }
-              else
-              {
-                  
-              }*/
+            
           }
           else
           {
@@ -241,6 +203,8 @@
         addingNewMarker = 0;
       }*/
         
+        
+        
     
      function setMapOnMarker(map) {
         for (var i = 0; i < markerArray.length; i++) {
@@ -249,35 +213,7 @@
       }
     
         
-        
-        
-    /*
-    function saveNewMarker(){
-          
-          //trigger input box (modal?) for user to add data for marker.
-          
-          //Add marker and it's data to database
-          /////////////////buttonVisibility(false);  
-          addingNewMarker = 0;
-          console.log("marker save button clicked"); //Test 
-      }*/ 
-        
     
-        /*
-    function buttonVisibility(visibility){
-        
-        switch (visibility){
-            case false: //hide buttons
-                document.getElementById("saveNewMarker").style.visibility="hidden";
-                document.getElementById("deleteNewMarker").style.visibility="hidden";
-                break;
-            case true: //show buttons
-                document.getElementById("saveNewMarker").style.visibility="visible";
-                document.getElementById("deleteNewMarker").style.visibility="visible";
-                break; 
-        }
-    }*/
-        
 
     </script>
       
