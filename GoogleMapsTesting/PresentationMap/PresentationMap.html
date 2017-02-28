@@ -84,6 +84,17 @@
             position: latLng,
             map: map
           });
+            
+         var infowindow = new google.maps.InfoWindow
+         ({
+             content: results.features[i].properties.name
+          }) 
+         
+         marker.addListener('click', function() 
+         {
+             infowindow.open(map, marker);
+         });
+         
         }
       }
     }
@@ -97,9 +108,7 @@
         if (navigator.geolocation) 
         {
              
-           
-            
-                 findUserLocation(); 
+            findUserLocation(); 
                 /*  
                 var pos = 
                 {
@@ -130,24 +139,41 @@
     function findUserLocation()
     {
         
-      navigator.geolocation.getCurrentPosition(function(position) {  
-        var newPoint = new google.maps.LatLng(position.coords.latitude, 
-                                              position.coords.longitude);    
-      //navigator.geolocation.getCurrentPosition(function(position) 
-      //{
+      navigator.geolocation.getCurrentPosition(function(position) 
+      { 
+        var newPoint = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);    
+         
          if (marker)
          {
             // Marker already created - move it
             marker.setPosition(newPoint);
+            infoWindow.setPosition(newPoint);
+             
          }
-        else
-        {
+         else
+         {
             // Marker does not exist - create it
-            var marker = new google.maps.Marker({
-            position: newPoint,
-            map: map
+            var image = 'C:/Users/Jason/Desktop/FinalYearProject-JAY_BRANCH/GoogleMapsTesting/PresentationMap/userIcon.png'
+            var marker = new google.maps.Marker
+            ({
+                position: newPoint,
+                map: map,
+                icon: image
             });
-        }
+            
+           
+            var userLocationString = "You are here.";
+            var infowindow = new google.maps.InfoWindow
+            ({
+               content: userLocationString
+             })
+            
+             marker.addListener('click', function() 
+            {
+                infowindow.open(map, marker);
+            });
+        
+         }
           
           
         //TEST PRINT +++++++++++++++++++
