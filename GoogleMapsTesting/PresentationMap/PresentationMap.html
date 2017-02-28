@@ -48,6 +48,9 @@
       var marker = null;
       var infoWindow;
       var count = 0;
+      var count2 = 0;
+      var userMarker;
+      var userMarkerInfoWindow;
 
       function initMap() 
       {
@@ -85,10 +88,7 @@
             map: map
           });
             
-         var infowindow = new google.maps.InfoWindow
-         ({
-             content: results.features[i].properties.name
-          }) 
+         var infowindow = new google.maps.InfoWindow ({content: results.features[i].properties.name }) 
          
          marker.addListener('click', function() 
          {
@@ -102,30 +102,10 @@
         
     function allowGeolocation()
     {
-         ///////////////////var infoWindow = new google.maps.InfoWindow({map: map});
-        
-        //find user's location using geolocation
         if (navigator.geolocation) 
         {
              
             findUserLocation(); 
-                /*  
-                var pos = 
-                {
-                  lat: position.coords.latitude,
-                  lng: position.coords.longitude
-                };
-
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('Your location');
-                //////map.setCenter(pos);
-              }, 
-              function() 
-              {
-                handleLocationError(true, infoWindow, map.getCenter());
-              });
-              
-            }*/
         } 
         else
         {
@@ -135,26 +115,26 @@
     }
         
         
-        
     function findUserLocation()
     {
-        
+       
+      //find user's location using geolocation
       navigator.geolocation.getCurrentPosition(function(position) 
       { 
-        var newPoint = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);    
-         
-         if (marker)
+        var newPoint = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          
+         if (userMarker)
          {
             // Marker already created - move it
-            marker.setPosition(newPoint);
-            infoWindow.setPosition(newPoint);
-             
+            userMarker.setPosition(newPoint);
+            userMarkerInfoWindow.setPosition(newPoint);   
          }
          else
          {
+             
             // Marker does not exist - create it
             var image = 'C:/Users/Jason/Desktop/FinalYearProject-JAY_BRANCH/GoogleMapsTesting/PresentationMap/userIcon.png'
-            var marker = new google.maps.Marker
+            userMarker = new google.maps.Marker
             ({
                 position: newPoint,
                 map: map,
@@ -163,28 +143,24 @@
             
            
             var userLocationString = "You are here.";
-            var infowindow = new google.maps.InfoWindow
-            ({
-               content: userLocationString
-             })
+            userMarkerInfoWindow = new google.maps.InfoWindow({content: userLocationString})
             
-             marker.addListener('click', function() 
-            {
-                infowindow.open(map, marker);
-            });
+             userMarker.addListener('click', function() 
+             {
+                userMarkerInfoWindow.open(map, userMarker);
+             });
         
          }
           
           
         //TEST PRINT +++++++++++++++++++
-       
         count++;
         console.log("\n" + newPoint.toString() + " Count: " + count); //test location
         //+++++++++++++++++++
           
       });
         
-        // Call findUserLocation() function every 3 seconds
+      // Call findUserLocation() function every 3 seconds
       setTimeout(findUserLocation, 3000);
         
     }
@@ -223,7 +199,6 @@
                             floatingPanel.removeChild(saveButton);
                             floatingPanel.removeChild(cancelButton); 
                             hasMadeMarkerButtons = false;
-                            addingNewMarker = 0;///////////////////////////////////////is this needed here!???
                             hasMadeMarker = false;
                         }
                         else
@@ -245,7 +220,7 @@
                         floatingPanel.removeChild(saveButton);
                         floatingPanel.removeChild(cancelButton);
                         hasMadeMarkerButtons = false;
-                        addingNewMarker = 0; ////////////////////////??????????????
+                        
                     };  
                     break;
             }  
@@ -274,66 +249,25 @@
       {
           
         
-          //addingNewMarker++;
-          
-          //if (addingNewMarker == 0)
-          //{
-              
-              //addingNewMarker++;
-          
           if (!hasMadeMarkerButtons)
           {
              createButtons();
              hasMadeMarkerButtons = true;
           }
               
-          
-          if(!hasMadeMarker)
-          {
               
-               // This event listener will call createMarker() when the map is clicked.
-              //Adapted from: http://stackoverflow.com/questions/1544151/google-maps-api-v3-how-to-remove-an-event-listener
-              var createMarkerlistenerHandle = google.maps.event.addListener(map, 'click', function(event) 
-              {
-                    hasSelectedMarkerLocation = true;
-                    createMarker(event.latLng);
-                    hasMadeMarker = true;
-                   
-                    google.maps.event.removeListener(createMarkerlistenerHandle); //removes this specific event listener.
-              }); 
-          }
-          else
+           // This event listener will call createMarker() when the map is clicked.
+          //Adapted from: http://stackoverflow.com/questions/1544151/google-maps-api-v3-how-to-remove-an-event-listener
+          var createMarkerlistenerHandle = google.maps.event.addListener(map, 'click', function(event) 
           {
-              alert("Please save location befofe making a new one");   
-          }
-          
-             
-         // }
-          //else if (addingNewMarker == 2)
-         // {
-             // alert("please save or delete created marker before making another."); ///+++++++++++THIS IS WRONG!! falls into this before event listener hasbeen clicked, when button hit a second time. 
-              
-               //alert("please save or delete created marker before making another.");
-          //}
-         // else
-         // {
-               // alert("Please first tap map to add new location."); 
-         /// }
+                hasSelectedMarkerLocation = true;
+                createMarker(event.latLng);
+                hasMadeMarker = true;
+
+                google.maps.event.removeListener(createMarkerlistenerHandle); //removes this specific event listener.
+           }); 
         
-          
       }
-        
-    
-        /*
-     // Deletes newly added marker 
-      function deleteNewMarker() {
-          
-       //buttonVisibility(false);  
-       setMapOnMarker(null);  
-        markerArray = [];
-        addingNewMarker = 0;
-      }*/
-        
         
      function setMapOnMarker(map) 
      {
