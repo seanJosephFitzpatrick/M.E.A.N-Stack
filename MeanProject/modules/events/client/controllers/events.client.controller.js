@@ -84,6 +84,7 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
     // Update existing Event
     $scope.update = function () {
       var event = $scope.event;
+      event.eventImageURL = $scope.eventImageURL;
 
       event.$update(function () {
         $location.path('events/' + event._id);

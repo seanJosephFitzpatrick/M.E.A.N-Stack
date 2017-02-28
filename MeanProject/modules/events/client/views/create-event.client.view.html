@@ -7,7 +7,8 @@
       <fieldset>  
         <div class="row">
             <div class="col-sm-6 text-center">
-                <i class="glyphicon glyphicon-picture event-picture" style="color: blue"></i>
+				<img ng-src="modules/events/client/img/default.png" 
+				class="img-thumbnail user-profile-picture">
             </div>
              <div class="col-sm-6">
                 <div class="form-group">
@@ -17,28 +18,28 @@
                   </div>
                 </div>
 				
-			<div class="form-group" show-errors>
-			  <label for="title">Image</label>
-			  <button type="button" class="btn btn-secondary" ng-show="uploadedFile == null" type="file"
-				ngf-select="uploadFiles($file, $invalidFiles)"
-				ng-model="uploadedFile" name="file" ngf-model-invalid="errorFiles"
-				accept="image/*" ngf-max-size="1MB">
-				Select Image</button>
-			  <div class="text-center">
-				<img ng-show="eventForm.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
-			  </div>
-			  <div class="text-center">
-				<div class="progress" ng-show="uploadedFile.progress >= 0">
-						  <div style="width:{{uploadedFile.progress}}%"
-							  ng-bind="uploadedFile.progress + '%'"></div>
+				<div class="form-group push-6" show-errors>
+					<label for="title">Image</label>
+					<button type="button" class="btn btn-secondary" ng-show="uploadedFile == null" type="file"
+					ngf-select="uploadFiles($file, $invalidFiles)"
+					ng-model="uploadedFile" name="file" ngf-model-invalid="errorFiles"
+					accept="image/*" ngf-max-size="1MB">
+					Select Image</button>
+				  <div class="text-center">
+					<img ng-show="eventForm.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
+				  </div>
+				  <div class="text-center">
+					<div class="progress" ng-show="uploadedFile.progress >= 0">
+							  <div style="width:{{uploadedFile.progress}}%"
+								  ng-bind="uploadedFile.progress + '%'"></div>
+					</div>
+				  </div>
+				  <div class="text-center">
+					<button type="button" class="btn btn-secondary" ng-click="uploadedFile = null" ng-show="uploadedFile">Remove</button>
+				  </div>
+				  <div class="alert alert-danger" ng-show="eventForm.file.$error.maxSize">File too large
+							   {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
 				</div>
-			  </div>
-			  <div class="text-center">
-				<button type="button" class="btn btn-secondary" ng-click="uploadedFile = null" ng-show="uploadedFile">Remove</button>
-			  </div>
-			  <div class="alert alert-danger" ng-show="eventForm.file.$error.maxSize">File too large
-						   {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
-			</div>
                  
                 <div class="form-group">
                   <label class="control-label" for="time">Time</label>

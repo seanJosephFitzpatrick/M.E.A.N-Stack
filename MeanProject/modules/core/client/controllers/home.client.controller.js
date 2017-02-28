@@ -9,37 +9,49 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		{
 			img: 'glyphicon-eye-open',
 			color: 'btn-primary',
+            url: 'events',
+            source: 'modules/core/client/img/pic/audience.jpg',
 			title: 'Search Events',
 			description: 'description'
 		},
 		{
 			img: 'glyphicon-eye-open',
 			color: 'btn-primary',
-			title: 'Search Events',
+            url: '',
+            source: 'modules/core/client/img/pic/food.jpg',
+			title: 'Search Food',
 			description: 'description'
 		},
 		{
 			img: 'glyphicon-calendar',
 			color: 'btn-info',
-			title: 'Search Events',
+            url: '',
+            source: 'modules/core/client/img/pic/nightlife.jpg',
+			title: 'Search Nightlife',
 			description: 'description'
 		},
 		{
 			img: 'glyphicon-eye-open',
 			color: 'btn-primary',
-			title: 'Search Events',
+            url: '',
+            source: 'modules/core/client/img/pic/hotel.jpg',
+			title: 'Search Hotels',
 			description: 'description'
 		},
 		{
 			img: 'glyphicon-user',
 			color: 'btn-danger',
-			title: 'Search Events',
+            url: '',
+            source: 'modules/core/client/img/pic/hotel.jpg',
+			title: 'Search...... ',
 			description: 'description'
 		},
 		{
 			img: 'glyphicon-eye-open',
 			color: 'btn-warning',
-			title: 'Search Events',
+            url: '',
+            source: 'modules/core/client/img/pic/hotel.jpg',
+			title: 'Search.....',
 			description: 'description'
 		}
 	];
