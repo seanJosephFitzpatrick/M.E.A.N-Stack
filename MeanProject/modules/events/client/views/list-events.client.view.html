@@ -19,6 +19,7 @@
              <div class="row">
                 <div class="col-xs-10 col-xs-offset-1">
                      <h4>{{event.title}}</h4>
+					 <img ng-src="{{event.eventImageURL}}" height="100" />
                      <small class="list-group-item-text text-muted">
                          <span data-ng-bind="event.created | date:'mediumDate'"></span>
                      </small>
