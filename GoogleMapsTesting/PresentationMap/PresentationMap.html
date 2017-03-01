@@ -45,7 +45,7 @@
       var hasSelectedMarkerLocation = false;
       var hasMadeMarker = false;
       var tempMarkerSaveArray = [];
-      var marker = null;
+      var marker;
       var infoWindow;
       var count = 0;
       var count2 = 0;
@@ -88,12 +88,13 @@
             map: map
           });
             
-         var infowindow = new google.maps.InfoWindow ({content: results.features[i].properties.name }) 
-         
-         marker.addListener('click', function() 
-         {
-             infowindow.open(map, marker);
-         });
+            
+             infowindow = new google.maps.InfoWindow ({content: results.features[i].properties.name }) 
+
+            marker.addListener('click', function() 
+            {
+                 infowindow.open(map, marker);
+            });
          
         }
       }
@@ -127,7 +128,8 @@
          {
             // Marker already created - move it
             userMarker.setPosition(newPoint);
-            userMarkerInfoWindow.setPosition(newPoint);   
+            userMarkerInfoWindow.setPosition(newPoint); 
+            
          }
          else
          {
@@ -140,7 +142,6 @@
                 map: map,
                 icon: image
             });
-            
            
             var userLocationString = "You are here.";
             userMarkerInfoWindow = new google.maps.InfoWindow({content: userLocationString})
@@ -149,6 +150,8 @@
              {
                 userMarkerInfoWindow.open(map, userMarker);
              });
+             
+              map.setCenter(newPoint);
         
          }
           
@@ -196,6 +199,7 @@
                         if (hasMadeMarker)
                         {
                               //ASK USER TO NOW ENTER DETAILS FOR LOCATION, THEN ADD MARKER AND DATA TO DATABASE.
+                            alert("ASK USER TO NOW ENTER DETAILS FOR LOCATION, THEN ADD MARKER AND DATA TO DATABASE.");
                             floatingPanel.removeChild(saveButton);
                             floatingPanel.removeChild(cancelButton); 
                             hasMadeMarkerButtons = false;
@@ -239,7 +243,7 @@
           map: map
         });
           
-         markerArray.push(marker); 
+        markerArray.push(marker); 
        
       }
 
