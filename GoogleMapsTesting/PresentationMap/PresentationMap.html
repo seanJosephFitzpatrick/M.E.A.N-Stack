@@ -71,7 +71,7 @@
     {
         //Create a <script> tag and set the sample data as the source
         var script = document.createElement('script');
-        script.src = 'C:/Users/Jason/Desktop/FinalYearProject-JAY_BRANCH/GoogleMapsTesting/PresentationMap/sampleMapData.json';
+        script.src = './sampleMapData.json';
         document.getElementsByTagName('head')[0].appendChild(script);
           
           
@@ -135,7 +135,7 @@
          {
              
             // Marker does not exist - create it
-            var image = 'C:/Users/Jason/Desktop/FinalYearProject-JAY_BRANCH/GoogleMapsTesting/PresentationMap/userIcon.png'
+            var image = './userIcon.png'
             userMarker = new google.maps.Marker
             ({
                 position: newPoint,
