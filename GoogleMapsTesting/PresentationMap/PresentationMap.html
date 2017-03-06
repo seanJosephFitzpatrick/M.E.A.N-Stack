@@ -75,29 +75,34 @@
         document.getElementsByTagName('head')[0].appendChild(script);
           
           
-      // Loop through the results array and place a marker for each set of coordinates.
-      window.sampleData = function(results) 
-      {
-        for (var i = 0; i < results.features.length; i++) 
+       //Loop through the results array and place a marker for each set of coordinates.
+        window.sampleData = function(results) 
         {
-          var coords = results.features[i].geometry.coordinates;
-          var latLng = new google.maps.LatLng(coords[0],coords[1]);
-          var marker = new google.maps.Marker
-          ({
-            position: latLng,
-            map: map
-          });
-            
-            
-             infowindow = new google.maps.InfoWindow ({content: results.features[i].properties.name }) 
-
-            marker.addListener('click', function() 
+            for (var i = 0; i < results.features.length; i++) 
             {
-                 infowindow.open(map, marker);
-            });
-         
+                var coords = results.features[i].geometry.coordinates;
+                var latLng = new google.maps.LatLng(coords[0],coords[1]);
+                var marker = new google.maps.Marker
+                ({
+                    position: latLng,
+                    map: map
+                });
+            
+                infowindow = new google.maps.InfoWindow;
+                
+                //Listener below adapted from here: http://stackoverflow.com/questions/27754101/change-google-maps-marker-icon-when-clicking-on-other
+                
+                google.maps.event.addListener(marker, 'click', (function(marker, i) 
+                {
+                    return function()
+                    {
+                        infowindow.setContent(results.features[i].properties.name);
+                        infowindow.open(map, marker);
+                    }
+            
+                })(marker, i));       
+            }
         }
-      }
     }
       
         
