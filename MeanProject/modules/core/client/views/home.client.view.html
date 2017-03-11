@@ -1,18 +1,27 @@
-<section ng-controller="HomeController">
+<section ng-controller="HomeController as myData">
 	<br />
 	<br />
-	<!--repeat event in events array from HomeController-->
+	
+	<ul>
+		<li ng-repeat="venue in myData.venues">
+		 {{venue.groups[0].items[0].venue.name}}
+		 {{venue.groups[0].items[0].venue.contact.phone}}
+		 {{venue.groups[0].items[0].venue.location.address}}
+		</li>
+	
+	</ul>
+	<!--repeat event in events array from HomeController
 	<div class="list-group">
       <div class="col-xs-12 col-sm-4" data-ng-repeat="event in events | filter:searchText" display:inline>
-		<!--URL from HomeController-->
+		<!--URL from HomeController
 		 <a ng-href="{{event.url}}" class="list-group-item">
              <h4 class="event-list text-center" >
-				<!--Load image from HomeController-->
+				<!--Load image from HomeController
 				<img ng-src="{{event.source}}" height="100" width="200"/>
              </h4>
              <div class="row">
                 <div class="col-xs-10 col-xs-offset-1">
-					<!--Load title from HomeController-->
+					<!--Load title from HomeController
                      <h4>{{event.title}}</h4>
 					 
                      <small class="list-group-item-text text-muted">
@@ -24,10 +33,10 @@
 		 <br />
       </div>       
   </div>
-	  
+	  -->
 	<script type="text/javascript" src="api.js"></script>
 	<noscript>Sorry, your browser does not support JavaScript!</noscript>
-	
+	<!--
 	<input type = "button" id="target" value="search Eventful" onclick="loaddata();"/>
     
 	<br />
@@ -40,7 +49,155 @@
 	
 	<div>
 		<span id = "ListItems"></span>
-	</div>	
+	</div>
+
+	<br />
+	<br />
+	-->
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+	
+	<header id="header" role="banner">		
+		<div class="main-nav">
+			<div class="container">
+				<div class="header-top">
+					<div class="pull-right social-icons">
+						<a href="#"><i class=""></i></a>
+						<a href="#"><i class=""></i></a>
+						<a href="#"><i class=""></i></a>
+						<a href="#"><i class=""></i></a>
+					</div>
+				</div>     
+		        <div class="row">	        		
+		            <div class="navbar-header">
+		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		                    <span class="sr-only">Toggle navigation</span>
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+		                </button>
+		                <a class="navbar-brand" href="index.html">
+		                	<img class="img-responsive" src="images/logo.png" alt="logo">
+		                </a>                    
+		            </div>
+		            <div class="collapse navbar-collapse">
+		                <ul class="nav navbar-nav navbar-right">                 
+		                    <li class="scroll active"><a href="#home">Home</a></li>
+		                    <li class="scroll"><a href="/clubs">Clubs</a></li>                         
+		                    <li class="scroll"><a href="/events">Events</a></li>
+		                    <li class="no-scroll"><a href="/restaurants">Restaurants</a></li>
+							<li class="scroll"><a href="#about">About</a></li> 
+		                    <li class="scroll"><a href="#contact">Contact</a></li>       
+		                </ul>
+		            </div>
+		        </div>
+	        </div>
+        </div>                    
+    </header>
+    <!--/#header--> 
+
+    <section id="home">	
+		<div id="main-slider" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#main-slider" data-slide-to="0" class="active"></li>
+				<li data-target="#main-slider" data-slide-to="1"></li>
+				<li data-target="#main-slider" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<img class="img-responsive" src="images/slider/bg1.jpg" alt="slider">
+					
+					<div class="carousel-caption">
+						<h2>Explore Clubs</h2>
+						
+					</div>
+				</div>
+				<div class="item">
+					<img class="img-responsive" src="images/slider/bg2.jpg" alt="slider">	
+					<div class="carousel-caption">
+						<h2>Explore Events</h2>
+			
+					</div>
+				</div>
+				<div class="item">
+					<img class="img-responsive" src="images/slider/bg3.jpg" alt="slider">	
+					<div class="carousel-caption">
+						<h2>Explore Restaurants</h2>
+					
+					</div>
+				</div>				
+			</div>
+		</div>    	
+    </section>
+	<!--/#home-->
+	<section id="about">
+		<div class="guitar2">				
+			<img class="img-responsive" src="images/guitar2.jpg" alt="guitar">
+		</div>
+		<div class="about-content">					
+					<h2>About Evento</h2>
+					<p>We have created an extremely positive and relaxed environment 
+					all geared towards developing your skills whether you are an absolute 
+					beginner trying to get off the ground or an accomplished player looking 
+					to move to the next level. Lorem Ipsum is simply dummy text of the 
+					printing and typesetting industry. Lorem Ipsum has been the industry's 
+					standard dummy text ever since the 1500s</p>
+				
+		</div>
+	</section>
+	<!--/#about-->
+	<section id="contact">
+		<div class="contact-section">
+			<div class="ear-piece">
+				<img class="img-responsive" src="images/ear-piece.png" alt="">
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3 col-sm-offset-4">
+						<div class="contact-text">
+							<h3>Contact</h3>
+							<address>
+								E-mail: promo@party.com<br>
+								Phone: +1 (123) 456 7890<br>
+								Fax: +1 (123) 456 7891
+							</address>
+						</div>
+						<div class="contact-address">
+							<h3>Contact</h3>
+							<address>
+								Unit C2, St.Vincent's Trading Est.,<br>
+								Feeder Road,<br>
+								Bristol, BS2 0UY<br>
+								United Kingdom
+							</address>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</section>
+    <!--/#contact-->
+
+    <footer id="footer">
+        <div class="container">
+            <div class="text-center">
+                <br>Front page is Bootstrap Designed by <a target="_blank" 
+				href="http://shapebootstrap.net/">ShapeBootstrap</a></p>                
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+<!--
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/smoothscroll.js"></script>
+    <script type="text/javascript" src="js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="js/coundown-timer.js"></script>
+    <script type="text/javascript" src="js/jquery.scrollTo.js"></script>
+    <script type="text/javascript" src="js/jquery.nav.js"></script>
+    <script type="text/javascript" src="js/main.js"></script> 
+-->	
 </section>
 
 <!--

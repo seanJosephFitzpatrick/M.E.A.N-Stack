@@ -1,9 +1,19 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication',
-  function ($scope, Authentication) {
+angular.module('core').controller('HomeController', ['$scope', '$http', 'Authentication',
+  function ($scope, $http, Authentication) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
+    
+      var myData = this;
+      
+    $http.get("https://api.foursquare.com/v2/venues/explore/?near=Dublin&client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=20131124").success(function(data){
+        //console.log(data);
+        //var myJson = JSON.stringify(data);
+        //console.log(myJson);
+        myData.venues = data;
+       console.log(data);
+    })
 	
 	$scope.events = [
 		{

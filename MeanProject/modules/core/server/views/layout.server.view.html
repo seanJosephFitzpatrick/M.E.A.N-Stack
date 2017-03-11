@@ -27,22 +27,18 @@
   <meta name="twitter:description" content="{{description}}">
   <meta name="twitter:url" content="{{url}}">
   <meta name="twitter:image" content="{{logo}}">
-  
-  <!-- Google map-->
   	
   <!-- eventful-->
   <script type="text/javascript" src="http://api.eventful.com/js/api"></script>
   
-  <script
-			  src="https://code.jquery.com/jquery-3.1.1.min.js"
-			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-			  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   
   <!-- Fav Icon -->
   <link href="{{favicon}}" rel="shortcut icon" type="image/x-icon">
 
   <!-- Application CSS Files -->
   {% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
+  
 </head>
 
 <body class="ng-cloak">
