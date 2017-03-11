@@ -1,15 +1,15 @@
 <section ng-controller="HomeController as myData">
 	<br />
 	<br />
+	<div ng-repeat="venue in venues">
+		<ul>
+		{{venue.venue.name}}
+		
+		
+		</ul>
+	</div>
 	
-	<ul>
-		<li ng-repeat="venue in myData.venues">
-		 {{venue.groups[0].items[0].venue.name}}
-		 {{venue.groups[0].items[0].venue.contact.phone}}
-		 {{venue.groups[0].items[0].venue.location.address}}
-		</li>
 	
-	</ul>
 	<!--repeat event in events array from HomeController
 	<div class="list-group">
       <div class="col-xs-12 col-sm-4" data-ng-repeat="event in events | filter:searchText" display:inline>
