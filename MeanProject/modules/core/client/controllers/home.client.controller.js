@@ -5,7 +5,7 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
     // This provides Authentication context.
     $scope.authentication = Authentication;
     
-      var myData = this;
+    //var myData = this;
       
     $http.get("https://api.foursquare.com/v2/venues/explore/?near=Dublin&client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=20131124").then(function(result){
         $scope.venues = result.data.response.groups[0].items; 
@@ -17,7 +17,7 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
         
 
   
-       console.log(items);
+       //console.log(items);
     })
 	
 	$scope.events = [

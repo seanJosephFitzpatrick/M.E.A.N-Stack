@@ -16,6 +16,13 @@
 	
 	<br />
 	<br />
+	
+	 <div ng-repeat="venue in venues">
+		<ul>
+		{{venue.venue.name}}
+		<p>I am here</p>
+		</ul>
+	</div>
 
     <div class="list-group">
       <div class="col-xs-12 col-sm-4" data-ng-repeat="club in clubs | filter:searchText">
