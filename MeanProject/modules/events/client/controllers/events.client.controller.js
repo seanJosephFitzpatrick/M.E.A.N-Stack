@@ -3,7 +3,7 @@
 // Events controller
 angular.module('events').controller('EventsController', ['$scope', '$http', '$stateParams', '$location', 'Authentication', 'Events', 'Upload', 
 '$timeout',
-  function ($scope, $http $stateParams, $location, Authentication, Events, Upload, $timeout) {
+  function ($scope, $http, $stateParams, $location, Authentication, Events, Upload, $timeout) {
     $scope.authentication = Authentication;
       
     $http.get("https://api.foursquare.com/v2/venues/explore/?near=Galway&categoryId=4d4b7105d754a06373d81259&client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=20131124&venuePhotos=1").then(function(result){
