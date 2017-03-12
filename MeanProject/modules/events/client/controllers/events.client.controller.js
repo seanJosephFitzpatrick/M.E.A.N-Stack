@@ -1,9 +1,9 @@
 'use strict';
 
 // Events controller
-angular.module('events').controller('EventsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Events', 'Upload', 
+angular.module('events').controller('EventsController', ['$scope', '$http', '$stateParams', '$location', 'Authentication', 'Events', 'Upload', 
 '$timeout',
-  function ($scope, $stateParams, $location, Authentication, Events, Upload, $timeout) {
+  function ($scope, $http $stateParams, $location, Authentication, Events, Upload, $timeout) {
     $scope.authentication = Authentication;
       
     $scope.uploadFiles = function(file, errFiles) {
