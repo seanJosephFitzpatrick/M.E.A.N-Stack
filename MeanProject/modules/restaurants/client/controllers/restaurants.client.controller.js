@@ -1,10 +1,15 @@
 'use strict';
 
 // Restaurants controller
-angular.module('restaurants').controller('RestaurantsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Restaurants', 'Upload', 
+angular.module('restaurants').controller('RestaurantsController', ['$scope', '$http', '$stateParams', '$location', 'Authentication', 'Restaurants', 'Upload', 
 '$timeout',
-  function ($scope, $stateParams, $location, Authentication, Restaurants, Upload, $timeout) {
+  function ($scope, $http, $stateParams, $location, Authentication, Restaurants, Upload, $timeout) {
     $scope.authentication = Authentication;
+      
+    $http.get("https://api.foursquare.com/v2/venues/explore/?near=Galway&categoryId=4d4b7105d754a06374d81259&client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=20131124&venuePhotos=1").then(function(result){
+    
+        $scope.items = result.data.response.groups[0].items;     
+    })
       
     $scope.uploadFiles = function(file, errFiles) {
         $scope.uploadedFile = file;
