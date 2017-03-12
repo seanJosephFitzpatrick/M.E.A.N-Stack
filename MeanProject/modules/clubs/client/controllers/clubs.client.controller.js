@@ -6,9 +6,9 @@ angular.module('clubs').controller('ClubsController', ['$scope', '$http', '$stat
   function ($scope, $http, $stateParams, $location, Authentication, Clubs, Upload, $timeout) {
     $scope.authentication = Authentication;
       
-    $http.get("https://api.foursquare.com/v2/venues/explore/?near=Dublin&client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=20131124&venuePhotos=1").then(function(result){
+    $http.get("https://api.foursquare.com/v2/venues/explore/?near=Dublin&categoryId=4bf58dd8d48988d11b941735&client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=20131124&venuePhotos=1").then(function(result){
         var items = result.data.response.groups[0].items;
-        $scope.clubs = result.data.response.groups[0].items; 
+        $scope.items = result.data.response.groups[0].items; 
         var myJson = JSON.stringify(items);
         console.log(myJson);
         
