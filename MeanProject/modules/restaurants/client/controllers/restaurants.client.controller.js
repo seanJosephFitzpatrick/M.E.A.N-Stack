@@ -51,7 +51,7 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
       var restaurant = new Restaurants({
         name: this.name,
         restaurantImageURL: $scope.restaurantImageURL,
-        time: this.time,
+        openHours: this.openHours,
         phone: this.phone,
         latitude: this.latitude,
         longitude: this.longitude,
@@ -69,7 +69,7 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
         // Clear form fields
         $scope.name = '';
         $scope.restaurantImageURL = '';
-        $scope.time = '';
+        $scope.openHours = '';
           $scope.phone = '';
           $scope.latitude = '';
           $scope.longitude = '';
