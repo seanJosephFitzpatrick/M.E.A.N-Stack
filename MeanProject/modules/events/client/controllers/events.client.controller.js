@@ -6,10 +6,10 @@ angular.module('events').controller('EventsController', ['$scope', '$http', '$st
   function ($scope, $http, $stateParams, $location, Authentication, Events, Upload, $timeout) {
     $scope.authentication = Authentication;
       
-    $http.get("https://api.foursquare.com/v2/venues/explore/?near=Galway&categoryId=4d4b7105d754a06373d81259&client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=20131124&venuePhotos=1").then(function(result){
+    $http.get("https://api.foursquare.com/v2/venues/explore/?near=Galway&categoryId=52e81612bcbc57f1066b7a35&client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=20131124&venuePhotos=1").then(function(result){
     
         $scope.items = result.data.response.groups[0].items;     
-    })
+    }) 
       
     $scope.uploadFiles = function(file, errFiles) {
         $scope.uploadedFile = file;

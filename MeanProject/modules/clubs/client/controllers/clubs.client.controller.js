@@ -8,11 +8,25 @@ angular.module('clubs').controller('ClubsController', ['$scope', '$http', '$stat
       
     $http.get("https://api.foursquare.com/v2/venues/explore/?near=Galway&categoryId=4d4b7105d754a06376d81259&client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=20131124&venuePhotos=1").then(function(result){
         var items = result.data.response.groups[0].items;
-        $scope.items = result.data.response.groups[0].items; 
+        $scope.items = result.data.response.groups[0].items;
         var myJson = JSON.stringify(items);
         console.log(myJson);
         
+        
+        
     })
+    
+    $scope.showDetails = function(i) {
+        $scope.item_details = i.details;
+    };
+      
+function Ctrl($scope) {
+  $scope.tasks = [{id:1,'name':'test1'}, {id:2,'name':'test2'}, {id:3,'name':'test3'}];
+    
+  $scope.removeTask = function(taskId){
+    alert("Task Id is "+taskId);
+  };
+}
 
       
     $scope.uploadFiles = function(file, errFiles) {

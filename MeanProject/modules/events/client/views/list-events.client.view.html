@@ -1,4 +1,11 @@
 <section data-ng-controller="EventsController" data-ng-init="find()">
+
+	<httpProtocol>
+		<customHeaders>
+			<add name="Access-Control-Allow-Origin" value="*" />
+		</customHeaders>
+	</httpProtocol>
+
   <div class="page-header">
     <h1>Events</h1>
   </div>

@@ -17,10 +17,17 @@
 	<br />
 	<br />
 	
+	<div class="alert alert-warning text-center" data-ng-if="restaurants.$resolved && !restaurants.length">
+		No Database restaurants yet, why don't you <a data-ui-sref="restaurants.create">create one</a>?
+	</div>
+	
+	<br />
+	<br />
+	
 	<div class="list-group">
       <div class="col-xs-12 col-sm-4" data-ng-repeat="item in items | filter:searchText">
 	  
-         <a data-ui-sref="clubs.view({clubId: club._id})"  class="list-group-item">
+         <a data-ui-sref="restaurants.view({restaurantId: restaurant._id})"  class="list-group-item">
 		 
 		 
              <h4 class="club-list text-center">
@@ -56,8 +63,7 @@
 		 <br />
       </div>       
   </div>
-
-
+  
     <div class="list-group">
       <div class="col-xs-12 col-sm-4" data-ng-repeat="restaurant in restaurants | filter:searchText">
          <a data-ui-sref="restaurants.view({restaurantId: restaurant._id})"  class="list-group-item">
@@ -88,9 +94,5 @@
          </a>
 		 <br />
       </div>       
-  </div>
-  
-  <div class="alert alert-warning text-center" data-ng-if="restaurants.$resolved && !restaurants.length">
-    No restaurants yet, why don't you <a data-ui-sref="restaurants.create">create one</a>?
   </div>
 </section>

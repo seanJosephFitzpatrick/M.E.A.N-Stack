@@ -11,9 +11,10 @@
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
+    
   <small>
     <em class="text-muted">
-	<span data-ng-bind="club.description"></span>
+	<span data-ng-bind="item.venue.name"></span>
       Venue
       <span data-ng-bind="club.place | date:'mediumDate'"></span>
       by
@@ -22,4 +23,3 @@
   </small>
   <p class="lead" data-ng-bind="club.content"></p>
 </section>
-

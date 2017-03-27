@@ -5,11 +5,19 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
 '$timeout',
   function ($scope, $http, $stateParams, $location, Authentication, Restaurants, Upload, $timeout) {
     $scope.authentication = Authentication;
-      
+      /*
+      Category id: 4d4b7105d754a06374d81259 is for food
+      https://developer.foursquare.com/categorytree
+      */
     $http.get("https://api.foursquare.com/v2/venues/explore/?near=Galway&categoryId=4d4b7105d754a06374d81259&client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=20131124&venuePhotos=1").then(function(result){
     
-        $scope.items = result.data.response.groups[0].items;     
+        $scope.items = result.data.response.groups[0].items; 
+        
+        var i = JSON.stringify(result);
+        console.log(i);
+        
     })
+    
       
     $scope.uploadFiles = function(file, errFiles) {
         $scope.uploadedFile = file;
@@ -41,14 +49,17 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
     $scope.create = function () {
       // Create new Restaurant object
       var restaurant = new Restaurants({
-        title: this.title,
+        name: this.name,
         restaurantImageURL: $scope.restaurantImageURL,
         time: this.time,
-        place: this.place,
-        address: this.address,
-        performers: this.performers,
-        short_bio: this.short_bio,
-        description: this.description
+        phone: this.phone,
+        latitude: this.latitude,
+        longitude: this.longitude,
+        city: this.city,
+        county: this.county,
+        country: this.country,
+        url: this.url,
+        category: this.category
       });
 
       // Redirect after save
@@ -56,14 +67,17 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
         $location.path('restaurants/' + response._id);
 
         // Clear form fields
-        $scope.title = '';
+        $scope.name = '';
         $scope.restaurantImageURL = '';
         $scope.time = '';
-          $scope.place = '';
-          $scope.address = '';
-          $scope.performers = '';
-          $scope.short_bio = '';
-          $scope.description = '';
+          $scope.phone = '';
+          $scope.latitude = '';
+          $scope.longitude = '';
+          $scope.city = '';
+          $scope.county = '';
+          $scope.country = '';
+          $scope.url = '';
+          $scope.category = '';
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -98,11 +112,11 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
       });
     };
 
-    // Find a list of Restaurants
+    // Find a list of Restaurants in Database
     $scope.find = function () {
       $scope.restaurants = Restaurants.query();
     };
-
+            
     // Find existing Restaurant
     $scope.findOne = function () {
       $scope.restaurant = Restaurants.get({
