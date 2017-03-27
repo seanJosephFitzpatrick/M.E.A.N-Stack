@@ -4,71 +4,142 @@
   </div>
   <div class="col-md-12">
     <form name="restaurantForm" class="form-horizontal" data-ng-submit="update()" novalidate>
-      <fieldset>
-        <div class="form-group">
-          <label class="control-label" for="title">Title</label>
-          <div class="controls">
-            <input name="title" type="text" data-ng-model="restaurant.title" id="title" class="form-control" placeholder="Title" required>
+      <fieldset>  
+        <div class="row">
+            <div class="col-sm-6 text-center">
+				<img ng-src="modules/restaurants/client/img/default.png" 
+				class="img-thumbnail user-profile-picture">
+            </div>
+             <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="control-label" for="name">Name</label>
+                  <div class="controls">
+                    <input name="name" type="text" data-ng-model="name" id="name" class="form-control">
+                  </div>
+                </div>
+				
+				<div class="form-group push-6" show-errors>
+					<label for="image">Image</label>
+					<button type="button" class="btn btn-secondary" ng-show="uploadedFile == null" type="file"
+					ngf-select="uploadFiles($file, $invalidFiles)"
+					ng-model="uploadedFile" name="file" ngf-model-invalid="errorFiles"
+					accept="image/*" ngf-max-size="1MB">
+					Select Image</button>
+				  <div class="text-center">
+					<img ng-show="restaurantForm.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
+				  </div>
+				  <div class="text-center">
+					<div class="progress" ng-show="uploadedFile.progress >= 0">
+							  <div style="width:{{uploadedFile.progress}}%"
+								  ng-bind="uploadedFile.progress + '%'"></div>
+					</div>
+				  </div>
+				  <div class="text-center">
+					<button type="button" class="btn btn-secondary" ng-click="uploadedFile = null" ng-show="uploadedFile">Remove</button>
+				  </div>
+				  <div class="alert alert-danger" ng-show="restaurantForm.file.$error.maxSize">File too large
+							   {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
+				</div>
+                 
+                <div class="form-group">
+                  <label class="control-label" for="openHours">Opening Hours</label>
+                  <div class="controls">
+                    <input name="openHours" type="text" data-ng-model="openHours" id="openHours" class="form-control">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label" for="phone">Phone</label>
+                  <div class="controls">
+                    <input name="phone" type="text" data-ng-model="phone" id="phone" class="form-control">
+                  </div>
+                </div>
+            </div>
           </div>
-        </div>
-		<div class="form-group" show-errors>
-		  <label for="title">Image </label>
-		  <button ng-show="restaurant.restaurantImageURL==null || restaurant.restaurantImageURL==''" type="button" class="btn btn-secondary" type="file"
-			ngf-select="uploadFiles($file, $invalidFiles)"
-			ng-model="restaurant.restaurantImageURL" name="file" ngf-model-invalid="errorFiles"
-			accept="image/*" ngf-max-size="1MB">
-			Select Image</button>
-		  <div class="text-center" ng-show="restaurant.restaurantImageURL" >
-			<img ng-src="{{restaurant.restaurantImageURL}}" ngf-thumbnail="restaurant.restaurantImageURL" class="thumb"/>
-		  </div>
-		  <div class="text-center" ng-show="restaurant.restaurantImageURL">
-			<button type="button" class="btn btn-secondary" ng-click="restaurant.restaurantImageURL = null" >Remove</button>
-		  </div>
-		  <div class="alert alert-danger" ng-show="restaurantForm.file.$error.maxSize">File too large
-					   {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
-		</div>
-		  <div class="form-group">
-          <label class="control-label" for="time">Time</label>
-          <div class="controls">
-            <input name="time" type="text" data-ng-model="restaurant.time" id="time" class="form-control" placeholder="Time" required>
+          
+           <div class="row">
+            <div class="col-sm-push-6"> 
+                <div class="form-group">
+                  <label class="control-label" for="latitude">Latitude</label>
+                  <div class="controls">
+                    <input name="latitude" type="text" data-ng-model="latitude" id="latitude" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="longitude">Longitude</label>
+                  <div class="controls">
+                    <input name="longitude" type="text" data-ng-model="longitude" id="longitude" class="form-control">
+                  </div>
+                </div>
+				<div class="form-group">
+                  <label class="control-label" for="address">Address</label>
+                  <div class="controls">
+                    <input name="address" type="text" data-ng-model="address" id="address" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="city">City</label>
+                  <div class="controls">
+                    <input name="city" type="text" data-ng-model="city" id="city" class="form-control">
+                  </div>
+                </div>    
+            </div>
+			
+			     <div class="col-sm-push-6"> 
+                <div class="form-group">
+                  <label class="control-label" for="county">County</label>
+                  <div class="controls">
+                    <input name="county" type="text" data-ng-model="county" id="county" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="country">Country</label>
+                  <div class="controls">
+                    <input name="country" type="text" data-ng-model="country" id="country" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="url">URL</label>
+                  <div class="controls">
+                    <input name="url" type="text" data-ng-model="url" id="url" class="form-control">
+                  </div>
+                </div>   
+				<div class="form-group">
+                  <label class="control-label" for="category">Category</label>
+                  <div class="controls">
+                    <input name="category" type="text" data-ng-model="category" id="category" class="form-control">
+                  </div>
+                </div>  				
+            </div>
+               
+             <div class="col-sm-pull-6">
+                <div class="form-group">
+                  <label class="control-label" for="description">Description</label>
+                  <div class="controls">
+                    <textarea name="description" data-ng-model="description" id="content" class="form-control" cols="30" rows="10"></textarea>
+                  </div>
+                </div>
+            </div>
           </div>
-        </div>
-		<div class="form-group">
-          <label class="control-label" for="place">Place</label>
-          <div class="controls">
-            <input name="place" type="text" data-ng-model="restaurant.place" id="place" class="form-control" placeholder="Place" required>
+          
+           <div class="row">
+            <div class="col-sm-6">
+                
+            <div class="form-group">
+              <button type="submit" class="btn btn-lg btn-default">
+                  Create Restaurant
+                </button>
+            </div>
+
+            </div>
+             <div class="col-sm-6">
+                
+            </div>
           </div>
-        </div>
-		<div class="form-group">
-          <label class="control-label" for="address">Address</label>
-          <div class="controls">
-            <input name="address" type="text" data-ng-model="restaurant.address" id="address" class="form-control" placeholder="address" required>
-          </div>
-        </div>
-		<div class="form-group">
-          <label class="control-label" for="performers">Performers</label>
-          <div class="controls">
-            <input name="performers" type="text" data-ng-model="restaurant.performers" id="performers" class="form-control" placeholder="performers" required>
-          </div>
-        </div>
-		<div class="form-group">
-          <label class="control-label" for="short_bio">Short Bio</label>
-          <div class="controls">
-            <input name="short_bio" type="text" data-ng-model="restaurant.short_bio" id="short_bio" class="form-control" placeholder="short_bio" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label" for="description">Description</label>
-          <div class="controls">
-            <textarea name="description" data-ng-model="restaurant.description" id="description" class="form-control" cols="30" rows="10" placeholder="description"></textarea>
-          </div>
-        </div>
-        <div class="form-group">
-          <input type="submit" value="Update" class="btn btn-default">
-        </div>
-        <div data-ng-show="error" class="text-danger">
-          <strong data-ng-bind="error"></strong>
-        </div>
+          
+        <alert type="danger" ng-show="error" class="text-center text-danger">
+          <span ng-bind="error"></span>
+        </alert>
       </fieldset>
     </form>
   </div>

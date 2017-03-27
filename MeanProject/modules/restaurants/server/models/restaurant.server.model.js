@@ -20,43 +20,68 @@ var RestaurantSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  title: {
+  name: {
     type: String,
     default: '',
     trim: true,
-    required: 'Title cannot be blank'
+    required: 'Name cannot be blank'
   },
   restaurantImageURL:{
   type: String,
   default: '',
   trim: true
 },
-  time: {
+  openHours: {
     type: String,
     default: '',
     trim: true
   },
-  place: {
+  phone: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  latitude: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  longitude: {
     type: String,
     default: '',
     trim: true
   },
   address: {
     type: String,
-    default: '',
-    trim: true
-  },
-  performers: {
-    type: String,
-    default: '',
-    trim: true
-  },
-  short_bio: {
-    type: String,
-    default: '',
+    default: 'Address',
     trim: true,
-    required: 'Title cannot be blank'
+    required: 'Address cannot be blank'
   },
+  city: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  county: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  country: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  url: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  category: {
+    type: String,
+    default: '',
+    trim: true
+  }, 
   description: {
     type: String,
     default: 'There is no description',

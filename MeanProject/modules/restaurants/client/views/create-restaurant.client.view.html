@@ -19,7 +19,7 @@
                 </div>
 				
 				<div class="form-group push-6" show-errors>
-					<label for="title">Image</label>
+					<label for="image">Image</label>
 					<button type="button" class="btn btn-secondary" ng-show="uploadedFile == null" type="file"
 					ngf-select="uploadFiles($file, $invalidFiles)"
 					ng-model="uploadedFile" name="file" ngf-model-invalid="errorFiles"
@@ -66,9 +66,15 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label" for="longitude">longitude</label>
+                  <label class="control-label" for="longitude">Longitude</label>
                   <div class="controls">
                     <input name="longitude" type="text" data-ng-model="longitude" id="longitude" class="form-control">
+                  </div>
+                </div>
+				<div class="form-group">
+                  <label class="control-label" for="address">Address</label>
+                  <div class="controls">
+                    <input name="address" type="text" data-ng-model="address" id="address" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">

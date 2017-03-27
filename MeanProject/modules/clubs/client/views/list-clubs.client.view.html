@@ -20,7 +20,7 @@
 	<div class="list-group">
       <div class="col-xs-12 col-sm-4" data-ng-repeat="item in items | filter:searchText">
 	  
-         <a data-ui-sref="clubs.view" ng-click="removeTask(task.id);"  class="list-group-item">
+         <a data-ui-sref="clubs.view({clubId: item.venue.id})"  class="list-group-item">
 		 
 		 
              <h4 class="club-list text-center">

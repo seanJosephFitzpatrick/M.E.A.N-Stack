@@ -55,11 +55,13 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
         phone: this.phone,
         latitude: this.latitude,
         longitude: this.longitude,
+        address: this.address,
         city: this.city,
         county: this.county,
         country: this.country,
         url: this.url,
-        category: this.category
+        category: this.category,
+        description: this.description
       });
 
       // Redirect after save
@@ -73,11 +75,13 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
           $scope.phone = '';
           $scope.latitude = '';
           $scope.longitude = '';
+          $scope.address = '';
           $scope.city = '';
           $scope.county = '';
           $scope.country = '';
           $scope.url = '';
           $scope.category = '';
+          $scope.description = '';
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
