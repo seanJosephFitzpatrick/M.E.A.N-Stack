@@ -17,6 +17,12 @@
 	<br />
 	<br />
 	
+	<div class="alert alert-warning text-center" data-ng-if="clubs.$resolved && !clubs.length">
+		<a data-ui-sref="clubs.create">create club</a>?
+	</div>
+	
+	
+	
 	<div class="list-group">
       <div class="col-xs-12 col-sm-4" data-ng-repeat="item in items | filter:searchText">
 	  
@@ -90,7 +96,4 @@
       </div>       
   </div>
   
-  <div class="alert alert-warning text-center" data-ng-if="clubs.$resolved && !clubs.length">
-    No clubs yet, why don't you <a data-ui-sref="clubs.create">create one</a>?
-  </div>
 </section>

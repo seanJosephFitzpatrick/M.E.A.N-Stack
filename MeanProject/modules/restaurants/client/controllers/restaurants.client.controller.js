@@ -1,9 +1,9 @@
 'use strict';
 
 // Restaurants controller
-angular.module('restaurants').controller('RestaurantsController', ['$scope', '$http', '$stateParams', '$location', 'Authentication', 'Restaurants', 'Upload', 
+angular.module('restaurants').controller('RestaurantsController', ['$scope', '$http', '$rootScope', '$stateParams', '$location', 'Authentication', 'Restaurants', 'Upload', 
 '$timeout',
-  function ($scope, $http, $stateParams, $location, Authentication, Restaurants, Upload, $timeout) {
+  function ($scope, $http, $rootScope, $stateParams, $location, Authentication, Restaurants, Upload, $timeout) {
     $scope.authentication = Authentication;
       /*
       Category id: 4d4b7105d754a06374d81259 is for food
@@ -13,8 +13,8 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
     
         $scope.items = result.data.response.groups[0].items; 
         
-        var i = JSON.stringify(result);
-        console.log(i);
+        //var i = JSON.stringify(result);
+       // console.log(i);
         
     })
     
@@ -120,12 +120,27 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
     $scope.find = function () {
       $scope.restaurants = Restaurants.query();
     };
-            
+      
+      var id = $stateParams.restaurantId;
+       console.log(id);
+    $scope.findOne = function (id) {
+        
+      var urlbase = 'https://api.foursquare.com/v2/venues';
+      var urlbase2 = '?client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=201311242';
+        
+      $http.get(urlbase + '/' + id + '/' + urlbase2).then(function(result){
+     
+     
+        })  
+    };
+      $scope.findOne(id);
+    
+     /*       
     // Find existing Restaurant
     $scope.findOne = function () {
       $scope.restaurant = Restaurants.get({
-        restaurantId: $stateParams.restaurantId
+        restaurantId: $stateParams.item.venue.id
       });
-    };
+    };*/
   }
 ]);

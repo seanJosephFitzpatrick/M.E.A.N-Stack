@@ -26,7 +26,8 @@ angular.module('restaurants').config(['$stateProvider',
         }
       })
       .state('restaurants.view', {
-        url: '/:restaurantId',
+        name: 'view',
+        url: '/view/:restaurantId',
         templateUrl: 'modules/restaurants/client/views/view-restaurant.client.view.html'
       })
       .state('restaurants.edit', {
