@@ -4,23 +4,19 @@
 	<img ng-src="{{restaurant.restaurantImageURL}}" height="100" />
   </div>
   <div class="pull-right" data-ng-show="authentication.user._id == restaurant.user._id">
-    <a class="btn btn-primary" data-ui-sref="restaurants.edit({restaurantId: restaurant._id})">
+    <a class="btn btn-primary" data-ui-sref="restaurants.edit({restaurantId: restaurant._id})" 
+								data-ng-hide="!restaurants.edit({restaurantId: restaurant._id})">
       <i class="glyphicon glyphicon-edit"></i>
     </a>
-    <a class="btn btn-primary" data-ng-click="remove();">
+    <a class="btn btn-primary" data-ng-click="remove();" data-ng-hide="!restaurants.edit({restaurantId: restaurant._id})">
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
-  
-   <div ng-repeat="item in messages" ng-show="item.venue.id==1">
-      {{messages.venue.name}}
- </div>  
- 
   <small>
     <em class="text-muted">
-	<span data-ng-bind="restaurant.description"></span>
-		Venue
-      <span data-ng-bind="i.venue.location.address | date:'mediumDate'"></span>
+	<span data-ng-bind="restaurant.name"></span>
+      Venue
+      <span data-ng-bind="restaurant.place | date:'mediumDate'"></span>
       by
       <span data-ng-bind="restaurant.user.displayName"></span>
     </em>

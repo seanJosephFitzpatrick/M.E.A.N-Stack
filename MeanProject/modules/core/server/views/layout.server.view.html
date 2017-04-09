@@ -27,12 +27,13 @@
   <meta name="twitter:description" content="{{description}}">
   <meta name="twitter:url" content="{{url}}">
   <meta name="twitter:image" content="{{logo}}">
-  	
+  
   <!-- eventful-->
   <script type="text/javascript" src="http://api.eventful.com/js/api"></script>
   
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    
+  
+   
   <!-- Fav Icon -->
   <link href="{{favicon}}" rel="shortcut icon" type="image/x-icon">
 
@@ -41,9 +42,19 @@
   
 </head>
 
+/////////////////////////////////////////////////////////////////
+
+
+
+  
+
+
+///////////////////////////////////////////////////////////////
+
 <body class="ng-cloak">
 
-	
+
+
 	
 	<!--Include header into app, fix navbar to top, style inverse - default is lighter color -->
   <header ng-include="'/modules/core/client/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
@@ -69,10 +80,17 @@
   <script type="text/javascript" src="{{host}}:35729/livereload.js"></script>
   {% endif %}
   
-   
- 
-
+    <div id="floating-panel">
+      <input onclick="addNewMarker();" type=button value="Add new location">
+    </div>
     
+	
+	<script src="modules/core/client/app/MapCode.js"></script>
+	
+	
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDllo5Gh2kmkNq5D9HD5Qgrg5SyHJHmHPE&callback=initMap">
+    </script>
+  
 </body>
 
 </html>

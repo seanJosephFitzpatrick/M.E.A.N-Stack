@@ -9,16 +9,13 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
       Category id: 4d4b7105d754a06374d81259 is for food
       https://developer.foursquare.com/categorytree
       */
+      
     $http.get("https://api.foursquare.com/v2/venues/explore/?near=Galway&categoryId=4d4b7105d754a06374d81259&client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=20131124&venuePhotos=1").then(function(result){
     
         $scope.items = result.data.response.groups[0].items; 
         
-        //var i = JSON.stringify(result);
-       // console.log(i);
-        
     })
-    
-      
+     
     $scope.uploadFiles = function(file, errFiles) {
         $scope.uploadedFile = file;
         $scope.errFile = errFiles && errFiles[0];
@@ -121,26 +118,22 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
       $scope.restaurants = Restaurants.query();
     };
       
-      var id = $stateParams.restaurantId;
-       console.log(id);
-    $scope.findOne = function (id) {
-        
-      var urlbase = 'https://api.foursquare.com/v2/venues';
-      var urlbase2 = '?client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=201311242';
-        
-      $http.get(urlbase + '/' + id + '/' + urlbase2).then(function(result){
-     
-     
-        })  
-    };
-      $scope.findOne(id);
-    
-     /*       
+    var id = $stateParams.restaurantId;
+
+    // Find existing Restaurant from Foursquare
+    var promise = $http.get('https://api.foursquare.com/v2/venues/' + id + '/?client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=201311242');
+    promise.then(
+	  function(payload) {
+         
+	    $scope.restaurant = payload.data.response.venue;
+          
+	  });
+           
     // Find existing Restaurant
     $scope.findOne = function () {
       $scope.restaurant = Restaurants.get({
-        restaurantId: $stateParams.item.venue.id
+        restaurantId: $stateParams.restaurantId
       });
-    };*/
+    };
   }
 ]);
