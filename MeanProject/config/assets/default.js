@@ -5,13 +5,13 @@ module.exports = {
     lib: {
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.css',
-        'public/lib/bootstrap/dist/css/bootstrap-theme.css'
-          /*
+        'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+          
           'public/lib/css/bootstrap.min.css',
           'public/lib/css/font-awesome.min.css',
           'public/lib/css/main.css',
           'public/lib/css/animate.css',
-          'public/lib/css/responsive.css'*/
+          'public/lib/css/responsive.css'
       ],
       js: [
         'public/lib/angular/angular.js',
@@ -24,8 +24,8 @@ module.exports = {
         'public/lib/angular-file-upload/angular-file-upload.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
         'public/lib/ng-file-upload/ng-file-upload-shim.js',
-        'public/lib/ng-file-upload/ng-file-upload.js'
-          /*
+        'public/lib/ng-file-upload/ng-file-upload.js',
+          
           'public/lib/js/jquery.js',
           'public/lib/js/bootstrap.min.js',
           'public/lib/js/smoothscroll.js',
@@ -33,7 +33,7 @@ module.exports = {
           'public/lib/js/jquery.scrollTo.js',
           'public/lib/js/jquery.nav.js',
           'public/lib/js/main.js',
-          'public/lib/js/jquery.parallax.js'  */
+          'public/lib/js/jquery.parallax.js'  
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },

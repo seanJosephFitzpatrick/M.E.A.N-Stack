@@ -1,154 +1,137 @@
 <section ng-controller="HomeController">
 	<br />
 	<br />
-		
-	<!--repeat event in events array from HomeController
-	<div class="list-group">
-      <div class="col-xs-12 col-sm-4" data-ng-repeat="event in events | filter:searchText" display:inline>
-		<!--URL from HomeController
-		 <a ng-href="{{event.url}}" class="list-group-item">
-             <h4 class="event-list text-center" >
-				<!--Load image from HomeController
-				<img ng-src="{{event.source}}" height="100" width="200"/>
-             </h4>
-             <div class="row">
-                <div class="col-xs-10 col-xs-offset-1">
-					<!--Load title from HomeController
-                     <h4>{{event.title}}</h4>
-					 
-                     <small class="list-group-item-text text-muted">
-                         <span data-ng-bind="event.created | date:'mediumDate'"></span>
-                     </small>
-                </div>
-             </div>
-         </a>
-		 <br />
-      </div>       
-  </div>
-	  -->
+
 	<noscript>Sorry, your browser does not support JavaScript!</noscript>
-	<!--
-	<input type = "button" id="target" value="search Eventful" onclick="loaddata();"/>
-    
-	<br />
-	<br />
+	
+	<header id="header" role="banner">		
+		<div class="navbar-evento main-nav">
+			<div class="container">
+				<div class="header-top">
+					<div class="pull-right social-icons">
+						<a href="#"><i class=""></i></a>
+						<a href="#"><i class=""></i></a>
+						<a href="#"><i class=""></i></a>
+						<a href="#"><i class=""></i></a>
+					</div>
+				</div>     
+		        <div class="row">	        		
+		            <div class="navbar-evento navbar-header">
+		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		                    <span class="sr-only">Toggle navigation</span>
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+		                </button>
+		                <a class="navbar-evento navbar-brand" href="index.html">
+		                	<img class="img-responsive" src="modules/core/client/views/images/logo.png" alt="logo">
+		                </a>                    
+		            </div>
+		            <div class="collapse navbar-evento navbar-collapse">
+		                <ul class="nav navbar-evento navbar-nav navbar-right">                 
+		                    <li class="scroll active"><a href="#home">Home</a></li>
+		                    <li class="no-scroll"><a href="#clubs">Clubs</a></li>                         
+		                    <li class="no-scroll"><a href="#events">Events</a></li>
+		                    <li class="no-scroll"><a href="#Restaurants">Restaurants</a></li>
+							<li class="scroll"><a href="#about">About</a></li> 
+		                    <li class="scroll"><a href="#contact">Contact</a></li>       
+		                </ul>
+		            </div>
+		        </div>
+	        </div>
+        </div>                    
+    </header>
+    <!--/#header--> 
 
-    <p>Where Data from API call is presented.</p>
-	
-	<br />
-	<br />
-	
-	<div>
-		<span id = "ListItems"></span>
-	</div>
+    <section id="home">	
+		<div id="main-slider" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#main-slider" data-slide-to="0" class="active"></li>
+				<li data-target="#main-slider" data-slide-to="1"></li>
+				<li data-target="#main-slider" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<img class="img-responsive" src="modules/core/client/views/images/slider/bg1.jpg" alt="slider">
+					
+					<div class="carousel-caption">
+						<h2>Explore Clubs</h2>
+						
+					</div>
+				</div>
+				<div class="item">
+					<img class="img-responsive" src="modules/core/client/views/images/slider/bg2.jpg" alt="slider">	
+					<div class="carousel-caption">
+						<h2>Explore Events</h2>
+			
+					</div>
+				</div>
+				<div class="item">
+					<img class="img-responsive" src="modules/core/client/views/images/slider/bg3.jpg" alt="slider">	
+					<div class="carousel-caption">
+						<h2>Explore Restaurants</h2>
+					
+					</div>
+				</div>				
+			</div>
+		</div>    	
+    </section>
+	<!--/#home-->
+	<section id="about">
+		<div class="guitar2">				
+			<img class="img-responsive" src="modules/core/client/views/images/guitar2.jpg" alt="guitar">
+		</div>
+		<div class="about-content">					
+					<h2>About Evento</h2>
+					<p>We have created an extremely positive and relaxed environment 
+					all geared towards developing your skills whether you are an absolute 
+					beginner trying to get off the ground or an accomplished player looking 
+					to move to the next level. Lorem Ipsum is simply dummy text of the 
+					printing and typesetting industry. Lorem Ipsum has been the industry's 
+					standard dummy text ever since the 1500s</p>
+				
+		</div>
+	</section>
+	<!--/#about-->
+	<section id="contact">
+		<div class="contact-section">
+			<div class="ear-piece">
+				<img class="img-responsive" src="modules/core/client/views/images/ear-piece.png" alt="">
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3 col-sm-offset-4">
+						<div class="contact-text">
+							<h3>Contact</h3>
+							<address>
+								E-mail: promo@party.com<br>
+								Phone: +1 (123) 456 7890<br>
+								Fax: +1 (123) 456 7891
+							</address>
+						</div>
+						<div class="contact-address">
+							<h3>Contact</h3>
+							<address>
+								Unit C2, St.Vincent's Trading Est.,<br>
+								Feeder Road,<br>
+								Bristol, BS2 0UY<br>
+								United Kingdom
+							</address>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</section>
+    <!--/#contact-->
 
-	<br />
-	<br />
-	
-	<link rel="stylesheet" href="/modules/core/client/css/MapStyle.css">
-	-->
-	
-	<div id="map"></div>
+    <footer id="footer">
+        <div class="container">
+            <div class="text-center">
+                <br>Front page is Bootstrap Designed by <a target="_blank" 
+				href="http://shapebootstrap.net/">ShapeBootstrap</a></p>                
+            </div>
+        </div>
+    </footer>
 
 </section>
-
-<!--
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-	 <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map 
-      {
-        height: 100%;
-      }
-        
-      /* Makes the sample page fill the window. */
-      html, body { height: 100%; margin: 0;  padding: 0;}
-    </style>
-	
-	    <script>
-          // Note: This example requires that you consent to location sharing when
-          // prompted by your browser. If you see the error "The Geolocation service
-          // failed.", it means you probably did not give permission for the browser to
-          // locate you.
-          var map;
-         
-          function initMap() 
-          {
-                
-                var galway = {lat: 53.2714495477047, lng: -9.056854245546901}; 
-                map = new google.maps.Map(document.getElementById('map'), {
-                  zoom: 15,
-                  center: galway
-                });
-                var infoWindow = new google.maps.InfoWindow({map: map});
-                //Find user's location using geolocation. Center map around location
-                if (navigator.geolocation) 
-                {
-                      navigator.geolocation.getCurrentPosition(function(position) 
-                      {
-                        var pos = {
-                          lat: position.coords.latitude,
-                          lng: position.coords.longitude
-                        };
-                        infoWindow.setPosition(pos);
-                        infoWindow.setContent('Your location');
-                        map.setCenter(pos);
-                      }, 
-                      function() 
-                      {
-                        handleLocationError(true, infoWindow, map.getCenter());
-                      });
-                } 
-                else
-                {
-                  //browser doesn't support Geolocation
-                  handleLocationError(false, infoWindow, map.getCenter());
-                }
-              
-              
-              // create a <script> tag and set the USGS URL as the source.
-              var script = document.createElement('script');
-              script.src = 'C:/Users/Jason/Desktop/FinalYearProject-JAY_BRANCH/GoogleMapsTesting/MapForMonday/MarkerData.json';
-              
-               document.getElementsByTagName('head')[0].appendChild(script);
-              
-          }
-          function handleLocationError(browserHasGeolocation, infoWindow, pos) 
-          {
-                infoWindow.setPosition(pos);
-                infoWindow.setContent(browserHasGeolocation ?
-                 'Error: The Geolocation service failed.' :
-                 'Error: Your browser doesn\'t support geolocation.');
-          }
-         
-         
-       // Loop through the results array and place a marker for each
-      // set of coordinates.
-      window.markerData = function(results) 
-      {
-        for (var i = 0; i < results.features.length; i++) 
-        {
-          var coords = results.features[i].geometry.coordinates;
-          var latLng = new google.maps.LatLng(coords[0],coords[1]);
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
-          });
-          var infowindow = new google.maps.InfoWindow({
-              content: results.features[i].properties.name
-          })
-          marker.addListener('click', function() {
-          infowindow.open(map, marker);
-          });
-        }
-          
-      }
-         
-    </script>
-	
-	<div id="map"></div>
-	   <script async defer
-     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDllo5Gh2kmkNq5D9HD5Qgrg5SyHJHmHPE&callback=initMap">
-    </script>
--->
