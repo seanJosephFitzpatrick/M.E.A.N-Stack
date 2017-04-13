@@ -206,7 +206,7 @@
                               //ASK USER TO NOW ENTER DETAILS FOR LOCATION, THEN ADD MARKER AND DATA TO DATABASE.
                             alert("Prompt user to now enter details for location, then add these along with marker coords to database. Prevent this marker from now being removed with cancel button");
                             removeButtons(saveButton, cancelButton, floatingPanel);
-                        
+                            
                         }
                         else
                         {
@@ -261,7 +261,7 @@
      //Create event listener allowing user to add marker to map
       function addNewMarker()
       {
-          addingNewMarker++; //add one to adding new marker. (should now be 1!) ++++++++++++++++++++++
+          addingNewMarker++; //increment addingNewMarker. Ideally should hold '1'
           
           switch(addingNewMarker)
           {
@@ -274,12 +274,10 @@
                   }
                   
                   
-            
                    // This event listener will call createMarker() when the map is clicked.
                   //Adapted from: http://stackoverflow.com/questions/1544151/google-maps-api-v3-how-to-remove-an-event-listener
                   createMarkerlistenerHandle = google.maps.event.addListener(map, 'click', function(event) 
                   {
-                        ///////////////////////////////////hasSelectedMarkerLocation = true;
                         createMarker(event.latLng);
                         hasMadeMarker = true;
                       
@@ -287,8 +285,7 @@
                    }); 
                   break;
               default: //button clicked twice
-                  /////addingNewMarker = 0; //reset var
-                  
+               
                   switch (hasMadeMarker)
                   {
                       case true: 
