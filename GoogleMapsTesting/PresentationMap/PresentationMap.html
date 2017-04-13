@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Adding Custom Markers</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -33,7 +32,7 @@
   </head>
   <body>
     <div id="floating-panel">
-      <input onclick="addNewMarker();" type=button value="Add new location">
+        <input onclick="addNewMarker();" type=button value="Add new location">
     </div>
     <div id="map"></div>
     <script>
@@ -43,7 +42,7 @@
       var addingNewMarker = 0;
       var hasMadeMarkerButtons = false;
       var hasSelectedMarkerLocation = false;
-      ///var hasMadeMarker = false;
+      var hasMadeMarker = false;
       //var tempMarkerSaveArray = [];
       var marker;
       var infoWindow;
@@ -74,7 +73,7 @@
         script.src = './sampleMapData.json';
         document.getElementsByTagName('head')[0].appendChild(script);
           
-          
+        
        //Loop through the results array and place a marker for each set of coordinates.
         window.sampleData = function(results) 
         {
@@ -209,6 +208,7 @@
                             floatingPanel.removeChild(cancelButton); 
                             hasMadeMarkerButtons = false;
                             hasMadeMarker = false;
+                            addingNewMarker = 0;
                         }
                         else
                         {
@@ -228,13 +228,14 @@
                         floatingPanel.removeChild(saveButton);
                         floatingPanel.removeChild(cancelButton);
                         hasMadeMarkerButtons = false;
+                        hasMadeMarker = false;
+                        addingNewMarker = 0;
                         
                     };  
                     break;
             }  
        }
          
-        
     }
         
         
@@ -255,27 +256,51 @@
      //Create event listener allowing user to add marker to map
       function addNewMarker()
       {
+          addingNewMarker++; //add one to adding new marker. (should now be 1!) ++++++++++++++++++++++
           
+          switch(addingNewMarker)
+          {
+              case 1: //button clicked once
+                  
+                  if (!hasMadeMarkerButtons)
+                  {
+                      createButtons();
+                      hasMadeMarkerButtons = true;
+                  }
+                  
+                  
+            
+              
+              
+                   // This event listener will call createMarker() when the map is clicked.
+                  //Adapted from: http://stackoverflow.com/questions/1544151/google-maps-api-v3-how-to-remove-an-event-listener
+                  var createMarkerlistenerHandle = google.maps.event.addListener(map, 'click', function(event) 
+                  {
+                        ///////////////////////////////////hasSelectedMarkerLocation = true;
+                        createMarker(event.latLng);
+                        hasMadeMarker = true;
+                      
+                        google.maps.event.removeListener(createMarkerlistenerHandle); //removes this specific event listener.
+                   }); 
+                  break;
+              default: //button clicked twice
+                  /////addingNewMarker = 0; //reset var
+                  
+                  switch (hasMadeMarker)
+                  {
+                      case true: 
+                          alert ("'Save' or 'Cancel' marker to continue"); //location for marker has been selected
+                          break;
+                      default:
+                          alert("Please click on map to add custom marker or 'Cancel' to quit"); //location for marker hasn't been selected
+                          break;
+                  }
+                 
+                  
+          }//switch(addingNewMarker)
         
-          if (!hasMadeMarkerButtons)
-          {
-             createButtons();
-             hasMadeMarkerButtons = true;
-          }
-              
-              
-           // This event listener will call createMarker() when the map is clicked.
-          //Adapted from: http://stackoverflow.com/questions/1544151/google-maps-api-v3-how-to-remove-an-event-listener
-          var createMarkerlistenerHandle = google.maps.event.addListener(map, 'click', function(event) 
-          {
-                hasSelectedMarkerLocation = true;
-                createMarker(event.latLng);
-                hasMadeMarker = true;
 
-                google.maps.event.removeListener(createMarkerlistenerHandle); //removes this specific event listener.
-           }); 
-        
-      }
+      }//function
         
      function setMapOnMarker(map) 
      {
