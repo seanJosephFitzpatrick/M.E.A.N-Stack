@@ -1,5 +1,7 @@
 <section data-ng-controller="RestaurantsController">
   <div class="page-header">
+  <br />
+  <br />
     <h1>New Restaurant</h1>
   </div>
   <div class="col-md-12">
@@ -7,6 +9,7 @@
       <fieldset>  
         <div class="row">
             <div class="col-sm-6 text-center">
+			
 				<img ng-src="modules/restaurants/client/img/default.png" 
 				class="img-thumbnail user-profile-picture">
             </div>
@@ -59,18 +62,18 @@
           
            <div class="row">
             <div class="col-sm-push-6"> 
-                <div class="form-group">
-                  <label class="control-label" for="latitude">Latitude</label>
-                  <div class="controls">
-                    <input name="latitude" type="text" data-ng-model="latitude" id="latitude" class="form-control">
-                  </div>
+               <div class="form-group">
+					<label class="control-label" for="content">Latitude</label>
+					<div class="controls">
+						<textarea name="lat" data-ng-model="lat" id="lat" class="form-control" cols="10" rows="1" placeholder="Latitude"></textarea>
+					</div>
                 </div>
-                <div class="form-group">
-                  <label class="control-label" for="longitude">Longitude</label>
-                  <div class="controls">
-                    <input name="longitude" type="text" data-ng-model="longitude" id="longitude" class="form-control">
-                  </div>
-                </div>
+				<div class="form-group">
+					<label class="control-label" for="content">Longitude</label>
+					<div class="controls">
+						<textarea name="lon" data-ng-model="lon" id="lon" class="form-control" cols="10" rows="1" placeholder="Longitude"></textarea>
+					</div>
+				</div>
 				<div class="form-group">
                   <label class="control-label" for="address">Address</label>
                   <div class="controls">
@@ -121,6 +124,10 @@
                 </div>
             </div>
           </div>
+		  
+			<map center="[{{lat}},{{lon}}]" zoom ='5'>
+				<marker position="[{{lat}},{{lon}}]" visible="true"></marker>
+			</map>
           
            <div class="row">
             <div class="col-sm-6">

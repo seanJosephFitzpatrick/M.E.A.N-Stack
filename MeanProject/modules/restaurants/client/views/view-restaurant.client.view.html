@@ -1,26 +1,103 @@
 <section data-ng-controller="RestaurantsController" data-ng-init="findOne()">
   <div class="page-header">
-    <h1 data-ng-bind="restaurant.title"></h1>
-	<img ng-src="{{restaurant.restaurantImageURL}}" height="100" />
+  <br />
+  <br />
+    <h1>{{restaurant.name}}</h1>
   </div>
-  <div class="pull-right" data-ng-show="authentication.user._id == restaurant.user._id">
-    <a class="btn btn-primary" data-ui-sref="restaurants.edit({restaurantId: restaurant._id})" 
-								data-ng-hide="!restaurants.edit({restaurantId: restaurant._id})">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-primary" data-ng-click="remove();" data-ng-hide="!restaurants.edit({restaurantId: restaurant._id})">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
-  </div>
-  <small>
-    <em class="text-muted">
-	<span data-ng-bind="restaurant.name"></span>
-      Venue
-      <span data-ng-bind="restaurant.place | date:'mediumDate'"></span>
-      by
-      <span data-ng-bind="restaurant.user.displayName"></span>
-    </em>++++++++++++++++++++++++++++++++++++++++++++++++++++
-  </small>
-  <p class="lead" data-ng-bind="restaurant.location"></p>
-</section>
+  <div class="col-md-12"> 
+  	 <div class="pull-right" data-ng-show="authentication.user._id == restaurant.user._id">
+				<a class="btn btn-primary" data-ui-sref="restaurants.edit({restaurantId: restaurant._id})">
+				  <i class="glyphicon glyphicon-edit"></i>
+				</a>
+				<a class="btn btn-primary" data-ng-click="remove();">
+				  <i class="glyphicon glyphicon-trash"></i>
+				</a>
+			</div>
+        <div class="row">
+            <div class="col-sm-6 text-center">
+			<!--
+				<img ng-src="modules/restaurants/client/img/default.png" 
+				class="img-thumbnail user-profile-picture">-->
+				<img ng-src="{{restaurant.restaurantImageURL}}" height="250" width="250" />
+				<!--
+				<img ng-src="{{restaurant.categories[0].icon.prefix + '100x100' + restaurant.categories[0].icon.suffix}}"
+				src="modules/clubs/client/img/default.png" width="150" height="100"/>
+				-->
+            </div>
+             <div class="col-sm-6">
+                <div class="form-group">
+                  Address : 
+					<small class="list-group-item-text text-muted">
+						<span>{{restaurant.address}}</span>
+						<span>{{restaurant.city}}</span>
+						<span>{{restaurant.country}}</span>
+					</small> 
+                </div>
+      
+                <div class="form-group">
+					Opening Hours : 
+					<small class="list-group-item-text text-muted">
+						<span>{{restaurant.openHours}}</span>
+					</small> 
+                </div>
 
+                <div class="form-group">
+					Phone : 
+					<small class="list-group-item-text text-muted">
+						<span>{{restaurant.phone}}</span>
+					</small> 
+                </div>
+					Description :
+					<small class="list-group-item-text text-muted">
+						<span>{{restaurant.description}}</span>
+					</small> <br />
+					URL :
+					<small class="list-group-item-text text-muted">
+						<a href="{{restaurant.url}}">{{restaurant.url}}</a>
+					</small>
+					
+            </div>
+          </div>
+		  
+			Latitude:
+			<small class="list-group-item-text text-muted">
+				<span>{{restaurant.lat}}</span>
+            </small> <br />
+			Longitude: 
+			<small class="list-group-item-text text-muted">
+				<span>{{restaurant.lon}}</span>
+            </small> <br />
+          
+           <div class="row">
+				<div class="form-group">
+                  <p class="lead" data-ng-bind="restaurant.location.formattedAddress"></p>
+                </div>
+				<!--
+                <div class="form-group">
+                  <p class="lead" data-ng-bind="restaurant.location.city"></p>
+                </div>    
+            </div>
+			
+			     <div class="col-sm-push-6"> 
+                <div class="form-group">
+                  <p class="lead" data-ng-bind="restaurant.location.state"></p>
+                
+                </div>
+                <div class="form-group">
+                  <p class="lead" data-ng-bind="restaurant.location.country"></p>
+                </div>
+                <div class="form-group">
+                  <p class="lead" data-ng-bind="restaurant.canonicalUrl"></p>
+                </div>   
+				<div class="form-group">
+                  <p class="lead" data-ng-bind="restaurant.categories.name"></p>
+                </div>  -->				
+            </div>
+			
+			
+			
+			<map center='[{{restaurant.lat}},{{restaurant.lon}}]' zoom ='9'>
+			   <marker position='[{{restaurant.lat}},{{restaurant.lon}}]' visible="true"> </marker>
+			   <!-- a initial position must be set because it will prompt the users current geolocation and set it to that -->
+			</map>
+</section>

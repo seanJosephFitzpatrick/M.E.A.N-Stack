@@ -5,16 +5,17 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
 '$timeout',
   function ($scope, $http, $rootScope, $stateParams, $location, Authentication, Restaurants, Upload, $timeout) {
     $scope.authentication = Authentication;
+      
       /*
       Category id: 4d4b7105d754a06374d81259 is for food
       https://developer.foursquare.com/categorytree
       */
-      
+     /* 
     $http.get("https://api.foursquare.com/v2/venues/explore/?near=Galway&categoryId=4d4b7105d754a06374d81259&client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=20131124&venuePhotos=1").then(function(result){
     
         $scope.items = result.data.response.groups[0].items; 
         
-    })
+    })*/
      
     $scope.uploadFiles = function(file, errFiles) {
         $scope.uploadedFile = file;
@@ -45,13 +46,14 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
     // Create new Restaurant
     $scope.create = function () {
       // Create new Restaurant object
+        $scope.restaurant = restaurant;
       var restaurant = new Restaurants({
         name: this.name,
         restaurantImageURL: $scope.restaurantImageURL,
         openHours: this.openHours,
         phone: this.phone,
-        latitude: this.latitude,
-        longitude: this.longitude,
+        lat: this.lat,
+        lon: this.lon,
         address: this.address,
         city: this.city,
         county: this.county,
@@ -70,8 +72,8 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
         $scope.restaurantImageURL = '';
         $scope.openHours = '';
           $scope.phone = '';
-          $scope.latitude = '';
-          $scope.longitude = '';
+          $scope.lat = 0;
+          $scope.lon = 0;
           $scope.address = '';
           $scope.city = '';
           $scope.county = '';
@@ -112,6 +114,23 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
         $scope.error = errorResponse.data.message;
       });
     };
+    
+    //Lazy initialize, this is because map loads before data and would be set to 0,0
+    $scope.$on('mapInitialized', function(event,map) {
+    var marker = map.markers[0];
+
+        $scope.$watch('restaurant.lat + restaurant.lon',function(newVal,oldVal){
+                if(newVal === oldVal){return;}
+                // checks if value has changed 
+                map.setCenter({lat:$scope.restaurant.lat,lng:$scope.restaurant.lon});
+                marker.setPosition({lat:$scope.restaurant.lat,lng:$scope.restaurant.lon});
+        });
+    });
+      
+    //click on link in list view to navigate to view
+    $scope.gotolink= function(event,restaurantId) {
+      $location.path('restaurants/'+ restaurantId);
+    };
 
     // Find a list of Restaurants in Database
     $scope.find = function () {
@@ -119,15 +138,18 @@ angular.module('restaurants').controller('RestaurantsController', ['$scope', '$h
     };
       
     var id = $stateParams.restaurantId;
-
+/*
     // Find existing Restaurant from Foursquare
     var promise = $http.get('https://api.foursquare.com/v2/venues/' + id + '/?client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=201311242');
     promise.then(
 	  function(payload) {
          
 	    $scope.restaurant = payload.data.response.venue;
+          var i = JSON.stringify(payload);
+          console.log(i);
           
 	  });
+      */
            
     // Find existing Restaurant
     $scope.findOne = function () {

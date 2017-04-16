@@ -29,6 +29,16 @@ a:hover .header-profile-image {
 .error-text {
   display: none;
 }
+.page-header {
+  margin-left: 20px;
+}
+.input-group {
+  margin-left: 15px;
+}
+.form-horizontal {
+  margin-left: 25px;
+  margin-right: 25px;
+}
 .has-error .help-block.error-text {
   display: block;
 }

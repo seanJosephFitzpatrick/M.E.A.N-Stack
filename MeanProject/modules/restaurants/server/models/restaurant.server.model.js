@@ -41,14 +41,14 @@ var RestaurantSchema = new Schema({
     default: '',
     trim: true
   },
-  latitude: {
-    type: String,
-    default: '',
+  lat: {
+    type: Number,
+    default: 0,
     trim: true
   },
-  longitude: {
-    type: String,
-    default: '',
+  lon: {
+    type: Number,
+    default: 0,
     trim: true
   },
   address: {

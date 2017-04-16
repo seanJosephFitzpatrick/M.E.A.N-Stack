@@ -1,5 +1,7 @@
 <section data-ng-controller="RestaurantsController" data-ng-init="findOne()">
   <div class="page-header">
+  <br />
+  <br />
     <h1>Edit Restaurant</h1>
   </div>
   <div class="col-md-12">
@@ -14,7 +16,7 @@
                 <div class="form-group">
                   <label class="control-label" for="name">Name</label>
                   <div class="controls">
-                    <input name="name" type="text" data-ng-model="name" id="name" class="form-control">
+                    <input name="name" type="text" data-ng-model="restaurant.name" id="name" class="form-control">
                   </div>
                 </div>
 				
@@ -40,18 +42,19 @@
 				  <div class="alert alert-danger" ng-show="restaurantForm.file.$error.maxSize">File too large
 							   {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
 				</div>
+				
                  
                 <div class="form-group">
                   <label class="control-label" for="openHours">Opening Hours</label>
                   <div class="controls">
-                    <input name="openHours" type="text" data-ng-model="openHours" id="openHours" class="form-control">
+                    <input name="openHours" type="text" data-ng-model="restaurant.openHours" id="openHours" class="form-control">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label" for="phone">Phone</label>
                   <div class="controls">
-                    <input name="phone" type="text" data-ng-model="phone" id="phone" class="form-control">
+                    <input name="phone" type="text" data-ng-model="restaurant.phone" id="phone" class="form-control">
                   </div>
                 </div>
             </div>
@@ -59,28 +62,30 @@
           
            <div class="row">
             <div class="col-sm-push-6"> 
-                <div class="form-group">
-                  <label class="control-label" for="latitude">Latitude</label>
-                  <div class="controls">
-                    <input name="latitude" type="text" data-ng-model="latitude" id="latitude" class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="control-label" for="longitude">Longitude</label>
-                  <div class="controls">
-                    <input name="longitude" type="text" data-ng-model="longitude" id="longitude" class="form-control">
-                  </div>
-                </div>
+				<div class="form-group" >
+					<label class="control-label" for="lat">Latitude</label>
+					<div class="controls">
+						<textarea name="content" data-ng-model="restaurant.lat" id="content" class="form-control" cols="10" rows="1" placeholder="Latitude" required>
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group" >
+					<label class="control-label" for="lon">Longitude</label>
+					<div class="controls">
+					<textarea name="content" data-ng-model="restaurant.lon" id="content" class="form-control" cols="10" rows="1" placeholder="Longitude" required>
+					</textarea>
+					</div>
+				</div>
 				<div class="form-group">
                   <label class="control-label" for="address">Address</label>
                   <div class="controls">
-                    <input name="address" type="text" data-ng-model="address" id="address" class="form-control">
+                    <input name="address" type="text" data-ng-model="restaurant.address" id="address" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label" for="city">City</label>
                   <div class="controls">
-                    <input name="city" type="text" data-ng-model="city" id="city" class="form-control">
+                    <input name="city" type="text" data-ng-model="restaurant.city" id="city" class="form-control">
                   </div>
                 </div>    
             </div>
@@ -89,25 +94,25 @@
                 <div class="form-group">
                   <label class="control-label" for="county">County</label>
                   <div class="controls">
-                    <input name="county" type="text" data-ng-model="county" id="county" class="form-control">
+                    <input name="county" type="text" data-ng-model="restaurant.county" id="county" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label" for="country">Country</label>
                   <div class="controls">
-                    <input name="country" type="text" data-ng-model="country" id="country" class="form-control">
+                    <input name="country" type="text" data-ng-model="restaurant.country" id="country" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label" for="url">URL</label>
                   <div class="controls">
-                    <input name="url" type="text" data-ng-model="url" id="url" class="form-control">
+                    <input name="url" type="text" data-ng-model="restaurant.url" id="url" class="form-control">
                   </div>
                 </div>   
 				<div class="form-group">
                   <label class="control-label" for="category">Category</label>
                   <div class="controls">
-                    <input name="category" type="text" data-ng-model="category" id="category" class="form-control">
+                    <input name="category" type="text" data-ng-model="restaurant.category" id="category" class="form-control">
                   </div>
                 </div>  				
             </div>
@@ -116,25 +121,30 @@
                 <div class="form-group">
                   <label class="control-label" for="description">Description</label>
                   <div class="controls">
-                    <textarea name="description" data-ng-model="description" id="content" class="form-control" cols="30" rows="10"></textarea>
+                    <textarea name="description" data-ng-model="restaurant.description" id="content" class="form-control" cols="30" rows="10"></textarea>
                   </div>
                 </div>
             </div>
           </div>
+		  
+			<map zoom ='5'>
+				<marker position="[0,0]" visible="true"> </marker>
+				<!-- a initial position must be set because it will prompt the users current geolocation and set it to that -->
+			</map>
           
            <div class="row">
             <div class="col-sm-6">
+			
+			<br />
                 
             <div class="form-group">
-              <button type="submit" class="btn btn-lg btn-default">
-                  Create Restaurant
+              <button type="submit"  class="btn btn-lg btn-default">
+                  Update Restaurant
                 </button>
             </div>
-
+			
             </div>
-             <div class="col-sm-6">
-                
-            </div>
+           
           </div>
           
         <alert type="danger" ng-show="error" class="text-center text-danger">

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', '$http', 'Authentication',
+angular.module('core').controller('HomeController', ['$scope', '$http', 'Authentication',  
   function ($scope, $http, Authentication) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
@@ -19,6 +19,14 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
   
        //console.log(items);
     })
+    
+    app.controller('MyController', function(NgMap) {
+      NgMap.getMap().then(function(map) {
+        console.log(map.getCenter());
+        console.log('markers', map.markers);
+        console.log('shapes', map.shapes);
+      });
+    });
 	
 	$scope.events = [
 		{
