@@ -1,0 +1,323 @@
+<!--
+This is a version of the map code before integration into app. Contains all functionality required from the map, using sample test data from 'sampleMapData.json'. A description of this functionality can be found within the project Dissertation at 3.6.4 Development.
+-->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+        
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }   
+        
+    </style>
+  </head>
+  <body>
+    <div id="floating-panel"> <!-- panel for holding buttons for making custom markers-->
+        <input onclick="addNewMarker();" type=button value="Add new location">
+    </div>
+    <div id="map"></div> <!-- map element -->
+    <script>
+
+      var map = null; // holds map 
+      var markerArray = []; //holds cutomly added markers
+      var addingNewMarker = 0; //for error handling when adding a new marker
+      var hasMadeMarkerButtons = false; //for error handling when adding a new marker
+      var hasMadeMarker = false; //for error handling when adding a new marker
+      var marker = null; //holds markers 
+      var infoWindow = null; // holds infowindows 
+      var count = 0; //count var for testing location check
+      var userMarker = null; //holds user location marker
+      var userMarkerInfoWindow = null; //holds user location info window
+      var createMarkerlistenerHandle = null; //holds listener for custom marker creation
+ 
+      //initialise map
+      function initMap() 
+      {
+            var galway = {lat: 53.2714495477047, lng: -9.056854245546901};
+            map = new google.maps.Map(document.getElementById('map'),
+            {
+              zoom: 16,
+              center: galway,
+              mapTypeId: 'terrain'
+            });
+          
+          populateMap();
+          allowGeolocation();
+      }
+        
+    //populate map with markers from sample data
+    function populateMap()
+    {
+        //Create a <script> tag and set the sample data as the source
+        var script = document.createElement('script');
+        script.src = './sampleMapData.json';
+        document.getElementsByTagName('head')[0].appendChild(script);
+          
+        
+       //Loop through the results array and place a marker for each set of coordinates.
+        window.sampleData = function(results) 
+        {
+            for (var i = 0; i < results.features.length; i++) 
+            {
+                var coords = results.features[i].geometry.coordinates;
+                var latLng = new google.maps.LatLng(coords[0],coords[1]);
+                var marker = new google.maps.Marker
+                ({
+                    position: latLng,
+                    map: map
+                });
+            
+                infowindow = new google.maps.InfoWindow;
+                
+                //Listener below adapted from here: http://stackoverflow.com/questions/27754101/change-google-maps-marker-icon-when-clicking-on-other
+                
+                google.maps.event.addListener(marker, 'click', (function(marker, i) 
+                {
+                    return function()
+                    {
+                        infowindow.setContent(results.features[i].properties.name);
+                        infowindow.open(map, marker);
+                    }
+            
+                })(marker, i));       
+            }
+        }
+    }
+      
+    //check to allow for geolocation  
+    function allowGeolocation()
+    {
+        if (navigator.geolocation) 
+        {
+            findUserLocation(); 
+        } 
+        else
+        {
+          //browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+    }
+        
+    //find and show user's location on map    
+    function findUserLocation()
+    {
+       
+      //find user's location using geolocation
+      navigator.geolocation.getCurrentPosition(function(position) 
+      { 
+        var newPoint = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          
+         if (userMarker)
+         {
+            // Marker already created - move it
+            userMarker.setPosition(newPoint);
+            userMarkerInfoWindow.setPosition(newPoint); 
+            
+         }
+         else
+         {
+             
+            // Marker does not exist - create it
+            var image = './userIcon.png'
+            userMarker = new google.maps.Marker
+            ({
+                position: newPoint,
+                map: map,
+                icon: image
+            });
+           
+            //add marker with click event, containing info box to define marker as user's location
+            userMarkerInfoWindow = new google.maps.InfoWindow({content: "You are here."})
+            
+             userMarker.addListener('click', function() 
+             {
+                userMarkerInfoWindow.open(map, userMarker); 
+             });
+             
+              map.setCenter(newPoint); //set on map
+        
+          } 
+          
+          
+        //++++++++++++++++++++++++++++++++++++++++++++++++  
+        //TEST PRINT USERS LOCATION
+        count++;
+        console.log("\n" + newPoint.toString() + " Count: " + count); //test location
+        //++++++++++++++++++++++++++++++++++++++++++++++++ 
+       
+          
+      });
+        
+      // Call findUserLocation() function every 3 seconds
+      setTimeout(findUserLocation, 3000);
+        
+    }
+        
+    //hande location error    
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) 
+    {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+         'Error: The Geolocation service failed.' :
+         'Error: Your browser doesn\'t support geolocation.');
+    }
+    
+        
+    //dynamically create buttons for saving or cancelling user made marker   
+    function createButtons()
+    {
+       var floatingPanel = document.getElementById("floating-panel");
+       var buttonText
+        
+       for (var i=0; i< 2; i++)
+       {
+           switch(i)
+           {
+                case 0: //create save button
+                    var saveButton = document.createElement("button");
+                    buttonText = document.createTextNode("Save"); 
+                    saveButton.appendChild(buttonText);
+                    floatingPanel.appendChild(saveButton);
+                    saveButton.onclick = function()
+                    {
+                        console.log("save button clicked"); 
+                        if (hasMadeMarker) //check if custom marker has been made first 
+                        {
+                              //ASK USER TO NOW ENTER DETAILS FOR LOCATION, THEN ADD MARKER AND DATA TO DATABASE.
+                            alert("Prompt user to now enter details for location, then add these along with marker coords to database. Prevent this marker from now being removed with cancel button");
+                            removeButtons(saveButton, cancelButton, floatingPanel);
+                            
+                        }
+                        else //if no custom marker made, notify user
+                        {
+                             alert("Please first tap map to add new location.");   
+                        }
+                    };
+                    break;
+                case 1: //create cancel button
+                    var cancelButton = document.createElement("button");
+                    buttonText = document.createTextNode("Cancel"); 
+                    cancelButton.appendChild(buttonText); 
+                    floatingPanel.appendChild(cancelButton); 
+                    cancelButton.onclick = function()
+                    {
+                        console.log("cancel button clicked");
+                        google.maps.event.removeListener(createMarkerlistenerHandle); //remove the createMarker event listener.
+                        setMapOnMarker(null); //clear map
+                        removeButtons(saveButton, cancelButton, floatingPanel); //remove buttons
+    
+                    };  
+                    break;
+            }  
+       }
+         
+    }
+        
+        
+    //removes save and cancel buttons from floating panel and resets relevant variables  
+    function removeButtons(saveButton, cancelButton, floatingPanel) 
+    {
+        floatingPanel.removeChild(saveButton);
+        floatingPanel.removeChild(cancelButton); 
+        hasMadeMarkerButtons = false;
+        hasMadeMarker = false;
+        addingNewMarker = 0;     
+    }
+        
+        
+      // Creates a new marker for the map and adds it to an array.
+      function createMarker(location) 
+      {
+        var marker = new google.maps.Marker(
+        {
+          position: location,
+          map: map
+        });
+
+        markerArray.push(marker); 
+
+      }
+
+    
+     //Create event listener allowing user to add marker to map
+      function addNewMarker()
+      {
+          addingNewMarker++; //increment addingNewMarker. Ideally should hold '1'
+          
+          switch(addingNewMarker)
+          {
+              case 1: //button clicked once
+                  
+                  if (!hasMadeMarkerButtons)
+                  {
+                      createButtons();
+                      hasMadeMarkerButtons = true;
+                  }
+                  
+                  
+                   // This event listener will call createMarker() when the map is clicked.
+                  //Adapted from: http://stackoverflow.com/questions/1544151/google-maps-api-v3-how-to-remove-an-event-listener
+                  createMarkerlistenerHandle = google.maps.event.addListener(map, 'click', function(event) 
+                  {
+                        createMarker(event.latLng);
+                        hasMadeMarker = true;
+                      
+                        google.maps.event.removeListener(createMarkerlistenerHandle); //removes this specific event listener.
+                   }); 
+                  break;
+              default: //button clicked twice or more
+               
+                  switch (hasMadeMarker)
+                  {
+                      case true: 
+                          alert ("'Save' or 'Cancel' marker to continue"); //location for marker has been selected
+                          break;
+                      default:
+                          alert("Please click on map to add custom marker or 'Cancel' to quit"); //location for marker hasn't been selected
+                          break;
+                  }
+                 
+                  
+          }//switch(addingNewMarker)
+        
+
+      }//function
+        
+     function setMapOnMarker(map) 
+     {
+        for (var i = 0; i < markerArray.length; i++) 
+        {
+          markerArray[i].setMap(map);
+        }
+     }
+    
+        
+    </script>
+    
+    <!-- Map API key --> 
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDllo5Gh2kmkNq5D9HD5Qgrg5SyHJHmHPE&callback=initMap">
+    </script>
+  </body>
+</html>
