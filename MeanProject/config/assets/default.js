@@ -7,11 +7,11 @@ module.exports = {
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
           
-          'public/lib/css/bootstrap.min.css',
-          'public/lib/css/font-awesome.min.css',
-          'public/lib/css/main.css',
-          'public/lib/css/animate.css',
-          'public/lib/css/responsive.css'
+          'modules/core/client/css/bootstrap.min.css',
+          'modules/core/client/css/font-awesome.min.css',
+          'modules/core/client/css/main.css',
+          'modules/core/client/css/animate.css',
+          'modules/core/client/css/responsive.css'
       ],
       js: [
         'public/lib/angular/angular.js',
@@ -28,15 +28,14 @@ module.exports = {
         'http://maps.google.com/maps/api/js?key=AIzaSyDllo5Gh2kmkNq5D9HD5Qgrg5SyHJHmHPE',
         'public/lib/ngmap/build/scripts/ng-map.min.js',
           
-          
-          'public/lib/js/jquery.js',
-          'public/lib/js/bootstrap.min.js',
-          'public/lib/js/smoothscroll.js',
-          'public/lib/js/coundown-timer.js',
-          'public/lib/js/jquery.scrollTo.js',
-          'public/lib/js/jquery.nav.js',
-          'public/lib/js/main.js',
-          'public/lib/js/jquery.parallax.js'  
+          'modules/core/client/js/jquery.js',
+          'modules/core/client/js/bootstrap.min.js',
+          'modules/core/client/js/smoothscroll.js',
+          'modules/core/client/js/coundown-timer.js',
+          'modules/core/client/js/jquery.scrollTo.js',
+          'modules/core/client/js/jquery.nav.js',
+          'modules/core/client/js/main.js',
+          'modules/core/client/js/jquery.parallax.js'  
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },

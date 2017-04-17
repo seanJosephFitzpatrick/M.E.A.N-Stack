@@ -1,16 +1,16 @@
-<section data-ng-controller="ClubsController">
+<section data-ng-controller="BarsController">
   <div class="page-header">
   <br />
   <br />
-    <h1>New Club</h1>
+    <h1>New Bar</h1>
   </div>
   <div class="col-md-12">
-    <form class="formClass" name="clubForm" data-ng-submit="create()" novalidate>
+    <form class="formClass" name="barForm" data-ng-submit="create()" novalidate>
       <fieldset>  
         <div class="row">
             <div class="col-sm-6 text-center">
 			
-				<img ng-src="modules/clubs/client/img/default.png" 
+				<img ng-src="modules/bars/client/img/default.png" 
 				class="img-thumbnail user-profile-picture">
             </div>
              <div class="col-sm-6">
@@ -29,7 +29,7 @@
 					accept="image/*" ngf-max-size="1MB">
 					<h4>Select Image</h4></button>
 				  <div class="text-center">
-					<img ng-show="clubForm.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
+					<img ng-show="barForm.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
 				  </div>
 				  <div class="text-center">
 					<div class="progress" ng-show="uploadedFile.progress >= 0">
@@ -40,7 +40,7 @@
 				  <div class="text-center">
 					<button type="button" class="btn btn-secondary" ng-click="uploadedFile = null" ng-show="uploadedFile"><h4>Remove</h4></button>
 				  </div>
-				  <div class="alert alert-danger" ng-show="clubForm.file.$error.maxSize"><h4>File too large</h4>
+				  <div class="alert alert-danger" ng-show="barForm.file.$error.maxSize"><h4>File too large</h4>
 							   {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
 				</div>
                  
@@ -135,7 +135,7 @@
 			   <div class="col-sm-6">
 					<div class="form-group">
 					  <button type="submit" class="btn btn-lg btn-default">
-						  <h4>Create Club</h4>
+						  <h4>Create Bar</h4>
 						</button>
 					</div>
 				</div>

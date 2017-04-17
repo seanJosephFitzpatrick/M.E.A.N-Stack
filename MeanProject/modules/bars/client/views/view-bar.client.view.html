@@ -1,12 +1,12 @@
-<section data-ng-controller="ClubsController" data-ng-init="findOne()">
+<section data-ng-controller="BarsController" data-ng-init="findOne()">
   <div class="page-header">
   <br />
   <br />
-    <h1>{{club.name}}</h1>
+    <h1>{{bar.name}}</h1>
   </div>
   <div class="col-md-12"> 
-  	 <div class="pull-right" data-ng-show="authentication.user._id == club.user._id">
-				<a class="btn btn-primary" data-ui-sref="clubs.edit({clubId: club._id})">
+  	 <div class="pull-right" data-ng-show="authentication.user._id == bar.user._id">
+				<a class="btn btn-primary" data-ui-sref="bars.edit({barId: bar._id})">
 				  <i class="glyphicon glyphicon-edit"></i>
 				</a>
 				<a class="btn btn-primary" data-ng-click="remove();">
@@ -16,44 +16,44 @@
         <div class="row">
             <div class="col-sm-6 text-center">
 			<!--
-				<img ng-src="modules/clubs/client/img/default.png" 
+				<img ng-src="modules/bars/client/img/default.png" 
 				class="img-thumbnail user-profile-picture">-->
-				<img ng-src="{{club.clubImageURL}}" height="250" width="250" />
+				<img ng-src="{{bar.barImageURL}}" height="250" width="250" />
 				<!--
-				<img ng-src="{{club.categories[0].icon.prefix + '100x100' + club.categories[0].icon.suffix}}"
-				src="modules/clubs/client/img/default.png" width="150" height="100"/>
+				<img ng-src="{{bar.categories[0].icon.prefix + '100x100' + bar.categories[0].icon.suffix}}"
+				src="modules/bars/client/img/default.png" width="150" height="100"/>
 				-->
             </div>
              <div class="col-sm-6">
                 <div class="form-group">
                   <h4>Address:</h4> 
 					<small class="list-group-item-text text-muted">
-						<span>{{club.address}}</span>
-						<span>{{club.city}}</span>
-						<span>{{club.country}}</span>
+						<span>{{bar.address}}</span>
+						<span>{{bar.city}}</span>
+						<span>{{bar.country}}</span>
 					</small> 
                 </div>
       
                 <div class="form-group">
 					<h4>Opening Hours:</h4> 
 					<small class="list-group-item-text text-muted">
-						<span>{{club.openHours}}</span>
+						<span>{{bar.openHours}}</span>
 					</small> 
                 </div>
 
                 <div class="form-group">
 					<h4>Phone:</h4> 
 					<small class="list-group-item-text text-muted">
-						<span>{{club.phone}}</span>
+						<span>{{bar.phone}}</span>
 					</small> 
                 </div>
 					<h4>Description:</h4>
 					<small class="list-group-item-text text-muted">
-						<span>{{club.description}}</span>
+						<span>{{bar.description}}</span>
 					</small> <br />
 					<h4>URL:</h4>
 					<small class="list-group-item-text text-muted">
-						<a href="{{club.url}}">{{club.url}}</a>
+						<a href="{{bar.url}}">{{bar.url}}</a>
 					</small>
 					
             </div>
@@ -61,21 +61,21 @@
 		  
 			<h4>Latitude:</h4>
 			<small class="list-group-item-text text-muted">
-				<span>{{club.lat}}</span>
+				<span>{{bar.lat}}</span>
             </small> <br />
 			<h4>Longitude:</h4> 
 			<small class="list-group-item-text text-muted">
-				<span>{{club.lon}}</span>
+				<span>{{bar.lon}}</span>
             </small> <br />
           
            <div class="row">
 				<div class="form-group">
-                  <p class="lead" data-ng-bind="club.location.formattedAddress"></p>
+                  <p class="lead" data-ng-bind="bar.location.formattedAddress"></p>
                 </div>			
             </div>
 					
-			<map center='[{{club.lat}},{{club.lon}}]' zoom ='9'>
-			   <marker position='[{{club.lat}},{{club.lon}}]' visible="true"> </marker>
+			<map center='[{{bar.lat}},{{bar.lon}}]' zoom ='9'>
+			   <marker position='[{{bar.lat}},{{bar.lon}}]' visible="true"> </marker>
 			   <!-- a initial position must be set because it will prompt the users current geolocation and set it to that -->
 			</map>
 </section>

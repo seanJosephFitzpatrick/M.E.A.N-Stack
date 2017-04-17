@@ -1,22 +1,22 @@
-<section data-ng-controller="ClubsController" data-ng-init="findOne()">
+<section data-ng-controller="BarsController" data-ng-init="findOne()">
   <div class="page-header">
   <br />
   <br />
-    <h1>Edit Club</h1>
+    <h1>Edit Bar</h1>
   </div>
   <div class="col-md-12">
-    <form name="clubForm" class="form-horizontal" data-ng-submit="update()" novalidate>
+    <form name="barForm" class="form-horizontal" data-ng-submit="update()" novalidate>
       <fieldset>  
         <div class="row">
             <div class="col-sm-6 text-center">
-				<img ng-src="modules/clubs/client/img/default.png" 
+				<img ng-src="modules/bars/client/img/default.png" 
 				class="img-thumbnail user-profile-picture">
             </div>
              <div class="col-sm-6">
                 <div class="form-group">
                   <label class="control-label" for="name"><h4>Name</h4></label>
                   <div class="controls">
-                    <input name="name" type="text" data-ng-model="club.name" id="name" class="form-control">
+                    <input name="name" type="text" data-ng-model="bar.name" id="name" class="form-control">
                   </div>
                 </div>
 				
@@ -28,7 +28,7 @@
 					accept="image/*" ngf-max-size="1MB">
 					<h4>Select Image</h4></button>
 				  <div class="text-center">
-					<img ng-show="clubForm.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
+					<img ng-show="barForm.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
 				  </div>
 				  <div class="text-center">
 					<div class="progress" ng-show="uploadedFile.progress >= 0">
@@ -39,7 +39,7 @@
 				  <div class="text-center">
 					<button type="button" class="btn btn-secondary" ng-click="uploadedFile = null" ng-show="uploadedFile"><h4>Remove</h4></button>
 				  </div>
-				  <div class="alert alert-danger" ng-show="clubForm.file.$error.maxSize"><h4>File too large</h4>
+				  <div class="alert alert-danger" ng-show="barForm.file.$error.maxSize"><h4>File too large</h4>
 							   {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
 				</div>
 				
@@ -47,14 +47,14 @@
                 <div class="form-group">
                   <label class="control-label" for="openHours"><h4>Opening Hours</h4></label>
                   <div class="controls">
-                    <input name="openHours" type="text" data-ng-model="club.openHours" id="openHours" class="form-control">
+                    <input name="openHours" type="text" data-ng-model="bar.openHours" id="openHours" class="form-control">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label" for="phone"><h4>Phone</h4></label>
                   <div class="controls">
-                    <input name="phone" type="text" data-ng-model="club.phone" id="phone" class="form-control">
+                    <input name="phone" type="text" data-ng-model="bar.phone" id="phone" class="form-control">
                   </div>
                 </div>
             </div>
@@ -65,27 +65,27 @@
 				<div class="form-group" >
 					<label class="control-label" for="lat"><h4>Latitude</h4></label>
 					<div class="controls">
-						<textarea name="content" data-ng-model="club.lat" id="content" class="form-control" cols="10" rows="1" placeholder="Latitude" required>
+						<textarea name="content" data-ng-model="bar.lat" id="content" class="form-control" cols="10" rows="1" placeholder="Latitude" required>
 						</textarea>
 					</div>
 				</div>
 				<div class="form-group" >
 					<label class="control-label" for="lon"><h4>Longitude</h4></label>
 					<div class="controls">
-						<textarea name="content" data-ng-model="club.lon" id="content" class="form-control" cols="10" rows="1" placeholder="Longitude" required>
+						<textarea name="content" data-ng-model="bar.lon" id="content" class="form-control" cols="10" rows="1" placeholder="Longitude" required>
 						</textarea>
 					</div>
 				</div>
 				<div class="form-group">
 					  <label class="control-label" for="address"><h4>Address</h4></label>
 					  <div class="controls">
-						<input name="address" type="text" data-ng-model="club.address" id="address" class="form-control">
+						<input name="address" type="text" data-ng-model="bar.address" id="address" class="form-control">
 					  </div>
                 </div>
                 <div class="form-group">
 					  <label class="control-label" for="city"><h4>City</h4></label>
 					  <div class="controls">
-						<input name="city" type="text" data-ng-model="club.city" id="city" class="form-control">
+						<input name="city" type="text" data-ng-model="bar.city" id="city" class="form-control">
 					  </div>
 					</div>    
 				</div>
@@ -94,25 +94,25 @@
                 <div class="form-group">
 					  <label class="control-label" for="county"><h4>County</h4></label>
 					  <div class="controls">
-						<input name="county" type="text" data-ng-model="club.county" id="county" class="form-control">
+						<input name="county" type="text" data-ng-model="bar.county" id="county" class="form-control">
 					  </div>
                 </div>
                 <div class="form-group">
 					  <label class="control-label" for="country"><h4>Country</h4></label>
 					  <div class="controls">
-						<input name="country" type="text" data-ng-model="club.country" id="country" class="form-control">
+						<input name="country" type="text" data-ng-model="bar.country" id="country" class="form-control">
 					  </div>
                 </div>
                 <div class="form-group">
 					  <label class="control-label" for="url"><h4>URL</h4></label>
 					  <div class="controls">
-						<input name="url" type="text" data-ng-model="club.url" id="url" class="form-control">
+						<input name="url" type="text" data-ng-model="bar.url" id="url" class="form-control">
 					  </div>
                 </div>   
 				<div class="form-group">
 					  <label class="control-label" for="category"><h4>Category</h4></label>
 					  <div class="controls">
-						<input name="category" type="text" data-ng-model="club.category" id="category" class="form-control">
+						<input name="category" type="text" data-ng-model="bar.category" id="category" class="form-control">
 					  </div>
                 </div>  				
             </div>
@@ -121,7 +121,7 @@
 				<div class="form-group">
 					  <label class="control-label" for="description"><h4>Description</h4></label>
 					  <div class="controls">
-						<textarea name="description" data-ng-model="club.description" id="content" class="form-control" cols="30" rows="10"></textarea>
+						<textarea name="description" data-ng-model="bar.description" id="content" class="form-control" cols="30" rows="10"></textarea>
 					  </div>
 					</div>
 				</div>
@@ -136,7 +136,7 @@
 				<div class="col-sm-6"><br /> 
 					<div class="form-group">
 					  <button type="submit"  class="btn btn-lg btn-default">
-						  <h4>Update Club</h4>
+						  <h4>Update Bar</h4>
 						</button>
 					</div>
 				</div> 

@@ -12,10 +12,10 @@ var mongoose = require('mongoose'),
 Schema = mongoose.Schema;
 
 /**
- * Club Schema
+ * Bar Schema
  */
 //Each schema maps to a MongoDB collection and defines the shape of the documents within that collection.
-var ClubSchema = new Schema({
+var BarSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
@@ -26,7 +26,7 @@ var ClubSchema = new Schema({
     trim: true,
     required: 'Name cannot be blank'
   },
-  clubImageURL:{
+  barImageURL:{
   type: String,
   default: '',
   trim: true
@@ -93,4 +93,4 @@ var ClubSchema = new Schema({
   }
 });
 
-mongoose.model('Club', ClubSchema);
+mongoose.model('Bar', BarSchema);

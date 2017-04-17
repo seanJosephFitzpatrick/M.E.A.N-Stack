@@ -1,9 +1,9 @@
 'use strict';
 
-// Clubs controller
-angular.module('clubs').controller('ClubsController', ['$scope', '$http', '$rootScope', '$stateParams', '$location', 'Authentication', 'Clubs', 'Upload', 
+// Bars controller
+angular.module('bars').controller('BarsController', ['$scope', '$http', '$rootScope', '$stateParams', '$location', 'Authentication', 'Bars', 'Upload', 
 '$timeout',
-  function ($scope, $http, $rootScope, $stateParams, $location, Authentication, Clubs, Upload, $timeout) {
+  function ($scope, $http, $rootScope, $stateParams, $location, Authentication, Bars, Upload, $timeout) {
     $scope.authentication = Authentication;
       
       /*
@@ -28,7 +28,7 @@ angular.module('clubs').controller('ClubsController', ['$scope', '$http', '$root
 
             file.upload.then(function (response) {
                 console.log('File is successfully uploaded to ' + response.data.uploadedURL);
-                $scope.clubImageURL = response.data.uploadedURL;
+                $scope.barImageURL = response.data.uploadedURL;
                 $timeout(function () {
                     file.result = response.data;
                 });
@@ -43,13 +43,13 @@ angular.module('clubs').controller('ClubsController', ['$scope', '$http', '$root
     };
 
       
-    // Create new Club
+    // Create new Bar
     $scope.create = function () {
-      // Create new Club object
-        $scope.club = club;
-      var club = new Clubs({
+      // Create new Bar object
+        $scope.bar = bar;
+      var bar = new Bars({
         name: this.name,
-        clubImageURL: $scope.clubImageURL,
+        barImageURL: $scope.barImageURL,
         openHours: this.openHours,
         phone: this.phone,
         lat: this.lat,
@@ -64,12 +64,12 @@ angular.module('clubs').controller('ClubsController', ['$scope', '$http', '$root
       });
 
       // Redirect after save
-      club.$save(function (response) {
-        $location.path('clubs/' + response._id);
+      bar.$save(function (response) {
+        $location.path('bars/' + response._id);
 
         // Clear form fields
         $scope.name = '';
-        $scope.clubImageURL = '';
+        $scope.barImageURL = '';
         $scope.openHours = '';
           $scope.phone = '';
           $scope.lat = 0;
@@ -86,30 +86,30 @@ angular.module('clubs').controller('ClubsController', ['$scope', '$http', '$root
       });
     };
 
-    // Remove existing Club
-    $scope.remove = function (club) {
-      if (club) {
-        club.$remove();
+    // Remove existing Bar
+    $scope.remove = function (bar) {
+      if (bar) {
+        bar.$remove();
 
-        for (var i in $scope.clubs) {
-          if ($scope.clubs[i] === club) {
-            $scope.clubs.splice(i, 1);
+        for (var i in $scope.bars) {
+          if ($scope.bars[i] === bar) {
+            $scope.bars.splice(i, 1);
           }
         }
       } else {
-        $scope.club.$remove(function () {
-          $location.path('clubs');
+        $scope.bar.$remove(function () {
+          $location.path('bars');
         });
       }
     };
 
-    // Update existing Club
+    // Update existing Bar
     $scope.update = function () {
-      var club = $scope.club;
-      club.clubImageURL = $scope.clubImageURL;
+      var bar = $scope.bar;
+      bar.barImageURL = $scope.barImageURL;
 
-      club.$update(function () {
-        $location.path('clubs/' + club._id);
+      bar.$update(function () {
+        $location.path('bars/' + bar._id);
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -119,42 +119,42 @@ angular.module('clubs').controller('ClubsController', ['$scope', '$http', '$root
     $scope.$on('mapInitialized', function(event,map) {
     var marker = map.markers[0];
 
-        $scope.$watch('club.lat + club.lon',function(newVal,oldVal){
+        $scope.$watch('bar.lat + bar.lon',function(newVal,oldVal){
                 if(newVal === oldVal){return;}
                 // checks if value has changed 
-                map.setCenter({lat:$scope.club.lat,lng:$scope.club.lon});
-                marker.setPosition({lat:$scope.club.lat,lng:$scope.club.lon});
+                map.setCenter({lat:$scope.bar.lat,lng:$scope.bar.lon});
+                marker.setPosition({lat:$scope.bar.lat,lng:$scope.bar.lon});
         });
     });
       
     //click on link in list view to navigate to view
-    $scope.gotolink= function(event,clubId) {
-      $location.path('clubs/'+ clubId);
+    $scope.gotolink= function(event,barId) {
+      $location.path('bars/'+ barId);
     };
 
-    // Find a list of Clubs in Database
+    // Find a list of Bars in Database
     $scope.find = function () {
-      $scope.clubs = Clubs.query();
+      $scope.bars = Bars.query();
     };
       
-    var id = $stateParams.clubId;
+    var id = $stateParams.barId;
 /*
-    // Find existing Club from Foursquare
+    // Find existing Bar from Foursquare
     var promise = $http.get('https://api.foursquare.com/v2/venues/' + id + '/?client_id=YZQZP1Q2HEJWMD5ZVBMIQD3VSZC1W4BQCCQTVFEPJWNHL0RK&client_secret=ORHPL2VKKHUTB3KTJVDTB4D20AXBRCFKWVL12EPQNJNDFYBX&v=201311242');
     promise.then(
 	  function(payload) {
          
-	    $scope.club = payload.data.response.venue;
+	    $scope.bar = payload.data.response.venue;
           var i = JSON.stringify(payload);
           console.log(i);
           
 	  });
       */
            
-    // Find existing Club
+    // Find existing Bar
     $scope.findOne = function () {
-      $scope.club = Clubs.get({
-        clubId: $stateParams.clubId
+      $scope.bar = Bars.get({
+        barId: $stateParams.barId
       });
     };
   }

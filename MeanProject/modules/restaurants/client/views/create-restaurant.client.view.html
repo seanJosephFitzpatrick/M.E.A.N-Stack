@@ -5,7 +5,7 @@
     <h1>New Restaurant</h1>
   </div>
   <div class="col-md-12">
-    <form name="restaurantForm" data-ng-submit="create()" novalidate>
+    <form class="formClass" name="restaurantForm" data-ng-submit="create()" novalidate>
       <fieldset>  
         <div class="row">
             <div class="col-sm-6 text-center">
@@ -15,19 +15,19 @@
             </div>
              <div class="col-sm-6">
                 <div class="form-group">
-                  <label class="control-label" for="name">Name</label>
+                  <label class="control-label" for="name"><h4>Name</h4></label>
                   <div class="controls">
                     <input name="name" type="text" data-ng-model="name" id="name" class="form-control">
                   </div>
                 </div>
 				
 				<div class="form-group push-6" show-errors>
-					<label for="image">Image</label>
+					<label for="image"><h4>Image</h4></label>
 					<button type="button" class="btn btn-secondary" ng-show="uploadedFile == null" type="file"
 					ngf-select="uploadFiles($file, $invalidFiles)"
 					ng-model="uploadedFile" name="file" ngf-model-invalid="errorFiles"
 					accept="image/*" ngf-max-size="1MB">
-					Select Image</button>
+					<h4>Select Image</h4></button>
 				  <div class="text-center">
 					<img ng-show="restaurantForm.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
 				  </div>
@@ -38,21 +38,21 @@
 					</div>
 				  </div>
 				  <div class="text-center">
-					<button type="button" class="btn btn-secondary" ng-click="uploadedFile = null" ng-show="uploadedFile">Remove</button>
+					<button type="button" class="btn btn-secondary" ng-click="uploadedFile = null" ng-show="uploadedFile"><h4>Remove</h4></button>
 				  </div>
-				  <div class="alert alert-danger" ng-show="restaurantForm.file.$error.maxSize">File too large
+				  <div class="alert alert-danger" ng-show="restaurantForm.file.$error.maxSize"><h4>File too large</h4>
 							   {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
 				</div>
                  
                 <div class="form-group">
-                  <label class="control-label" for="openHours">Opening Hours</label>
+                  <label class="control-label" for="openHours"><h4>Opening Hours</h4></label>
                   <div class="controls">
                     <input name="openHours" type="text" data-ng-model="openHours" id="openHours" class="form-control">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="control-label" for="phone">Phone</label>
+                  <label class="control-label" for="phone"><h4>Phone</h4></label>
                   <div class="controls">
                     <input name="phone" type="text" data-ng-model="phone" id="phone" class="form-control">
                   </div>
@@ -63,25 +63,25 @@
            <div class="row">
             <div class="col-sm-push-6"> 
                <div class="form-group">
-					<label class="control-label" for="content">Latitude</label>
+					<label class="control-label" for="content"><h4>Latitude</h4></label>
 					<div class="controls">
 						<textarea name="lat" data-ng-model="lat" id="lat" class="form-control" cols="10" rows="1" placeholder="Latitude"></textarea>
 					</div>
                 </div>
 				<div class="form-group">
-					<label class="control-label" for="content">Longitude</label>
+					<label class="control-label" for="content"><h4>Longitude</h4></label>
 					<div class="controls">
 						<textarea name="lon" data-ng-model="lon" id="lon" class="form-control" cols="10" rows="1" placeholder="Longitude"></textarea>
 					</div>
 				</div>
 				<div class="form-group">
-                  <label class="control-label" for="address">Address</label>
+                  <label class="control-label" for="address"><h4>Address</h4></label>
                   <div class="controls">
                     <input name="address" type="text" data-ng-model="address" id="address" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label" for="city">City</label>
+                  <label class="control-label" for="city"><h4>City</h4></label>
                   <div class="controls">
                     <input name="city" type="text" data-ng-model="city" id="city" class="form-control">
                   </div>
@@ -90,25 +90,25 @@
 			
 			     <div class="col-sm-push-6"> 
                 <div class="form-group">
-                  <label class="control-label" for="county">County</label>
+                  <label class="control-label" for="county"><h4>County</h4></label>
                   <div class="controls">
                     <input name="county" type="text" data-ng-model="county" id="county" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label" for="country">Country</label>
+                  <label class="control-label" for="country"><h4>Country</h4></label>
                   <div class="controls">
                     <input name="country" type="text" data-ng-model="country" id="country" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label" for="url">URL</label>
+                  <label class="control-label" for="url"><h4>URL</h4></label>
                   <div class="controls">
                     <input name="url" type="text" data-ng-model="url" id="url" class="form-control">
                   </div>
                 </div>   
 				<div class="form-group">
-                  <label class="control-label" for="category">Category</label>
+                  <label class="control-label" for="category"><h4>Category</h4></label>
                   <div class="controls">
                     <input name="category" type="text" data-ng-model="category" id="category" class="form-control">
                   </div>
@@ -117,7 +117,7 @@
                
              <div class="col-sm-pull-6">
                 <div class="form-group">
-                  <label class="control-label" for="description">Description</label>
+                  <label class="control-label" for="description"><h4>Description</h4></label>
                   <div class="controls">
                     <textarea name="description" data-ng-model="description" id="content" class="form-control" cols="30" rows="10"></textarea>
                   </div>
@@ -128,20 +128,17 @@
 			<map center="[{{lat}},{{lon}}]" zoom ='5'>
 				<marker position="[{{lat}},{{lon}}]" visible="true"></marker>
 			</map>
+			
+			<br />
           
            <div class="row">
-            <div class="col-sm-6">
-                
-            <div class="form-group">
-              <button type="submit" class="btn btn-lg btn-default">
-                  Create Restaurant
-                </button>
-            </div>
-
-            </div>
-             <div class="col-sm-6">
-                
-            </div>
+			   <div class="col-sm-6">
+					<div class="form-group">
+					  <button type="submit" class="btn btn-lg btn-default">
+						  <h4>Create Restaurant</h4>
+						</button>
+					</div>
+				</div>
           </div>
           
         <alert type="danger" ng-show="error" class="text-center text-danger">

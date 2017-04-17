@@ -39,6 +39,10 @@ a:hover .header-profile-image {
   margin-left: 25px;
   margin-right: 25px;
 }
+.formClass {
+  margin-left: 25px;
+  margin-right: 25px;
+}
 .has-error .help-block.error-text {
   display: block;
 }

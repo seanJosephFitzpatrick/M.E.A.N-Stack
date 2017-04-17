@@ -26,7 +26,7 @@
             </div>
              <div class="col-sm-6">
                 <div class="form-group">
-                  Address : 
+                  <h4>Address:</h4> 
 					<small class="list-group-item-text text-muted">
 						<span>{{restaurant.address}}</span>
 						<span>{{restaurant.city}}</span>
@@ -35,23 +35,23 @@
                 </div>
       
                 <div class="form-group">
-					Opening Hours : 
+					<h4>Opening Hours:</h4> 
 					<small class="list-group-item-text text-muted">
 						<span>{{restaurant.openHours}}</span>
 					</small> 
                 </div>
 
                 <div class="form-group">
-					Phone : 
+					<h4>Phone:</h4> 
 					<small class="list-group-item-text text-muted">
 						<span>{{restaurant.phone}}</span>
 					</small> 
                 </div>
-					Description :
+					<h4>Description:</h4>
 					<small class="list-group-item-text text-muted">
 						<span>{{restaurant.description}}</span>
 					</small> <br />
-					URL :
+					<h4>URL:</h4>
 					<small class="list-group-item-text text-muted">
 						<a href="{{restaurant.url}}">{{restaurant.url}}</a>
 					</small>
@@ -59,11 +59,11 @@
             </div>
           </div>
 		  
-			Latitude:
+			<h4>Latitude:</h4>
 			<small class="list-group-item-text text-muted">
 				<span>{{restaurant.lat}}</span>
             </small> <br />
-			Longitude: 
+			<h4>Longitude:</h4> 
 			<small class="list-group-item-text text-muted">
 				<span>{{restaurant.lon}}</span>
             </small> <br />
@@ -71,31 +71,9 @@
            <div class="row">
 				<div class="form-group">
                   <p class="lead" data-ng-bind="restaurant.location.formattedAddress"></p>
-                </div>
-				<!--
-                <div class="form-group">
-                  <p class="lead" data-ng-bind="restaurant.location.city"></p>
-                </div>    
+                </div>			
             </div>
-			
-			     <div class="col-sm-push-6"> 
-                <div class="form-group">
-                  <p class="lead" data-ng-bind="restaurant.location.state"></p>
-                
-                </div>
-                <div class="form-group">
-                  <p class="lead" data-ng-bind="restaurant.location.country"></p>
-                </div>
-                <div class="form-group">
-                  <p class="lead" data-ng-bind="restaurant.canonicalUrl"></p>
-                </div>   
-				<div class="form-group">
-                  <p class="lead" data-ng-bind="restaurant.categories.name"></p>
-                </div>  -->				
-            </div>
-			
-			
-			
+					
 			<map center='[{{restaurant.lat}},{{restaurant.lon}}]' zoom ='9'>
 			   <marker position='[{{restaurant.lat}},{{restaurant.lon}}]' visible="true"> </marker>
 			   <!-- a initial position must be set because it will prompt the users current geolocation and set it to that -->
