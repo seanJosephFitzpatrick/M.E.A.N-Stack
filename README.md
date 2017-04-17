@@ -10,8 +10,7 @@ Download and extract the zip folder here [MEAN JS](https://github.com/seanJoseph
 ### Prerequisites
 
 * [NODE v6.10.2 LTS](https://nodejs.org/en/) - Node runtime environment
-* [MONGODB Current Stable Release (3.4.3)](https://www.mongodb.com/download-center#community) MongoDB NoSQL database
-* [GRUNT 1.0](https://gruntjs.com/installing-grunt) - Grunt 
+* [MONGODB Current Stable Release (3.4.3)](https://www.mongodb.com/download-center#community) MongoDB NoSQL database 
 
 ### Installing
 
@@ -26,6 +25,13 @@ After installing the npm , you can install the grunt from the [terminal](https:/
 Launch another command promt by typing  cmd to your search bar to run the mongoDB and cd to the mongoDB downloaded folder and cd to bin directory and type mongod , after typing mongod you will see that your mongoDB is up and running or if its not then follow this small tutorial it will help you to download and running the [mongoDB](https://www.mongodb.com/download-center#community)
 
 ## Deployment
+
+After you have node installed.            
+Install bower globally - npm install -g bower                
+Install grunt globally - npm install -g grunt cli                   
+run mongo form cmd - mongod                  
+Download and extract zip folder - cd into meanproject                  
+npm install                        
 
 Once you have all the dependencies install then you type grunt or grunt --force this command will have application ready for runnig and open the web browser and type localhost:3000 or application its is hosted you can just click on the link.
 
