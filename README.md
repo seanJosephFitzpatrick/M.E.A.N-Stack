@@ -31,9 +31,10 @@ Install bower globally - npm install -g bower
 Install grunt globally - npm install -g grunt cli                   
 run mongo form cmd - mongod                  
 Download and extract zip folder - cd into meanproject                  
-npm install                        
+npm install           
+grunt --force               
 
-Once you have all the dependencies install then you type grunt or grunt --force this command will have application ready for runnig and open the web browser and type localhost:3000 or application its is hosted you can just click on the link.
+open web browser and type : localhost:3000              
 
 ## Built With
 
