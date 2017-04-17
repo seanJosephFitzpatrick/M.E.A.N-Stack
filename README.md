@@ -1,42 +1,33 @@
-# Project Title
-
 ## M.E.A.N-Stack
 
-One Paragraph of project description goes here
+This is final year Software Development group project. The project is a Galway tourist application created for Galway restaurants, clubs and pubs.
+
 
 ## Getting Started
 
-Download and extract the zip folder here []()
+Download and extract the zip folder here [MEAN JS](https://github.com/seanJosephFitzpatrick/M.E.A.N-Stack/archive/master.zip)
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+* [NODE v6.10.2 LTS](https://nodejs.org/en/) - Node runtime environment
+* [MONGODB Current Stable Release (3.4.3)](https://www.mongodb.com/download-center#community) MongoDB NoSQL database
+* [GRUNT 1.0](https://gruntjs.com/installing-grunt) - Grunt 
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+First you can install mongoDB by clicking on the downloaded file and it will install automatic or Here is small tutorial which will guide you to install and the mongoDB up and [Running](https://www.youtube.com/watch?v=_RQ4lET5ejw)
 
-Say what the step will be
+Second click the downloaded file from node website and it will downloaded automatic to your device or here is small tutorial which will guide you to how to get node up and [running](https://www.youtube.com/watch?v=8ODS6RM6x7g)
 
-```
-Give the example
-```
+Launch command promt by typing cmd to you search bar and cd to meanJs folder, Once you are in the folder you can type npm install (npm is node package manager which will install all the depencies you need to run the application).
 
-And repeat
+After installing the npm , you can install the grunt from the [terminal](https://gruntjs.com/installing-grunt)
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+Launch another command promt by typing  cmd to your search bar to run the mongoDB and cd to the mongoDB downloaded folder and cd to bin directory and type mongod , after typing mongod you will see that your mongoDB is up and running or if its not then follow this small tutorial it will help you to download and running the [mongoDB](https://www.mongodb.com/download-center#community)
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Once you have all the dependencies install then you type grunt or grunt --force this command will have application ready for runnig and open the web browser and type localhost:3000 or application its is hosted you can just click on the link.
 
 ## Built With
 
@@ -64,8 +55,5 @@ This project is licensed under the [MIT](https://github.com/seanJosephFitzpatric
 ## Acknowledgments
 
 [MEAN.JS](https://meanjs.org/) - Mean application boilerplate 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
 
 
