@@ -34,7 +34,8 @@
         </div>
         <div class="form-group" show-errors>
           <label for="password"><h4>Password</h4></label>
-            <input type="password" id="password" name="password" class="form-control" ng-model="credentials.password" placeholder="Password" popover="{{popoverMsg}}" popover-trigger="focus" password-validator required>
+            <h4><input type="password" id="password" name="password" class="form-control" ng-model="credentials.password" 
+			placeholder="Password" popover="{{popoverMsg}}" popover-trigger="focus" password-validator required></h4>
           <div ng-messages="userForm.password.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Password is required.</p>
             <div ng-repeat="passwordError in passwordErrors">
