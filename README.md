@@ -29,7 +29,7 @@ Install grunt globally - npm install -g grunt cli
 run mongo from cmd - mongod                  
 Download and extract zip folder - cd into meanproject                  
 npm install           
-grunt --force               
+grunt                          
 
 open web browser and type : localhost:3000              
 
