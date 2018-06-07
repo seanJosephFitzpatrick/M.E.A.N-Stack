@@ -1,1 +1,0 @@
-The sreencast is a working demo of the final year project. The srceencast is a .flv file. To view this file download the VLC Medai Player at : http://www.videolan.org/vlc/index.html
