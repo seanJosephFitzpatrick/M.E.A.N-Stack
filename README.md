@@ -1,6 +1,6 @@
 ## M.E.A.N-Stack
 
-This is final year Software Development group project. The project is a Galway tourist application created for Galway restaurants, clubs and pubs.
+This is 4th year Software Development group project. The project is a Galway tourist application created for Galway restaurants, clubs and pubs.
 
 
 ## Getting Started
