@@ -22,14 +22,14 @@ Launch command promt by typing cmd to you search bar and cd to meanJs folder, On
 
 After installing the npm , you can install the grunt from the [terminal](https://gruntjs.com/installing-grunt)
 
-Launch another command promt by typing  cmd to your search bar to run the mongoDB and cd to the mongoDB downloaded folder and cd to bin directory and type mongod , after typing mongod you will see that your mongoDB is up and running or if its not then follow this small tutorial it will help you to download and running the [mongoDB](https://www.mongodb.com/download-center#community)
+Launch another command promt by typing  cmd to your search bar to run the mongoDB and cd to the mongoDB downloaded folder and cd to bin directory and type mongod , after typing mongod you will see that your mongoDB is up and running or if its not then follow this small tutorial it will help you to download and runn [mongoDB](https://www.mongodb.com/download-center#community)
 
 ## Deployment
 
 After you have node installed.            
 Install bower globally - npm install -g bower                
 Install grunt globally - npm install -g grunt cli                   
-run mongo form cmd - mongod                  
+run mongo from cmd - mongod                  
 Download and extract zip folder - cd into meanproject                  
 npm install           
 grunt --force               
