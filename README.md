@@ -16,7 +16,7 @@ Download and extract the zip folder here [MEAN JS](https://github.com/seanJoseph
 
 Install [MongoDB](https://www.mongodb.com/collateral/mongodb-3-4-whats-new?jmp=search&utm_source=google&utm_campaign=EMEA_UK-IE_MongoDB%20to%20Corp/Ent_Brand_Alpha_FM&utm_keyword=mongodb&utm_device=c&utm_network=g&utm_medium=cpc&utm_creative=165404902047&utm_matchtype=e&_bt=165404902047&_bk=mongodb&_bm=e&_bn=g&gclid=CKyCgcn--NECFW6x7QodofwFWw)
 
-Install [node](https://nodejs.org/en/) website and it will downloaded automatic to your device or here is small tutorial which will guide you to how to get node up and [running](https://www.youtube.com/watch?v=8ODS6RM6x7g)          
+Install [node](https://nodejs.org/en/)          
 
 Tutorial for installing Node and MongoDB [here](https://www.youtube.com/watch?v=tlntE8fe6u4)
 
